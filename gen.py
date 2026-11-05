@@ -482,7 +482,9 @@ def lost(c):
 
 def about(c):
     story = STORY
-    txt = "".join(f'<p class="{"first" if n == 0 else ("q" if c.t(t)[:1] in "“«\"" else "")}">{c.t(t)}</p>' for n, t in enumerate(story)) + (SIG_RED if c.lang == "ar" else "")
+    QUOTE_MARKS = "“«" + chr(34)
+    def pcls(n, t): return "first" if n == 0 else ("q" if c.t(t)[:1] in QUOTE_MARKS else "")
+    txt = "".join(f'<p class="{pcls(n, t)}">{c.t(t)}</p>' for n, t in enumerate(story)) + (SIG_RED if c.lang == "ar" else "")
     txt += f'<p style="display:flex;gap:16px;flex-wrap:wrap"><a class="btn solid" href="{CV}" target="_blank" rel="noopener">{c.u("cv")} <span class="arrow">↗</span></a><a class="ul" href="{BEHANCE}" target="_blank" rel="noopener">Behance</a><a class="ul" href="https://www.linkedin.com/in/diaamohammed/" target="_blank" rel="noopener">LinkedIn</a></p>'
     def rows(items):
         return "".join(f'<div class="trow rv"><span class="when">{c.t(w)}</span><h3>{c.t(t)}<small>{c.t(r)}</small></h3><p>{c.t(d)}</p></div>' for w, t, r, d in items)
