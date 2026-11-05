@@ -431,20 +431,18 @@ def home(c):
     steps = "".join(f'<div class="step rv"><span class="big idx">{i+1}</span><h3>{c.t(h)}</h3><p>{c.t(d)}</p></div>' for i, (h, d) in enumerate(PROCESS))
     faq = "".join(f'<details><summary><span class="idx">{i+1:02d}</span><span>{c.t(q)}</span><span class="pm" aria-hidden="true">+</span></summary><p>{c.t(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
     nl = NAME_LINES[c.i]
-    hero_name = (f'<h1 class="hero-name hero-sig" aria-label="{c.t(NAME)}"><span class="sig sig-hero"></span></h1>' if c.lang == "ar"
-                 else f'<h1 class="hero-name" aria-label="{c.t(NAME)}"><span>{nl[0]}</span><span>{nl[1]}</span></h1>')
+    hero_name = (f'<h1 class="h-name h-sig" aria-label="{c.t(NAME)}"><span class="sig sig-red"></span></h1>' if c.lang == "ar"
+                 else f'<h1 class="h-name" aria-label="{c.t(NAME)}"><span>{nl[0]}</span> <span>{nl[1]}</span></h1>')
     svc = "<br>".join(c.t(s) for s in SERVICES)
     me = c.pre + ME
-    return f'''<section class="hero">
-<div class="wrap grid hero-top">
-  <div class="avail"><i></i>{c.u("available")}</div>
-  <div class="lead-wrap"><p class="lead">{c.t(LEAD)}</p>
-  <p class="hero-ctas"><a class="btn solid" href="#works">{c.u("see_work")} <span class="down">↓</span></a><a class="btn" href="contact.html" data-cta>{c.u("start")} <span class="arrow">↗</span></a></p></div>
-</div>
-<div class="hero-stage">
+    return f'''<section class="hero2 wrap">
+  <div class="h-text">
+    <div class="avail"><i></i>{c.u("available")}</div>
+    {hero_name}
+    <p class="lead">{c.t(LEAD)}</p>
+    <p class="hero-ctas"><a class="btn solid" href="#works">{c.u("see_work")} <span class="down">↓</span></a><a class="btn" href="contact.html" data-cta>{c.u("start")} <span class="arrow">↗</span></a></p>
+  </div>
   <div class="hero-photo lens" data-lens data-cursor="{c.u("color_hint")}"><img class="base" src="{me}" alt="{c.t(NAME)}"><img class="top" src="{me}" alt="" aria-hidden="true"><span class="lens-hint lbl">{c.u("color_hint")} ●</span></div>
-  {hero_name}
-</div>
 </section>
 <section class="wrap grid tagline-row">
   <span class="lbl">(©2026)</span>
