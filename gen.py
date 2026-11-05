@@ -257,12 +257,29 @@ STORY = [_t(x) for x in _S["story"]]
 JOBS = [(_t(x["when"]), _t(x["title"]), _t(x["role"]), _t(x["text"])) for x in _S["jobs"]]
 VOLUNTEER = [(_t(x["when"]), _t(x["title"]), _t(x["role"]), _t(x["text"])) for x in _S["volunteer"]]
 TOOLS = [(x["name"], x.get("kind", "")) for x in _S["tools"]]
-_P = [json.load(open(f, encoding="utf-8")) for f in glob.glob(os.path.join(ROOT, "content", "projects", "*.json"))]
-_P = [x for x in _P if not x.get("hidden")]
-_P.sort(key=lambda x: (x.get("order", 999), x["slug"]))
-PROJECTS = [(x["slug"], _t(x["name"]), _t(x["field"]), str(x.get("year", "")), x.get("category", "social"), None, x.get("cover", ""), x.get("case") or None) for x in _P]
-TAGS = {x["slug"]: " ".join(x.get("tags") or ["social"]) for x in _P}
-COVER_URL = {x["slug"]: x.get("cover", "") for x in _P}
+PROJECTS, TAGS, COVER_URL, PAGE, DATA = [], {}, {}, {}, {}
+def load_projects(preview):
+    """Campaigns (content/projects) and branding (content/branding) become one ordered list.
+    Each item is keyed so pages never collide: campaigns -> project-<slug>.html, branding -> brand-<slug>.html"""
+    global PROJECTS
+    items = []
+    for kind, folder in (("campaign", "projects"), ("brand", "branding")):
+        for f in glob.glob(os.path.join(ROOT, "content", folder, "*.json")):
+            x = json.load(open(f, encoding="utf-8"))
+            # hidden items stay off the site; "*-sample" templates are shown in the Claude preview only
+            if x.get("hidden") and not (preview and x["slug"].endswith("-sample")): continue
+            x["_kind"] = kind
+            items.append(x)
+    items.sort(key=lambda x: (x.get("order", 999), x["_kind"], x["slug"]))
+    PROJECTS = []
+    for k in (TAGS, COVER_URL, PAGE, DATA): k.clear()
+    for x in items:
+        key = x["slug"] if x["_kind"] == "campaign" else "brand-" + x["slug"]
+        tags = list(x.get("tags") or (["branding"] if x["_kind"] == "brand" else ["social"]))
+        if x["_kind"] == "brand" and "branding" not in tags: tags.append("branding")
+        PROJECTS.append((key, _t(x["name"]), _t(x["field"]), str(x.get("year", "")), "branding" if x["_kind"] == "brand" else x.get("category", "social"), None, x.get("cover", ""), x))
+        TAGS[key] = " ".join(tags); COVER_URL[key] = x.get("cover", ""); DATA[key] = x
+        PAGE[key] = (f"project-{key}.html" if x["_kind"] == "campaign" else f"{key}.html")
 
 def img_url(u, w=1024):
     """Framer CDN links get resized; uploaded files (/img/uploads/...) are made relative; preview uses local copies when present."""
@@ -363,7 +380,7 @@ def desk(c):
     for i, p in enumerate(PROJECTS):
         slug, name, field = p[0], p[1], p[2]
         x, y, r = SCATTER[i] if i < len(SCATTER) else (((i * 37) % 97) / 100, ((i * 53) % 89) / 100, (i * 7) % 13 - 6)
-        cuts += (f'<a class="cut" href="project-{slug}.html" data-tags="{TAGS[slug]}" data-x="{x}" data-y="{y}" data-r="{r}" data-cursor="{c.u("view")}" draggable="false">'
+        cuts += (f'<a class="cut" href="{PAGE[slug]}" data-tags="{TAGS[slug]}" data-x="{x}" data-y="{y}" data-r="{r}" data-cursor="{c.u("view")}" draggable="false">'
                  f'<span class="tape" aria-hidden="true"></span>{ph(cover_(slug), c.t(name), "r45 mono")}'
                  f'<span class="cap"><span class="idx">({i+1:02d})</span> <b>{c.t(name)}</b> <span>{c.t(field)}</span></span></a>')
     # branding lives on Behance for now: a clearly-labelled card that only shows under the Branding filter
@@ -451,9 +468,9 @@ def work(c):
     rows, cards = "", ""
     for i, p in enumerate(PROJECTS):
         slug, name, field, year, cat = p[0], p[1], p[2], p[3], p[4]
-        rows += (f'<a class="wrow" data-cat="{cat}" href="project-{slug}.html" data-cursor="{c.u("view")}"><span class="idx">({i+1:02d})</span><h3>{c.t(name)}</h3>'
+        rows += (f'<a class="wrow" data-cat="{cat}" href="{PAGE[slug]}" data-cursor="{c.u("view")}"><span class="idx">({i+1:02d})</span><h3>{c.t(name)}</h3>'
                  f'<span class="f">{c.t(field)}</span><span class="y">{year}</span><span class="go arrow">↗</span></a>')
-        cards += (f'<a class="gcard" data-cat="{cat}" href="project-{slug}.html" data-cursor="{c.u("view")}">{ph(cover_(slug), c.t(name), "r45 mono")}'
+        cards += (f'<a class="gcard" data-cat="{cat}" href="{PAGE[slug]}" data-cursor="{c.u("view")}">{ph(cover_(slug), c.t(name), "r45 mono")}'
                   f'<span class="gmeta"><span class="idx">({i+1:02d})</span><b>{c.t(name)}</b><span>{c.t(field)} · {year}</span></span></a>')
     rows += (f'<a class="wrow" data-cat="branding" href="{BEHANCE}/projects" target="_blank" rel="noopener"><span class="idx">(→)</span><h3>{c.u("branding_cat")}</h3>'
              f'<span class="f">{c.u("branding_more")}</span><span class="y">{c.u("behance_tag")}</span><span class="go arrow">↗</span></a>')
@@ -510,94 +527,182 @@ def contact(c):
     <p class="lbl" style="text-align:center;padding-top:8px">{c.u("form_alt")} <a class="ul" href="{TALLY_PAGE}" target="_blank" rel="noopener">{c.u("form_open")}</a></p></div>
 </section>'''
 
+def _paras(txt):
+    return "".join(f"<p>{e(x.strip())}</p>" for x in re.split(r"\n\s*\n", txt or "") if x.strip())
+
+def _video(u):
+    m = re.search(r"(?:youtu\.be/|v=|shorts/)([\w-]{6,})", u or "")
+    if m: return f"https://www.youtube-nocookie.com/embed/{m.group(1)}"
+    m = re.search(r"vimeo\.com/(\d+)", u or "")
+    if m: return f"https://player.vimeo.com/video/{m.group(1)}"
+    return None
+
+RATIO = {"4:5": "r45", "1:1": "r11", "3:2": "r32", "16:9": "r169", "3:4": "r34", "21:9": "r21"}
+TONES = ["#DCE0F5", "#F3E8C3", "#D5EBDD", "#EBD3DC", "#E4E2DC", "#D6DCEB"]
+
+def _fg(hexc):
+    h = (hexc or "").lstrip("#")
+    try: r, g_, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    except Exception: return "#0E0E0E"
+    return "#0E0E0E" if (r * 299 + g_ * 587 + b * 114) / 1000 > 150 else "#FFFFFF"
+
+def render_block(c, b, n):
+    """One content block from the dashboard -> HTML. n is a running counter used for captions."""
+    T = lambda v: c.t(_t(v)) if v else ""
+    k = b.get("type")
+    def shot(u, cap, ratio="r45", tone=0, lb=True):
+        inner = (ph(img_url(u), cap, ratio, TONES[tone % 6]) if ratio != "nat"
+                 else f'<img class="nat" src="{img_url(u, 2048)}" alt="{e(cap)}" loading="lazy">')
+        return f'<button type="button" class="shot" data-lb="{img_url(u, 2048)}" data-cap="{e(cap)}" aria-label="{e(cap)}">{inner}</button>' if lb else inner
+    title = f'<p class="lbl b-title">{T(b.get("title"))}</p>' if T(b.get("title")) else ""
+    if k == "text":
+        lede = T(b.get("heading")); soft = T(b.get("soft"))
+        body = _paras(T(b.get("body")))
+        return (f'<p class="lede">{e(lede)} <em>{e(soft)}</em></p>' if lede else "") + (f'<div class="body"><div class="cols">{body}</div></div>' if body else "")
+    if k == "image":
+        u = b.get("image")
+        if not u:  # empty slot: show a labelled frame in the preview only
+            return f'<figure class="b-img size-{b.get("size", "full")}">{ph(None, T(b.get("caption")) or "Image", RATIO.get(b.get("ratio"), "r169"), TONES[n % 6])}</figure>' if _MODE["preview"] else ""
+        size = b.get("size", "full"); ratio = RATIO.get(b.get("ratio"), "nat")
+        cap = T(b.get("caption"))
+        return f'<figure class="b-img size-{size}">{shot(u, cap or "Image", ratio, n)}{f"<figcaption class=lbl>{e(cap)}</figcaption>" if cap else ""}</figure>'
+    if k == "gallery":
+        imgs = [x for x in b.get("images") or [] if x]
+        cols = int(b.get("columns") or 3); ratio = RATIO.get(b.get("ratio"), "r45")
+        if not imgs:
+            if not _MODE["preview"]: return ""
+            return title + f'<div class="b-gal cols-{cols}">' + "".join(ph(None, f"{T(b.get('title')) or 'Image'} {i+1}", ratio, TONES[i % 6]) for i in range(cols * 2)) + "</div>"
+        t = T(b.get("title")) or "Image"
+        return title + f'<div class="b-gal cols-{cols}">' + "".join(shot(u, f"{t} {i+1}", ratio, i) for i, u in enumerate(imgs)) + "</div>"
+    if k == "carousel":
+        imgs = [x for x in b.get("slides") or [] if x]
+        if not imgs: return ""
+        t = T(b.get("title")) or c.u("carousel")
+        ratio = RATIO.get(b.get("ratio"), "r45")
+        return (f'<div class="set"><div class="h"><span>{e(t)}</span><span>{len(imgs)} {c.u("slides")}</span></div><div class="strip">'
+                + "".join(shot(u, f"{t} · {i+1}", ratio, i) for i, u in enumerate(imgs)) + "</div></div>")
+    if k == "video":
+        src = _video(b.get("url"))
+        if not src: return ""
+        return title + f'<div class="b-video"><iframe src="{src}" title="{e(T(b.get("title")) or "Video")}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+    if k == "lists":
+        cols = []
+        for side in ("left", "right"):
+            items = b.get(f"{side}_items") or []
+            if not items: continue
+            lis = "".join(f'<li><span class="idx">{i+1:02d}</span>{e(T(x))}</li>' for i, x in enumerate(items))
+            cols.append(f'<div><span class="lbl">{e(T(b.get(f"{side}_title")))}</span><ul>{lis}</ul></div>')
+        return f'<div class="kv">{"".join(cols)}</div>' if cols else ""
+    if k == "keywords":
+        w = "".join(f"<span>{e(T(x))}</span>" for x in b.get("words") or [])
+        return title + (f'<div class="words">{w}</div>' if w else "")
+    if k == "palette":
+        cs = [x for x in b.get("colors") or [] if x.get("color")]
+        if not cs: return ""
+        return title + '<div class="pal">' + "".join(f'<div style="background:{x["color"]};color:{_fg(x["color"])};border:1px solid var(--line)"><span>{e(T(x.get("name")))}<br>{x["color"]}</span></div>' for x in cs) + "</div>"
+    if k == "logos":
+        it = [x for x in b.get("items") or [] if x.get("image")]
+        if not it: return ""
+        tiles = ""
+        for x in it:
+            bg = x.get("background") or ""
+            cap = T(x.get("caption"))
+            capc = _fg(bg) if bg else "var(--grey)"
+            figc = f'<figcaption style="color:{capc}">{e(cap)}</figcaption>' if cap else ""
+            tiles += f'<figure style="background:{bg or "var(--white)"}"><img src="{img_url(x["image"], 1600)}" alt="{e(cap or "Logo")}" loading="lazy">{figc}</figure>'
+        cols = min(len(it), int(b.get("columns") or 2))
+        return title + f'<div class="b-logos cols-{cols}">{tiles}</div>'
+    if k == "type":
+        fonts = b.get("fonts") or []
+        if not fonts: return ""
+        out = ""
+        for f in fonts:
+            img = f'<div class="ty-img">{ph(img_url(f.get("image")), f.get("name", ""), "r32")}</div>' if f.get("image") else ""
+            out += (f'<div class="ty"><div class="ty-aa" aria-hidden="true">Aa<span>أب</span></div><div class="ty-info"><span class="lbl">{e(T(f.get("role")))}</span>'
+                    f'<h4>{e(f.get("name", ""))}</h4><p class="lbl">{e(f.get("weights", ""))}</p><p class="ty-sample">{e(T(f.get("sample")))}</p></div>{img}</div>')
+        return title + f'<div class="b-type">{out}</div>'
+    if k == "routes":
+        rs = b.get("routes") or []
+        if not rs: return ""
+        return title + '<div class="dirs">' + "".join(
+            f'<article class="dir{" pick" if r.get("chosen") else ""}"><div class="top"><span>{chr(65+i)} · {e(T(r.get("title")))}</span><span class="st">{c.u("chosen") if r.get("chosen") else c.u("explored")}</span></div>'
+            f'{shot(r.get("image"), "Route " + chr(65+i), "r45", i) if r.get("image") else ph(None, "Route " + chr(65+i), "r45", TONES[i % 6])}<p>{e(T(r.get("text")))}</p></article>' for i, r in enumerate(rs)) + "</div>"
+    if k == "numbers":
+        ns = b.get("numbers") or []
+        if not ns: return ""
+        return title + '<div class="nums" style="display:block"><div class="row three">' + "".join(
+            f'<div class="num"><span class="k">{e(T(x.get("label")))}</span><b>{e(str(x.get("value", "")))}</b><p>{e(T(x.get("text")))}</p></div>' for x in ns) + "</div></div>"
+    if k == "quote":
+        if not T(b.get("text")): return ""
+        return f'<div class="quote"><p>{e(T(b.get("text")))}</p><span class="who">{e(T(b.get("by")))}</span></div>'
+    if k == "credits":
+        team = "".join(f'<div class="r{" me" if m.get("me") else ""}"><span class="role">{e(T(m.get("role")))}</span><span class="name">{e(T(m.get("name")))}</span></div>' for m in b.get("team") or [])
+        return title + (f'<div class="credits">{team}</div>' if team else "")
+    return ""
+
 def project(c, idx):
-    slug, name, field, year, cat, tone, cover, cs = PROJECTS[idx]
-    nxt = PROJECTS[(idx + 1) % len(PROJECTS)]
-    T = lambda v: c.t(_t(v)) if v is not None else ""
-    lede = lambda a, b: f'<p class="lede">{T(cs.get(a))} <em>{T(cs.get(b))}</em></p>' if T(cs.get(a)) else ""
-    summary_html = ""
-    if cs:
-        parts = []
-        if T(cs.get("role")): parts.append(f'<div><dt class="lbl">{c.u("role")}</dt><dd>{T(cs.get("role"))}</dd></div>')
-        if cs.get("deliverables"): parts.append(f'<div><dt class="lbl">{c.u("deliv_s")}</dt><dd>{" · ".join(T(d) for d in cs["deliverables"][:3])}</dd></div>')
-        if cs.get("results"):
-            r0 = cs["results"][0]; parts.append(f'<div class="hl"><dt class="lbl">{c.u("result")}</dt><dd><b>{r0.get("value","")}</b> {T(r0.get("text"))}</dd></div>')
-        if parts: summary_html = f'<dl class="tldr">{"".join(parts)}</dl>'
+    key, name, field, year, cat, tone, cover, x = PROJECTS[idx]
+    brand = x["_kind"] == "brand"
+    same = [p for p in PROJECTS if (p[7]["_kind"] == "brand") == brand]
+    nxt = same[(same.index(PROJECTS[idx]) + 1) % len(same)]
+    T = lambda v: c.t(_t(v)) if v else ""
+    blocks = x.get("blocks") or []
+    parts = []
+    if T(x.get("role")): parts.append(f'<div><dt class="lbl">{c.u("role")}</dt><dd>{e(T(x.get("role")))}</dd></div>')
+    if x.get("deliverables"): parts.append(f'<div><dt class="lbl">{c.u("deliv_s")}</dt><dd>{" · ".join(e(T(d)) for d in x["deliverables"][:4])}</dd></div>')
+    kr = x.get("key_result") or {}
+    if kr.get("value"): parts.append(f'<div class="hl"><dt class="lbl">{c.u("result")}</dt><dd><b>{e(str(kr["value"]))}</b> {e(T(kr.get("text")))}</dd></div>')
+    summary_html = f'<dl class="tldr">{"".join(parts)}</dl>' if parts else ""
+    kind_lbl = c.u("branding_cat") if brand else c.t(field)
     head = f'''<div class="progress" aria-hidden="true"></div>
 <section class="cs-head"><div class="wrap grid">
   <a class="back" href="work.html"><span class="arrow" style="transform:scaleX(-1)">→</span>{c.u("back")}</a>
-  <div class="t"><span class="lbl">{c.t(field)} · {year}</span><h1>{c.t(name)}</h1></div>
+  <div class="t"><span class="lbl">{e(kind_lbl)}{" · " + e(c.t(field)) if brand else ""} · {year}</span><h1>{e(c.t(name))}</h1></div>
   <span class="n idx">({idx+1:02d})</span>
-  {f'<p class="desc">{T(cs.get("description"))}</p>' if cs and T(cs.get("description")) else ''}
+  {f'<p class="desc">{e(T(x.get("description")))}</p>' if T(x.get("description")) else ''}
   {summary_html}
 </div></section>'''
-    if cs:
-        meta = "".join(f'<div class="m"><span class="lbl">{c.t(lbl)}</span>{T(cs.get(k))}</div>' for k, lbl in
-                       [("services", ("Services", "الخدمات")), ("client", ("Client", "العميل")), ("country", ("Country", "الدولة")), ("duration", ("Duration", "المدة"))] if T(cs.get(k)))
+    meta = "".join(f'<div class="m"><span class="lbl">{c.t(lbl)}</span>{e(T(x.get(k)))}</div>' for k, lbl in
+                   [("services", ("Services", "الخدمات")), ("client", ("Client", "العميل")), ("country", ("Country", "الدولة")), ("duration", ("Duration", "المدة"))] if T(x.get(k)))
+    if meta: head += f'<section class="wrap grid cs-meta"><span class="lbl h">{c.u("info")}</span>{meta}</section>'
+    nxt_html = f'<a class="next" href="{PAGE[nxt[0]]}"><span class="lbl"><span>{c.u("next")}</span><span>{e(c.t(nxt[2]))}</span></span><h2>{e(c.t(nxt[1]))} <span class="arrow">↗</span></h2></a>'
+    bc = x.get("brand_color")
+    if brand or bc:
+        cover_html = f'<div class="cs-cover brand-cover" style="background:{bc or "var(--peach)"}"><img src="{cover_(key, 2048)}" alt="{e(c.t(name))}"></div>' if cover else ""
     else:
-        meta = (f'<div class="m"><span class="lbl">{c.u("services")}</span>{c.u("social_cat")}</div><div class="m"><span class="lbl">{c.t(("Client","العميل"))}</span>{c.t(name)}</div>'
-                f'<div class="m"><span class="lbl">{c.t(("Year","السنة"))}</span>{year}</div>')
-    head += f'<section class="wrap grid cs-meta"><span class="lbl h">{c.u("info")}</span>{meta}</section>'
-    nxt_html = f'<a class="next" href="project-{nxt[0]}.html"><span class="lbl"><span>{c.u("next")}</span><span>{c.t(nxt[2])}</span></span><h2>{c.t(nxt[1])} <span class="arrow">↗</span></h2></a>'
-    if not cs:
-        return head + f'''<section class="wrap">{ph(cover_(slug, 2048), c.t(name), "r21 cs-cover", eager=True)}
+        cover_html = ph(cover_(key, 2048), "Cover", "r21 cs-cover", eager=True)
+    if not blocks:
+        return head + f'''<section class="wrap">{cover_html}
 <div class="soon"><p style="font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:-.02em">{c.u("soon")}</p><a class="btn" href="{BEHANCE}" target="_blank" rel="noopener">{c.u("behance")} <span class="arrow">↗</span></a></div>
 {nxt_html}</section>''', ""
-
-    chapters = []
-    def chap(key, inner):
-        if not inner.strip(): return
-        i = len(chapters) + 1
-        chapters.append(f'<section class="chap wrap" id="{key}"><div class="side"><span class="idx">({i:02d})</span><h2>{c.u(key)}</h2></div><div class="main">{inner}</div></section>')
-    tones = ["#DCE0F5", "#F3E8C3", "#D5EBDD", "#EBD3DC", "#E4E2DC", "#D6DCEB"]
-    posts_l = cs.get("posts") or []
-    cars = [x.get("slides") or [] for x in (cs.get("carousels") or []) if x.get("slides")]
-    cover = ph(cover_(slug, 2048), "Cover", "r21 cs-cover", eager=True)
-    trio = "".join(ph(img_url(u), f"Post {n+1}", "r45", tones[n]) for n, u in enumerate(posts_l[:3]))
-    ov = "".join(f"<p>{T(x)}</p>" for x in cs.get("overview") or [])
-    chap("overview", lede("overview_lede", "overview_soft") + (f'<div class="body"><div class="cols">{ov}</div></div>' if ov else ""))
-    li = lambda xs: "".join(f'<li><span class="idx">{n+1:02d}</span>{T(x)}</li>' for n, x in enumerate(xs))
-    kv = ""
-    if cs.get("goals") or cs.get("limits"):
-        kv = '<div class="kv">' + (f'<div><span class="lbl">{c.u("goals")}</span><ul>{li(cs["goals"])}</ul></div>' if cs.get("goals") else "") + (f'<div><span class="lbl">{c.u("limits")}</span><ul>{li(cs["limits"])}</ul></div>' if cs.get("limits") else "") + '</div>'
-    chap("challenge", lede("challenge_lede", "challenge_soft") + kv)
-    words = "".join(f"<span>{T(w)}</span>" for w in cs.get("keywords") or [])
-    mood_imgs = [m for m in (cs.get("moodboard") or []) if m]
-    mood = "".join(ph(img_url(u), f'{c.u("moodboard")} {n+1}', "abcde"[n % 5], tones[n % 6]) for n, u in enumerate(mood_imgs[:5]))
-    def fg(hexc):
-        h = hexc.lstrip("#"); 
-        try: r, g_, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
-        except Exception: return "#0E0E0E"
-        return "#0E0E0E" if (r * 299 + g_ * 587 + b * 114) / 1000 > 150 else "#FFFFFF"
-    pal = "".join(f'<div style="background:{x["color"]};color:{fg(x["color"])};border:1px solid var(--line)">{x["color"]}</div>' for x in cs.get("palette") or [] if x.get("color"))
-    routes = cs.get("routes") or []
-    dirs = "".join(f'<article class="dir{" pick" if r.get("chosen") else ""}"><div class="top"><span>{chr(65+n)} · {T(r.get("title"))}</span><span class="st">{c.u("chosen") if r.get("chosen") else c.u("explored")}</span></div>{ph(img_url(r.get("image")), f"Route {chr(65+n)}", "r45", tones[n % 6])}<p>{T(r.get("text"))}</p></article>' for n, r in enumerate(routes))
-    chap("thinking", lede("idea_lede", "idea_soft") + (f'<div class="words">{words}</div>' if words else "") + (f'<div class="mood">{mood}</div>' if mood else "") + (f'<div class="pal">{pal}</div>' if pal else "")
-         + (f'<p class="lbl" style="margin-top:64px">{c.u("routes")}</p><div class="dirs" style="margin-top:16px">{dirs}</div>' if dirs else ""))
-    btn = lambda u, cap, n: f'<button type="button" data-lb="{img_url(u, 2048)}" data-cap="{cap}" aria-label="{cap}">{ph(img_url(u), cap, "r45", tones[n % 6])}</button>'
-    posts = "".join(btn(u, f"Post {n+1}", n) for n, u in enumerate(posts_l))
-    sets = "".join(f'<div class="set"><div class="h"><span>{c.u("carousel")} {k:02d}</span><span>{len(part)} {c.u("slides")}</span></div><div class="strip">' + "".join(btn(u, f"Carousel {k} · {n+1}", n) for n, u in enumerate(part)) + '</div></div>' for k, part in enumerate(cars, 1))
-    n_slides = sum(len(x) for x in cars)
-    tabs = ""
-    if posts and sets:
-        tabs = (f'<div class="tabs" role="tablist"><button role="tab" type="button" data-tab="t-posts" aria-selected="true">{c.u("posts")}<sup>{len(posts_l)}</sup></button><button role="tab" type="button" data-tab="t-car" aria-selected="false">{c.u("carousels")}<sup>{n_slides}</sup></button></div>'
-                f'<div id="t-posts" class="gal">{posts}</div><div id="t-car" hidden>{sets}</div>')
-    elif posts: tabs = f'<div class="gal" style="margin-top:40px">{posts}</div>'
-    elif sets: tabs = f'<div style="margin-top:40px">{sets}</div>'
-    chap("solution", lede("solution_lede", "solution_soft") + tabs)
-    res = "".join(f'<div class="num"><span class="k">{T(r.get("label"))}</span><b>{r.get("value","")}</b><p>{T(r.get("text"))}</p></div>' for r in cs.get("results") or [])
-    quote = f'<div class="quote"><p>{T(cs.get("quote"))}</p><span class="who">{T(cs.get("quote_by"))}</span></div>' if T(cs.get("quote")) else ""
-    chap("results", (f'<div class="nums" style="display:block"><div class="row three">{res}</div></div>' if res else "") + quote)
-    team = "".join(f'<div class="r{" me" if m.get("me") else ""}"><span class="role">{T(m.get("role"))}</span><span class="name">{T(m.get("name"))}</span></div>' for m in cs.get("team") or [])
-    deliv = "".join(f"<span>{T(d)}</span>" for d in cs.get("deliverables") or [])
-    chap("credits", (f'<div class="credits">{team}</div>' if team else "") + (f'<p class="lbl" style="margin-top:44px">{c.u("deliv")}</p><div class="deliv" style="margin-top:10px">{deliv}</div>' if deliv else ""))
-    lb = f'<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Viewer"><button class="x" type="button">{c.u("close")} ✕</button><div class="ph"><img alt=""></div><div class="ui"><button class="prev" type="button">{c.u("prev")}</button><span class="cnt"></span><button class="nxt" type="button">{c.u("nextb")}</button></div></div>\n' if (posts or sets) else ""
-    body = head + f'<section class="wrap">{cover}' + (f'<div class="cs-trio">{trio}</div>' if trio else "") + '</section>' + "".join(chapters) + f'<div class="wrap">{nxt_html}</div>'
-    return body, lb
+    # group blocks into chapters: every "section" block opens a numbered chapter
+    chapters, cur, n_ch = [], None, 0
+    for i, b in enumerate(blocks):
+        if b.get("type") == "section":
+            n_ch += 1
+            cur = {"label": T(b.get("label")) or f"{n_ch:02d}", "n": n_ch, "html": ""}
+            chapters.append(cur)
+            if T(b.get("heading")) or T(b.get("body")):
+                cur["html"] += render_block(c, {"type": "text", "heading": b.get("heading"), "soft": b.get("soft"), "body": b.get("body")}, i)
+            continue
+        h = render_block(c, b, i)
+        if not h: continue
+        if cur is None:
+            cur = {"label": "", "n": 0, "html": ""}; chapters.append(cur)
+        cur["html"] += f'<div class="blk blk-{b.get("type")}">{h}</div>'
+    body_html = ""
+    for ch in chapters:
+        if not ch["html"].strip() and not ch["label"]: continue
+        side = f'<div class="side"><span class="idx">({ch["n"]:02d})</span><h2>{e(ch["label"])}</h2></div>' if ch["n"] else '<div class="side"></div>'
+        body_html += f'<section class="chap wrap">{side}<div class="main">{ch["html"]}</div></section>'
+    has_lb = 'data-lb=' in body_html
+    lb = f'<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Viewer"><button class="x" type="button">{c.u("close")} ✕</button><div class="ph"><img alt=""></div><div class="ui"><button class="prev" type="button">{c.u("prev")}</button><span class="cnt"></span><button class="nxt" type="button">{c.u("nextb")}</button></div></div>\n' if has_lb else ""
+    return head + f'<section class="wrap">{cover_html}</section>' + body_html + f'<div class="wrap">{nxt_html}</div>', lb
 
 # =========================== BUILD ===========================
 def build(out, preview):
     shutil.rmtree(out, ignore_errors=True)
+    load_projects(preview)
     for lang in ("en", "ar"):
         c = Ctx(lang, preview)
         _MODE["preview"], _MODE["pre"] = preview, c.pre
@@ -611,7 +716,7 @@ def build(out, preview):
         pages["404.html"] = (f"404 — {N}", "", lost(c), "")
         for i, p in enumerate(PROJECTS):
             body, lb = project(c, i)
-            pages[f"project-{p[0]}.html"] = (f"{c.t(p[1])} — {N}", "work", body, lb)
+            pages[PAGE[p[0]]] = (f"{c.t(p[1])} — {N}", "work", body, lb)
         for fn, (title, act, body, end) in pages.items():
             with open(os.path.join(d, fn), "w", encoding="utf-8") as f:
                 f.write(page(c, fn, title, act, body, end))
@@ -623,6 +728,8 @@ def build(out, preview):
             shutil.copy(os.path.join(ROOT, "img", f), os.path.join(out, "img", f))
     up = os.path.join(ROOT, "img", "uploads")
     if os.path.isdir(up): shutil.copytree(up, os.path.join(out, "img", "uploads"), dirs_exist_ok=True)
+    smp = os.path.join(ROOT, "img", "sample")
+    if preview and os.path.isdir(smp): shutil.copytree(smp, os.path.join(out, "img", "sample"), dirs_exist_ok=True)
     if os.path.isdir(os.path.join(ROOT, "admin")): shutil.copytree(os.path.join(ROOT, "admin"), os.path.join(out, "admin"))
     if os.path.isdir(os.path.join(ROOT, "fonts")):
         shutil.copytree(os.path.join(ROOT, "fonts"), os.path.join(out, "fonts"))

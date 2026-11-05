@@ -13,8 +13,8 @@
  "collections": [
   {
    "name": "projects",
-   "label": "Projects",
-   "label_singular": "Project",
+   "label": "Campaigns",
+   "label_singular": "Campaign",
    "folder": "content/projects",
    "extension": "json",
    "format": "json",
@@ -24,7 +24,9 @@
    "slug": "{{fields.slug}}",
    "summary": "{{order}} · {{name.en}}",
    "sortable_fields": [
-    "order"
+    "order",
+    "name.en",
+    "year"
    ],
    "fields": [
     {
@@ -33,7 +35,7 @@
      "widget": "number",
      "value_type": "int",
      "default": 99,
-     "hint": "1 shows first."
+     "hint": "1 shows first (shared with the other collection)."
     },
     {
      "label": "Hide from the site",
@@ -49,20 +51,20 @@
      "pattern": [
       "^[a-z0-9-]+$",
       "lowercase letters, numbers and - only"
-     ],
-     "hint": "e.g. hbbah → project-hbbah.html"
+     ]
     },
     {
      "label": "Name",
      "name": "name",
      "widget": "object",
+     "required": true,
      "collapsed": false,
      "fields": [
       {
        "label": "English",
        "name": "en",
        "widget": "string",
-       "required": true
+       "required": false
       },
       {
        "label": "عربي",
@@ -73,16 +75,17 @@
      ]
     },
     {
-     "label": "Field",
+     "label": "Field / industry",
      "name": "field",
      "widget": "object",
+     "required": false,
      "collapsed": false,
      "fields": [
       {
        "label": "English",
        "name": "en",
        "widget": "string",
-       "required": true
+       "required": false
       },
       {
        "label": "عربي",
@@ -102,6 +105,7 @@
      "name": "tags",
      "widget": "select",
      "multiple": true,
+     "required": false,
      "options": [
       {
        "label": "Social Media",
@@ -124,567 +128,178 @@
      "label": "Cover image",
      "name": "cover",
      "widget": "image",
-     "required": true,
-     "hint": "Square or 4:5 works best."
+     "required": false,
+     "hint": "Campaigns: a square/4:5 image. Branding: the logo (shown on the brand colour)."
     },
     {
-     "label": "Case study (optional — leave empty for a 'coming soon' page)",
-     "name": "case",
+     "label": "Brand colour (cover background)",
+     "name": "brand_color",
+     "widget": "color",
+     "required": false
+    },
+    {
+     "label": "Short description",
+     "name": "description",
      "widget": "object",
      "required": false,
-     "collapsed": true,
+     "collapsed": false,
      "fields": [
       {
-       "label": "Short description",
-       "name": "description",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
+       "label": "English",
+       "name": "en",
+       "widget": "text",
+       "required": false
       },
       {
-       "label": "My role",
-       "name": "role",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
+       "label": "عربي",
+       "name": "ar",
+       "widget": "text",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "My role",
+     "name": "role",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "Services",
-       "name": "services",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Services",
+     "name": "services",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "Client",
-       "name": "client",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Client",
+     "name": "client",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "Country",
-       "name": "country",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Country",
+     "name": "country",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "Duration",
-       "name": "duration",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Duration",
+     "name": "duration",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "01 Overview — headline",
-       "name": "overview_lede",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ],
-       "hint": "The big sentence."
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Deliverables",
+     "name": "deliverables",
+     "widget": "list",
+     "required": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "01 Overview — soft part",
-       "name": "overview_soft",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ],
-       "hint": "Shown in grey after the headline."
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Key result (shown at the top)",
+     "name": "key_result",
+     "widget": "object",
+     "required": false,
+     "fields": [
+      {
+       "label": "Number",
+       "name": "value",
+       "widget": "string",
+       "required": false
       },
       {
-       "label": "01 Overview — paragraphs",
-       "name": "overview",
-       "widget": "list",
+       "label": "Explanation",
+       "name": "text",
+       "widget": "object",
        "required": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text"
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "02 Challenge — headline",
-       "name": "challenge_lede",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "02 Challenge — soft part",
-       "name": "challenge_soft",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "02 Goals",
-       "name": "goals",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string"
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "02 Constraints",
-       "name": "limits",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string"
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "03 Creative thinking — headline",
-       "name": "idea_lede",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "03 Creative thinking — soft part",
-       "name": "idea_soft",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "03 Keywords",
-       "name": "keywords",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string"
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "03 Moodboard images (up to 5)",
-       "name": "moodboard",
-       "widget": "list",
-       "required": false,
-       "field": {
-        "label": "Image",
-        "name": "image",
-        "widget": "image"
-       }
-      },
-      {
-       "label": "03 Colour palette",
-       "name": "palette",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "Colour",
-         "name": "color",
-         "widget": "color"
-        }
-       ]
-      },
-      {
-       "label": "03 Routes explored",
-       "name": "routes",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "Title",
-         "name": "title",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "string",
-           "required": true
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "string",
-           "required": false
-          }
-         ]
-        },
-        {
-         "label": "Text",
-         "name": "text",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "text",
-           "required": false
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "text",
-           "required": false
-          }
-         ]
-        },
-        {
-         "label": "This is the chosen one",
-         "name": "chosen",
-         "widget": "boolean",
-         "required": false,
-         "default": false
-        },
-        {
-         "label": "Image",
-         "name": "image",
-         "widget": "image",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "04 Solution — headline",
-       "name": "solution_lede",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "04 Solution — soft part",
-       "name": "solution_soft",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "04 Posts",
-       "name": "posts",
-       "widget": "list",
-       "required": false,
-       "field": {
-        "label": "Image",
-        "name": "image",
-        "widget": "image"
-       }
-      },
-      {
-       "label": "04 Carousels",
-       "name": "carousels",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "Slides",
-         "name": "slides",
-         "widget": "list",
-         "field": {
-          "label": "Slide",
-          "name": "slide",
-          "widget": "image"
-         }
-        }
-       ]
-      },
-      {
-       "label": "05 Results",
-       "name": "results",
-       "widget": "list",
-       "required": false,
-       "hint": "The first result also shows in the summary at the top.",
-       "fields": [
-        {
-         "label": "Label",
-         "name": "label",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "string",
-           "required": true
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "string",
-           "required": false
-          }
-         ]
-        },
-        {
-         "label": "Number",
-         "name": "value",
-         "widget": "string",
-         "hint": "e.g. +212% or 4.6×"
-        },
-        {
-         "label": "Explanation",
-         "name": "text",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "string",
-           "required": false
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "string",
-           "required": false
-          }
-         ]
-        }
-       ]
-      },
-      {
-       "label": "05 Client quote",
-       "name": "quote",
-       "widget": "object",
-       "collapsed": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "text",
-         "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "text",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "05 Quote by",
-       "name": "quote_by",
-       "widget": "object",
        "collapsed": false,
        "fields": [
         {
@@ -692,80 +307,6 @@
          "name": "en",
          "widget": "string",
          "required": false
-        },
-        {
-         "label": "عربي",
-         "name": "ar",
-         "widget": "string",
-         "required": false
-        }
-       ]
-      },
-      {
-       "label": "06 Team / credits",
-       "name": "team",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "Role",
-         "name": "role",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "string",
-           "required": true
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "string",
-           "required": false
-          }
-         ]
-        },
-        {
-         "label": "Name",
-         "name": "name",
-         "widget": "object",
-         "collapsed": false,
-         "fields": [
-          {
-           "label": "English",
-           "name": "en",
-           "widget": "string",
-           "required": true
-          },
-          {
-           "label": "عربي",
-           "name": "ar",
-           "widget": "string",
-           "required": false
-          }
-         ]
-        },
-        {
-         "label": "This is me",
-         "name": "me",
-         "widget": "boolean",
-         "required": false,
-         "default": false
-        }
-       ]
-      },
-      {
-       "label": "06 Deliverables",
-       "name": "deliverables",
-       "widget": "list",
-       "required": false,
-       "fields": [
-        {
-         "label": "English",
-         "name": "en",
-         "widget": "string"
         },
         {
          "label": "عربي",
@@ -776,6 +317,2305 @@
        ]
       }
      ]
+    },
+    {
+     "label": "Page content — add, remove and drag blocks in any order",
+     "name": "blocks",
+     "widget": "list",
+     "required": false,
+     "types": [
+      {
+       "label": "🔖 Section (starts a numbered part)",
+       "name": "section",
+       "widget": "object",
+       "summary": "{{label.en}}",
+       "fields": [
+        {
+         "label": "Section name",
+         "name": "label",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ],
+         "hint": "e.g. Overview, Challenge, Logo, Applications"
+        },
+        {
+         "label": "Big headline",
+         "name": "heading",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Grey part after the headline",
+         "name": "soft",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Paragraphs",
+         "name": "body",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ],
+         "hint": "Leave an empty line between paragraphs."
+        }
+       ]
+      },
+      {
+       "label": "🖼 Image",
+       "name": "image",
+       "widget": "object",
+       "summary": "{{caption.en}}",
+       "fields": [
+        {
+         "label": "Image",
+         "name": "image",
+         "widget": "image",
+         "required": false
+        },
+        {
+         "label": "Width",
+         "name": "size",
+         "widget": "select",
+         "default": "full",
+         "options": [
+          {
+           "label": "Full width",
+           "value": "full"
+          },
+          {
+           "label": "Half",
+           "value": "half"
+          }
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "original",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Caption",
+         "name": "caption",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🗂 Gallery (grid of images)",
+       "name": "gallery",
+       "widget": "object",
+       "summary": "{{title.en}}",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Columns",
+         "name": "columns",
+         "widget": "select",
+         "default": "3",
+         "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "4:5",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Images",
+         "name": "images",
+         "widget": "list",
+         "required": false,
+         "field": {
+          "label": "Image",
+          "name": "image",
+          "widget": "image"
+         },
+         "hint": "Drag to reorder."
+        }
+       ]
+      },
+      {
+       "label": "🎠 Carousel (swipe row)",
+       "name": "carousel",
+       "widget": "object",
+       "summary": "{{title.en}}",
+       "fields": [
+        {
+         "label": "Title",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "4:5",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Slides",
+         "name": "slides",
+         "widget": "list",
+         "required": false,
+         "field": {
+          "label": "Image",
+          "name": "image",
+          "widget": "image"
+         }
+        }
+       ]
+      },
+      {
+       "label": "▶️ Video (YouTube / Vimeo link)",
+       "name": "video",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Link",
+         "name": "url",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "🔤 Logo showcase",
+       "name": "logos",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Columns",
+         "name": "columns",
+         "widget": "select",
+         "default": "2",
+         "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+         ]
+        },
+        {
+         "label": "Logos",
+         "name": "items",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Logo file (SVG/PNG)",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          },
+          {
+           "label": "Background colour",
+           "name": "background",
+           "widget": "color",
+           "required": false
+          },
+          {
+           "label": "Caption",
+           "name": "caption",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🎨 Colour palette",
+       "name": "palette",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Colours",
+         "name": "colors",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Colour",
+           "name": "color",
+           "widget": "color"
+          },
+          {
+           "label": "Name",
+           "name": "name",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Aa Typography",
+       "name": "type",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Fonts",
+         "name": "fonts",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Used for",
+           "name": "role",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ],
+           "hint": "e.g. Headlines"
+          },
+          {
+           "label": "Font name",
+           "name": "name",
+           "widget": "string"
+          },
+          {
+           "label": "Weights",
+           "name": "weights",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "Sample sentence",
+           "name": "sample",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Specimen image (optional)",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🏷 Keywords",
+       "name": "keywords",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Words",
+         "name": "words",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🧭 Routes explored",
+       "name": "routes",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Routes",
+         "name": "routes",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Name",
+           "name": "title",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Text",
+           "name": "text",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "text",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "text",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Chosen",
+           "name": "chosen",
+           "widget": "boolean",
+           "required": false,
+           "default": false
+          },
+          {
+           "label": "Image",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "📋 Two lists (e.g. Goals / Constraints)",
+       "name": "lists",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Left title",
+         "name": "left_title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Left items",
+         "name": "left_items",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Right title",
+         "name": "right_title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Right items",
+         "name": "right_items",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🔢 Numbers / results",
+       "name": "numbers",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Numbers",
+         "name": "numbers",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Label",
+           "name": "label",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Number",
+           "name": "value",
+           "widget": "string",
+           "hint": "e.g. +212%"
+          },
+          {
+           "label": "Explanation",
+           "name": "text",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "💬 Quote",
+       "name": "quote",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Quote",
+         "name": "text",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "By",
+         "name": "by",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "👥 Credits / team",
+       "name": "credits",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "People",
+         "name": "team",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Role",
+           "name": "role",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Name",
+           "name": "name",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "This is me",
+           "name": "me",
+           "widget": "boolean",
+           "required": false,
+           "default": false
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "hint": "Start each part with a 🔖 Section, then add images, galleries, videos… under it. Leave empty for a 'coming soon' page."
+    }
+   ]
+  },
+  {
+   "name": "branding",
+   "label": "Branding",
+   "label_singular": "Branding project",
+   "folder": "content/branding",
+   "extension": "json",
+   "format": "json",
+   "create": true,
+   "delete": true,
+   "identifier_field": "slug",
+   "slug": "{{fields.slug}}",
+   "summary": "{{order}} · {{name.en}}",
+   "sortable_fields": [
+    "order",
+    "name.en",
+    "year"
+   ],
+   "fields": [
+    {
+     "label": "Order on the site",
+     "name": "order",
+     "widget": "number",
+     "value_type": "int",
+     "default": 99,
+     "hint": "1 shows first (shared with the other collection)."
+    },
+    {
+     "label": "Hide from the site",
+     "name": "hidden",
+     "widget": "boolean",
+     "required": false,
+     "default": false
+    },
+    {
+     "label": "Page address (English letters, no spaces)",
+     "name": "slug",
+     "widget": "string",
+     "pattern": [
+      "^[a-z0-9-]+$",
+      "lowercase letters, numbers and - only"
+     ]
+    },
+    {
+     "label": "Name",
+     "name": "name",
+     "widget": "object",
+     "required": true,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Field / industry",
+     "name": "field",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Year",
+     "name": "year",
+     "widget": "string"
+    },
+    {
+     "label": "Cover image",
+     "name": "cover",
+     "widget": "image",
+     "required": false,
+     "hint": "Campaigns: a square/4:5 image. Branding: the logo (shown on the brand colour)."
+    },
+    {
+     "label": "Brand colour (cover background)",
+     "name": "brand_color",
+     "widget": "color",
+     "required": false
+    },
+    {
+     "label": "Short description",
+     "name": "description",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "text",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "text",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "My role",
+     "name": "role",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Services",
+     "name": "services",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Client",
+     "name": "client",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Country",
+     "name": "country",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Duration",
+     "name": "duration",
+     "widget": "object",
+     "required": false,
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Deliverables",
+     "name": "deliverables",
+     "widget": "list",
+     "required": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Key result (shown at the top)",
+     "name": "key_result",
+     "widget": "object",
+     "required": false,
+     "fields": [
+      {
+       "label": "Number",
+       "name": "value",
+       "widget": "string",
+       "required": false
+      },
+      {
+       "label": "Explanation",
+       "name": "text",
+       "widget": "object",
+       "required": false,
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Page content — add, remove and drag blocks in any order",
+     "name": "blocks",
+     "widget": "list",
+     "required": false,
+     "types": [
+      {
+       "label": "🔖 Section (starts a numbered part)",
+       "name": "section",
+       "widget": "object",
+       "summary": "{{label.en}}",
+       "fields": [
+        {
+         "label": "Section name",
+         "name": "label",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ],
+         "hint": "e.g. Overview, Challenge, Logo, Applications"
+        },
+        {
+         "label": "Big headline",
+         "name": "heading",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Grey part after the headline",
+         "name": "soft",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Paragraphs",
+         "name": "body",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ],
+         "hint": "Leave an empty line between paragraphs."
+        }
+       ]
+      },
+      {
+       "label": "🖼 Image",
+       "name": "image",
+       "widget": "object",
+       "summary": "{{caption.en}}",
+       "fields": [
+        {
+         "label": "Image",
+         "name": "image",
+         "widget": "image",
+         "required": false
+        },
+        {
+         "label": "Width",
+         "name": "size",
+         "widget": "select",
+         "default": "full",
+         "options": [
+          {
+           "label": "Full width",
+           "value": "full"
+          },
+          {
+           "label": "Half",
+           "value": "half"
+          }
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "original",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Caption",
+         "name": "caption",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🗂 Gallery (grid of images)",
+       "name": "gallery",
+       "widget": "object",
+       "summary": "{{title.en}}",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Columns",
+         "name": "columns",
+         "widget": "select",
+         "default": "3",
+         "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "4:5",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Images",
+         "name": "images",
+         "widget": "list",
+         "required": false,
+         "field": {
+          "label": "Image",
+          "name": "image",
+          "widget": "image"
+         },
+         "hint": "Drag to reorder."
+        }
+       ]
+      },
+      {
+       "label": "🎠 Carousel (swipe row)",
+       "name": "carousel",
+       "widget": "object",
+       "summary": "{{title.en}}",
+       "fields": [
+        {
+         "label": "Title",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Shape",
+         "name": "ratio",
+         "widget": "select",
+         "required": false,
+         "default": "4:5",
+         "options": [
+          "4:5",
+          "1:1",
+          "3:4",
+          "3:2",
+          "16:9",
+          "21:9",
+          "original"
+         ]
+        },
+        {
+         "label": "Slides",
+         "name": "slides",
+         "widget": "list",
+         "required": false,
+         "field": {
+          "label": "Image",
+          "name": "image",
+          "widget": "image"
+         }
+        }
+       ]
+      },
+      {
+       "label": "▶️ Video (YouTube / Vimeo link)",
+       "name": "video",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Link",
+         "name": "url",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "🔤 Logo showcase",
+       "name": "logos",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Columns",
+         "name": "columns",
+         "widget": "select",
+         "default": "2",
+         "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+         ]
+        },
+        {
+         "label": "Logos",
+         "name": "items",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Logo file (SVG/PNG)",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          },
+          {
+           "label": "Background colour",
+           "name": "background",
+           "widget": "color",
+           "required": false
+          },
+          {
+           "label": "Caption",
+           "name": "caption",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🎨 Colour palette",
+       "name": "palette",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Colours",
+         "name": "colors",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Colour",
+           "name": "color",
+           "widget": "color"
+          },
+          {
+           "label": "Name",
+           "name": "name",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Aa Typography",
+       "name": "type",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Fonts",
+         "name": "fonts",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Used for",
+           "name": "role",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ],
+           "hint": "e.g. Headlines"
+          },
+          {
+           "label": "Font name",
+           "name": "name",
+           "widget": "string"
+          },
+          {
+           "label": "Weights",
+           "name": "weights",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "Sample sentence",
+           "name": "sample",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Specimen image (optional)",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🏷 Keywords",
+       "name": "keywords",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Words",
+         "name": "words",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🧭 Routes explored",
+       "name": "routes",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Routes",
+         "name": "routes",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Name",
+           "name": "title",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Text",
+           "name": "text",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "text",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "text",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Chosen",
+           "name": "chosen",
+           "widget": "boolean",
+           "required": false,
+           "default": false
+          },
+          {
+           "label": "Image",
+           "name": "image",
+           "widget": "image",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "📋 Two lists (e.g. Goals / Constraints)",
+       "name": "lists",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Left title",
+         "name": "left_title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Left items",
+         "name": "left_items",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Right title",
+         "name": "right_title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Right items",
+         "name": "right_items",
+         "widget": "list",
+         "required": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "🔢 Numbers / results",
+       "name": "numbers",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Numbers",
+         "name": "numbers",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Label",
+           "name": "label",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Number",
+           "name": "value",
+           "widget": "string",
+           "hint": "e.g. +212%"
+          },
+          {
+           "label": "Explanation",
+           "name": "text",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "💬 Quote",
+       "name": "quote",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Quote",
+         "name": "text",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "By",
+         "name": "by",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "👥 Credits / team",
+       "name": "credits",
+       "widget": "object",
+       "fields": [
+        {
+         "label": "Title (optional)",
+         "name": "title",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "People",
+         "name": "team",
+         "widget": "list",
+         "fields": [
+          {
+           "label": "Role",
+           "name": "role",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "Name",
+           "name": "name",
+           "widget": "object",
+           "required": false,
+           "collapsed": false,
+           "fields": [
+            {
+             "label": "English",
+             "name": "en",
+             "widget": "string",
+             "required": false
+            },
+            {
+             "label": "عربي",
+             "name": "ar",
+             "widget": "string",
+             "required": false
+            }
+           ]
+          },
+          {
+           "label": "This is me",
+           "name": "me",
+           "widget": "boolean",
+           "required": false,
+           "default": false
+          }
+         ]
+        }
+       ]
+      }
+     ],
+     "hint": "Start each part with a 🔖 Section, then add images, galleries, videos… under it. Leave empty for a 'coming soon' page."
     }
    ]
   },

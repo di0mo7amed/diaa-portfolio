@@ -1,0 +1,277 @@
+{
+  "order": 9,
+  "slug": "nawa-sample",
+  "name": {
+    "en": "Nawa (sample)",
+    "ar": "نوى (مثال)"
+  },
+  "field": {
+    "en": "Specialty coffee",
+    "ar": "قهوة مختصة"
+  },
+  "year": "2026",
+  "tags": [
+    "branding"
+  ],
+  "cover": "/img/sample/nawa-cover.svg",
+  "brand_color": "#2B1B12",
+  "description": {
+    "en": "SAMPLE PROJECT — shows how a branding case study looks. It only appears in the preview, never on the live site.",
+    "ar": "مشروع مثال — يوضح شكل صفحة هوية بصرية. يظهر في البريفيو فقط ولا يظهر على الموقع."
+  },
+  "role": {
+    "en": "Brand designer",
+    "ar": "مصمم الهوية"
+  },
+  "services": {
+    "en": "Naming, Logo, Identity system",
+    "ar": "الاسم، الشعار، نظام الهوية"
+  },
+  "client": {
+    "en": "Nawa",
+    "ar": "نوى"
+  },
+  "country": {
+    "en": "Egypt",
+    "ar": "مصر"
+  },
+  "duration": {
+    "en": "6 weeks",
+    "ar": "٦ أسابيع"
+  },
+  "deliverables": [
+    {
+      "en": "Logo",
+      "ar": "الشعار"
+    },
+    {
+      "en": "Colour & type",
+      "ar": "الألوان والخطوط"
+    },
+    {
+      "en": "Packaging",
+      "ar": "التغليف"
+    },
+    {
+      "en": "Guidelines",
+      "ar": "دليل الهوية"
+    }
+  ],
+  "key_result": {
+    "value": "",
+    "text": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The brand",
+        "ar": "العلامة"
+      },
+      "heading": {
+        "en": "A seed, a cup, a place to stay a while.",
+        "ar": "بذرة، وكوب، ومكان تبقى فيه قليلًا."
+      },
+      "soft": {
+        "en": "Nawa means the seed of the date.",
+        "ar": "نوى هي بذرة التمر."
+      },
+      "body": {
+        "en": "Write the story of the brand here: who it is for, what it believes in, and the feeling it should leave.\n\nAdd as many paragraphs as you need.",
+        "ar": "اكتب هنا قصة العلامة: لمن هي، وبماذا تؤمن، والإحساس الذي تتركه.\n\nأضف فقرات بقدر ما تحتاج."
+      }
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "Logo",
+        "ar": "الشعار"
+      },
+      "heading": {
+        "en": "The seed became the mark.",
+        "ar": "البذرة صارت الرمز."
+      },
+      "soft": {
+        "en": "",
+        "ar": ""
+      }
+    },
+    {
+      "type": "logos",
+      "columns": 2,
+      "items": [
+        {
+          "image": "/img/sample/nawa-logo.svg",
+          "background": "#F3E9DC",
+          "caption": {
+            "en": "Primary",
+            "ar": "الأساسي"
+          }
+        },
+        {
+          "image": "/img/sample/nawa-logo-cream.svg",
+          "background": "#2B1B12",
+          "caption": {
+            "en": "On dark",
+            "ar": "على الداكن"
+          }
+        },
+        {
+          "image": "/img/sample/nawa-mark.svg",
+          "background": "#FFFFFF",
+          "caption": {
+            "en": "Symbol",
+            "ar": "الرمز"
+          }
+        },
+        {
+          "image": "/img/sample/nawa-mark.svg",
+          "background": "#E9D6C3",
+          "caption": {
+            "en": "Symbol on sand",
+            "ar": "الرمز على الرملي"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "Colour & type",
+        "ar": "الألوان والخطوط"
+      }
+    },
+    {
+      "type": "palette",
+      "title": {
+        "en": "Palette",
+        "ar": "الألوان"
+      },
+      "colors": [
+        {
+          "color": "#2B1B12",
+          "name": {
+            "en": "Roast",
+            "ar": "تحميص"
+          }
+        },
+        {
+          "color": "#C2592E",
+          "name": {
+            "en": "Clay",
+            "ar": "طين"
+          }
+        },
+        {
+          "color": "#E9D6C3",
+          "name": {
+            "en": "Sand",
+            "ar": "رمل"
+          }
+        },
+        {
+          "color": "#F3E9DC",
+          "name": {
+            "en": "Milk",
+            "ar": "حليب"
+          }
+        }
+      ]
+    },
+    {
+      "type": "type",
+      "title": {
+        "en": "Typography",
+        "ar": "الخطوط"
+      },
+      "fonts": [
+        {
+          "role": {
+            "en": "Headlines",
+            "ar": "العناوين"
+          },
+          "name": "Thmanyah Sans Bold",
+          "weights": "Bold · Black",
+          "sample": {
+            "en": "Slow coffee for fast cities.",
+            "ar": "قهوة بطيئة لمدن سريعة."
+          }
+        },
+        {
+          "role": {
+            "en": "Body",
+            "ar": "النصوص"
+          },
+          "name": "Thmanyah Sans Regular",
+          "weights": "Regular · Medium",
+          "sample": {
+            "en": "Roasted in small batches every week.",
+            "ar": "نحمّص بكميات صغيرة كل أسبوع."
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "Applications",
+        "ar": "التطبيقات"
+      },
+      "heading": {
+        "en": "From the cup to the street.",
+        "ar": "من الكوب إلى الشارع."
+      },
+      "soft": {
+        "en": "",
+        "ar": ""
+      }
+    },
+    {
+      "type": "image",
+      "size": "full",
+      "ratio": "16:9",
+      "image": "",
+      "caption": {
+        "en": "Add a full-width mockup here",
+        "ar": "ضع هنا موك أب بعرض كامل"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Mockups",
+        "ar": "الموك أب"
+      },
+      "columns": 2,
+      "ratio": "4:5",
+      "images": []
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "Credits",
+        "ar": "فريق العمل"
+      }
+    },
+    {
+      "type": "credits",
+      "team": [
+        {
+          "role": {
+            "en": "Brand designer",
+            "ar": "مصمم الهوية"
+          },
+          "name": {
+            "en": "Diaa Mohammed",
+            "ar": "ضياء محمد"
+          },
+          "me": true
+        }
+      ]
+    }
+  ],
+  "hidden": true
+}
