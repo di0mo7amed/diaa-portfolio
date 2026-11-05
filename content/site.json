@@ -1,7 +1,7 @@
 {
   "lead": {
-    "en": "I design visual identities and ad campaigns that give your brand a voice of its own, and a presence people remember.",
-    "ar": "أصمّم هويات بصرية وحملات إعلانية تمنح علامتك صوتًا يميّزها، وحضورًا يبقى في الذهن."
+    "en": "Brand and campaign designer helping businesses across Egypt and the Gulf build identities and campaigns that are clear, consistent and memorable.",
+    "ar": "مصمم هويات بصرية وحملات إعلانية، أساعد العلامات في مصر والخليج على بناء حضور بصري واضح ومتّسق ولا يُنسى."
   },
   "available": true,
   "email": "dioo.zone@gmail.com",
@@ -42,74 +42,100 @@
   ],
   "clients": [
     {
-      "name": "Hbbah Studio"
+      "name": "Hbbah Studio",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Hbbah"
+      "name": "Hbbah",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Avenue"
+      "name": "Avenue",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Watsio"
+      "name": "Watsio",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "2Care"
+      "name": "2Care",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Sahl Cart"
+      "name": "Sahl Cart",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Growvo"
+      "name": "Growvo",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Holiday Time"
+      "name": "Holiday Time",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Toy Castle"
+      "name": "Toy Castle",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Skills Area"
+      "name": "Skills Area",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "Sunrise Academy"
+      "name": "Sunrise Academy",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "SBS"
+      "name": "SBS",
+      "logo": "",
+      "url": ""
     },
     {
-      "name": "STAI"
+      "name": "STAI",
+      "logo": "",
+      "url": ""
     }
   ],
   "process": [
     {
       "title": {
-        "en": "Listen",
-        "ar": "الإنصات"
+        "en": "Discover",
+        "ar": "الاكتشاف"
       },
       "text": {
-        "en": "Every project starts with understanding the brand, its audience and the goal behind the brief. Good design starts with good questions.",
-        "ar": "يبدأ كل مشروع بفهم العلامة وجمهورها والهدف من ورائها. التصميم الجيد يبدأ بأسئلة جيدة."
+        "en": "Understanding the business, the audience and the goal behind the brief, through questions, research and a review of what already exists.",
+        "ar": "فهم النشاط والجمهور والهدف من وراء المشروع، من خلال الأسئلة والبحث ومراجعة ما هو قائم."
       }
     },
     {
       "title": {
-        "en": "Direction",
-        "ar": "الاتجاه"
+        "en": "Define",
+        "ar": "التوجيه"
       },
       "text": {
-        "en": "We explore several creative routes, test them against the goal, and commit to the one that says the most.",
-        "ar": "نستكشف أكثر من اتجاه إبداعي، نختبرها أمام الهدف، ثم نختار الاتجاه الأقوى."
+        "en": "Exploring several creative directions, testing them against the goal, and committing to the strongest one together.",
+        "ar": "استكشاف أكثر من اتجاه إبداعي واختبارها أمام الهدف، ثم الاتفاق معًا على الاتجاه الأقوى."
       }
     },
     {
       "title": {
-        "en": "Craft",
-        "ar": "الصناعة"
+        "en": "Design",
+        "ar": "التصميم"
       },
       "text": {
-        "en": "The idea becomes a system: logo, color, type, layouts and templates that hold together everywhere the brand appears.",
-        "ar": "تتحول الفكرة إلى منظومة: شعار، ألوان، خطوط، وقوالب متّسقة في كل مكان تظهر فيه العلامة."
+        "en": "Turning the direction into a complete system: logo, colour, typography, layouts and templates that hold together across every touchpoint.",
+        "ar": "تحويل الاتجاه إلى منظومة متكاملة: شعار وألوان وخطوط وقوالب متّسقة في كل نقاط الظهور."
       }
     },
     {
@@ -118,40 +144,40 @@
         "ar": "التسليم"
       },
       "text": {
-        "en": "Clean files, a clear guide, and support while the work goes live.",
-        "ar": "ملفات مرتبة، ودليل واضح، ومتابعة حتى ينطلق العمل."
+        "en": "Organised files, clear guidelines and support through launch, so the brand stays consistent after handover.",
+        "ar": "ملفات منظمة ودليل واضح ومتابعة حتى الإطلاق، لتبقى العلامة متّسقة بعد التسليم."
       }
     }
   ],
   "faq": [
     {
       "q": {
-        "en": "What kind of projects do you take on?",
-        "ar": "ما نوع المشاريع التي تعمل عليها؟"
+        "en": "What services do you offer?",
+        "ar": "ما الخدمات التي تقدمها؟"
       },
       "a": {
-        "en": "Visual identities (logo, color and type systems, brand guidelines) and ad campaigns and social content, mostly for restaurants, retail and service brands.",
-        "ar": "الهويات البصرية المتكاملة (الشعار، نظام الألوان والخطوط، ودليل العلامة) والحملات الإعلانية ومحتوى السوشيال ميديا، خاصة لقطاعات المطاعم والتجزئة والخدمات."
+        "en": "Visual identity (logo, colour and type systems, brand guidelines), advertising campaigns and social media content, with a focus on food & beverage, retail and service brands.",
+        "ar": "الهوية البصرية (الشعار، ونظام الألوان والخطوط، ودليل العلامة)، والحملات الإعلانية، ومحتوى السوشيال ميديا، مع تركيز على قطاعات الأغذية والمشروبات والتجزئة والخدمات."
       }
     },
     {
       "q": {
         "en": "Do you work with agencies or directly with brands?",
-        "ar": "هل تعمل مع الوكالات أم مع العلامات مباشرة؟"
+        "ar": "هل تعمل مع الوكالات أم مباشرة مع العلامات؟"
       },
       "a": {
-        "en": "Both. I work directly with brands, and with agencies and studios as part of their team.",
-        "ar": "الاثنين. أعمل مع العلامات التجارية مباشرة، ومع الوكالات والاستوديوهات كجزء من فريقها."
+        "en": "Both. I work directly with brands, and with agencies and studios as part of their creative team.",
+        "ar": "كلاهما. أعمل مباشرة مع العلامات، ومع الوكالات والاستوديوهات كجزء من فريقها الإبداعي."
       }
     },
     {
       "q": {
-        "en": "How do you start a project?",
-        "ar": "كيف تبدأ أي مشروع؟"
+        "en": "How does a project start?",
+        "ar": "كيف يبدأ المشروع؟"
       },
       "a": {
-        "en": "By listening. I learn the brand, its audience and its goal before designing anything, then set a visual direction and move to execution.",
-        "ar": "بالإنصات. أفهم العلامة وجمهورها وهدفها قبل أي تصميم، ثم أضع الاتجاه البصري وأنتقل للتنفيذ."
+        "en": "With a short discovery call to understand the brand, the audience and the objective. I then share a proposal with scope, timeline and deliverables.",
+        "ar": "بمكالمة تعريفية قصيرة لفهم العلامة والجمهور والهدف، ثم أرسل عرضًا يوضح النطاق والجدول الزمني والمخرجات."
       }
     },
     {
@@ -160,28 +186,28 @@
         "ar": "في أي أسواق ولغات تعمل؟"
       },
       "a": {
-        "en": "Egypt, Saudi Arabia, Kuwait and the UAE, in Arabic and English. My work has reached over 50 countries.",
-        "ar": "مصر والسعودية والكويت والإمارات، بالعربية والإنجليزية، وامتدّ أثر أعمالي إلى أكثر من خمسين دولة."
+        "en": "Egypt, Saudi Arabia, Kuwait and the UAE, designing in both Arabic and English.",
+        "ar": "مصر والسعودية والكويت والإمارات، وأصمّم بالعربية والإنجليزية."
       }
     },
     {
       "q": {
-        "en": "How do we start working together?",
-        "ar": "كيف نبدأ العمل معًا؟"
+        "en": "How long does a project take?",
+        "ar": "كم يستغرق المشروع؟"
       },
       "a": {
-        "en": "Fill in the contact form or email me with a short brief, and I'll reply to agree on scope and timeline.",
-        "ar": "املأ نموذج التواصل أو راسلني بنبذة عن مشروعك، وسأرد عليك لنتفق على التفاصيل والجدول الزمني."
+        "en": "It depends on scope. A campaign typically takes two to four weeks; a full identity system usually takes four to eight. The timeline is agreed before we start.",
+        "ar": "يعتمد على حجم المشروع؛ الحملة تستغرق عادةً من أسبوعين إلى أربعة، والهوية الكاملة من أربعة إلى ثمانية أسابيع. نتفق على الجدول قبل البدء."
       }
     },
     {
       "q": {
-        "en": "How long does a project usually take?",
-        "ar": "كم يستغرق المشروع عادةً؟"
+        "en": "How do we get started?",
+        "ar": "كيف نبدأ؟"
       },
       "a": {
-        "en": "It depends on scope. A campaign takes less time than a full identity. We agree on the timeline before we start.",
-        "ar": "يختلف حسب الحجم؛ الحملة تأخذ وقتًا أقل من هوية كاملة. نتفق على المدة قبل البدء."
+        "en": "Send a short brief through the contact form or by email, and I’ll reply to schedule a call.",
+        "ar": "أرسل نبذة قصيرة عبر نموذج التواصل أو البريد الإلكتروني، وسأرد لتحديد موعد مكالمة."
       }
     }
   ],
@@ -378,6 +404,80 @@
     {
       "name": "CapCut",
       "kind": "Video"
+    }
+  ],
+  "countries": [
+    {
+      "name": {
+        "en": "Egypt",
+        "ar": "مصر"
+      },
+      "city": {
+        "en": "Cairo",
+        "ar": "القاهرة"
+      },
+      "lat": 30.04,
+      "lon": 31.24,
+      "tz": "Africa/Cairo",
+      "base": true,
+      "note": {
+        "en": "Brands and agencies",
+        "ar": "علامات ووكالات"
+      }
+    },
+    {
+      "name": {
+        "en": "Saudi Arabia",
+        "ar": "السعودية"
+      },
+      "city": {
+        "en": "Riyadh",
+        "ar": "الرياض"
+      },
+      "lat": 24.71,
+      "lon": 46.68,
+      "tz": "Asia/Riyadh",
+      "base": false,
+      "note": {
+        "en": "Hbbah Studio · identities and social content",
+        "ar": "Hbbah Studio · هويات ومحتوى سوشيال"
+      }
+    },
+    {
+      "name": {
+        "en": "Kuwait",
+        "ar": "الكويت"
+      },
+      "city": {
+        "en": "Kuwait City",
+        "ar": "مدينة الكويت"
+      },
+      "lat": 29.38,
+      "lon": 47.99,
+      "tz": "Asia/Kuwait",
+      "base": false,
+      "note": {
+        "en": "Independent projects",
+        "ar": "مشاريع مستقلة"
+      }
+    },
+    {
+      "name": {
+        "en": "United Arab Emirates",
+        "ar": "الإمارات"
+      },
+      "city": {
+        "en": "Dubai",
+        "ar": "دبي"
+      },
+      "lat": 25.2,
+      "lon": 55.27,
+      "tz": "Asia/Dubai",
+      "base": false,
+      "note": {
+        "en": "Independent projects",
+        "ar": "مشاريع مستقلة"
+      }
     }
   ]
 }

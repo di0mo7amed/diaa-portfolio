@@ -2720,14 +2720,124 @@
        ]
       },
       {
-       "label": "Worked with (clients strip)",
+       "label": "Clients & collaborators (logos)",
        "name": "clients",
        "widget": "list",
+       "hint": "Add, remove or drag to reorder. Upload an SVG or transparent PNG; if there is no logo the name is shown instead.",
+       "summary": "{{name}}",
        "fields": [
         {
          "label": "Name",
          "name": "name",
          "widget": "string"
+        },
+        {
+         "label": "Logo (SVG / transparent PNG)",
+         "name": "logo",
+         "widget": "image",
+         "required": false
+        },
+        {
+         "label": "Link (optional)",
+         "name": "url",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Markets (countries map)",
+       "name": "countries",
+       "widget": "list",
+       "summary": "{{name.en}}",
+       "hint": "Coordinates: search the city on Google Maps, right-click it and copy the two numbers (latitude, longitude). Time zone examples: Africa/Cairo, Asia/Riyadh, Asia/Dubai, Asia/Kuwait, Asia/Qatar, Asia/Bahrain, Asia/Muscat, Asia/Amman.",
+       "fields": [
+        {
+         "label": "Country",
+         "name": "name",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "City",
+         "name": "city",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Latitude",
+         "name": "lat",
+         "widget": "number",
+         "value_type": "float"
+        },
+        {
+         "label": "Longitude",
+         "name": "lon",
+         "widget": "number",
+         "value_type": "float"
+        },
+        {
+         "label": "Time zone",
+         "name": "tz",
+         "widget": "string"
+        },
+        {
+         "label": "This is my base",
+         "name": "base",
+         "widget": "boolean",
+         "required": false,
+         "default": false
+        },
+        {
+         "label": "Note (e.g. clients or type of work)",
+         "name": "note",
+         "widget": "object",
+         "required": false,
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
         }
        ]
       },

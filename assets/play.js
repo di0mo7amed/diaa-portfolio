@@ -299,3 +299,27 @@
     var open = nav.classList.toggle("open"); mb.setAttribute("aria-expanded", open ? "true" : "false");
   });
 })();
+
+/* ---------- Markets: live local clocks, arcs draw in, list <-> pin highlight ---------- */
+(function () {
+  var sec = document.querySelector(".where"); if (!sec) return;
+  var ar = document.documentElement.dir === "rtl";
+  var tzs = sec.querySelectorAll("[data-tz]");
+  var tick = function () {
+    tzs.forEach(function (el) {
+      try { el.textContent = new Intl.DateTimeFormat(ar ? "ar-EG" : "en-GB", { hour: "2-digit", minute: "2-digit", timeZone: el.dataset.tz }).format(new Date()); } catch (e) {}
+    });
+  };
+  tick(); setInterval(tick, 30000);
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { sec.classList.add("in"); io.disconnect(); } }); }, { threshold: .3 });
+    io.observe(sec);
+  } else sec.classList.add("in");
+  var pins = sec.querySelectorAll(".pin"), rows = sec.querySelectorAll(".where-list li");
+  var hi = function (i, on) {
+    pins.forEach(function (p) { if (p.dataset.i === i) p.classList.toggle("on", on); });
+    rows.forEach(function (r) { if (r.dataset.i === i) r.classList.toggle("on", on); });
+  };
+  [].forEach.call(pins, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
+  [].forEach.call(rows, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
+})();

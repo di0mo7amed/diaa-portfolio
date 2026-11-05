@@ -401,3 +401,61 @@ html[data-light="night"] .orb{background:transparent;box-shadow:inset -4px -2px 
 .ghost-filter button.on{color:var(--ink)}
 .ghost-filter button.on::after{content:"";position:absolute;inset:auto 0 -15px 0;height:2px;background:var(--signal)}
 .desk-bar{border-top:0}
+
+/* ===== Availability pulse ===== */
+.avail i{position:relative;animation:live 2s ease-out infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(25,181,98,.55)}70%{box-shadow:0 0 0 9px rgba(25,181,98,0)}100%{box-shadow:0 0 0 0 rgba(25,181,98,0)}}
+
+/* ===== Client logos ===== */
+.track{align-items:center;gap:64px}
+.track span::after{content:none}
+.cl{display:flex;align-items:center;height:48px;flex:none}
+.cl img{height:100%;width:auto;max-width:160px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s,opacity .3s}
+.cl:hover img{filter:none;opacity:1}
+.cl .wm{font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:700;letter-spacing:-.03em;color:var(--grey);transition:color .3s}
+.cl:hover .wm{color:var(--ink)}
+.cl+.cl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);margin-inline-end:64px;flex:none;display:none}
+
+/* ===== Markets ===== */
+.where-grid{row-gap:40px;align-items:center}
+.where-list{grid-column:1/6;display:grid;gap:24px}
+.where-p{font-size:1.05rem;color:var(--grey);max-width:30em}
+.where-list ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.where-list li{display:grid;grid-template-columns:2.4em 1fr auto;gap:2px 12px;padding-block:14px;border-bottom:1px solid var(--line);cursor:default;transition:background .2s}
+.where-list li .idx{color:var(--signal);font-size:.8rem;padding-top:4px}
+.where-list li b{font-size:1.25rem;font-weight:500;letter-spacing:-.01em}
+.where-list li .tz{font-variant-numeric:tabular-nums;color:var(--grey);justify-self:end}
+.where-list li .cty,.where-list li .note{color:var(--grey);font-size:.88rem}
+.where-list li.on b{color:var(--signal)}
+.where-map{grid-column:7/13;min-width:0}
+.map{width:100%;height:auto;display:block;overflow:visible}
+.map .grid circle{fill:var(--line)}
+.map .arc{fill:none;stroke:var(--signal);stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 1.8s cubic-bezier(.6,0,.2,1) var(--d,0s)}
+.where.in .map .arc{stroke-dashoffset:0}
+.map .pin circle{fill:var(--ink)}
+.map .pin .halo{fill:var(--signal);opacity:0;transform-origin:center;transform-box:fill-box;transition:opacity .3s}
+.map .pin.base circle:not(.halo){fill:var(--signal)}
+.map .pin.base .halo{opacity:.18;animation:ping 2.4s ease-out infinite}
+.map .pin.on .halo{opacity:.25}
+.map .pin text{font:500 22px var(--font);fill:var(--ink)}
+@keyframes ping{0%{transform:scale(.6);opacity:.35}100%{transform:scale(1.8);opacity:0}}
+@media (max-width:860px){.where-list,.where-map{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.map .arc{stroke-dashoffset:0;transition:none}.map .pin.base .halo{animation:none}}
+
+/* ===== Branding page ===== */
+.bgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}
+.bcard{display:grid;gap:10px;min-width:0}
+.bc-tile{aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;max-width:100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bc-tile img{width:58%;height:58%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.bcard:hover .bc-tile img{transform:scale(1.06)}
+.bcard:hover .gmeta b{color:var(--signal)}
+@media (max-width:900px){.bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.bgrid{grid-template-columns:1fr}}
+.be-card b{font-size:clamp(1.4rem,2.6vw,2.2rem)}
+.map{direction:ltr}
+.where-list li{grid-template-columns:2.4em 1fr auto;grid-template-areas:"idx name tz" "idx cty cty" "idx note note"}
+.where-list li .idx{grid-area:idx}
+.where-list li b{grid-area:name}
+.where-list li .tz{grid-area:tz;align-self:center}
+.where-list li .cty{grid-area:cty}
+.where-list li .note{grid-area:note}

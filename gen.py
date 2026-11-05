@@ -250,7 +250,8 @@ LEAD = _t(_S["lead"]); EMAIL = _S["email"]; INSTAGRAM = _S["instagram"]; BEHANCE
 TALLY = f"https://tally.so/embed/{_S['tally']}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"; TALLY_PAGE = f"https://tally.so/r/{_S['tally']}"
 HOME_STATS = [(str(x["value"]), _t(x["label"])) for x in _S["home_stats"]]
 ABOUT_STATS = [(str(x["value"]), _t(x["label"])) for x in _S["about_stats"]]
-CLIENTS = [x["name"] for x in _S.get("clients", [])]
+CLIENTS = [x for x in _S.get("clients", []) if x.get("name") or x.get("logo")]
+COUNTRIES = _S.get("countries", [])
 PROCESS = [(_t(x["title"]), _t(x["text"])) for x in _S["process"]]
 FAQ = [(_t(x["q"]), _t(x["a"])) for x in _S["faq"]]
 STORY = [_t(x) for x in _S["story"]]
@@ -291,6 +292,48 @@ def img_url(u, w=1024):
     if m: return u.split("?")[0] + f"?scale-down-to={w}"
     if u.startswith("/"): return _MODE["pre"] + u.lstrip("/")
     return u
+
+# Professional copy (overrides the first drafts above)
+UI.update({
+    "available": ("Available for new projects", "متاح لمشاريع جديدة"),
+    "start": ("Start a project", "ابدأ مشروعك"),
+    "see_work": ("View selected work", "استعرض الأعمال"),
+    "page01": ("Selected projects — campaigns and identities", "مشاريع مختارة — حملات وهويات بصرية"),
+    "drag_hint": ("Drag to explore, or arrange as a grid.", "اسحب للاستكشاف، أو اعرضها كشبكة."),
+    "arrange": ("Grid view", "عرض كشبكة"), "scatter": ("Free view", "عرض حر"),
+    "color_hint": ("Hover to reveal colour", "مرّر لإظهار الألوان"),
+    "day": ("Day mode · switch to night", "الوضع النهاري · التبديل لليلي"),
+    "night": ("Night mode · switch to day", "الوضع الليلي · التبديل للنهاري"),
+    "light_btn": ("Switch between day and night mode", "التبديل بين الوضع النهاري والليلي"),
+    "numbers": ("At a glance", "بالأرقام"),
+    "process": ("Process", "المنهجية"), "how": ("How I work", "منهجية العمل"),
+    "faq": ("FAQ", "أسئلة متكررة"), "faq_h": ("Frequently asked", "أسئلة متكررة"),
+    "listen_lbl": ("Interactive", "تفاعلي"), "listen_h": ("Start with your brand’s character.", "ابدأ بشخصية علامتك."),
+    "listen_p": ("Choose up to three words that describe your brand to see an instant visual direction, then send it with your enquiry.",
+                 "اختر حتى ثلاث كلمات تصف علامتك لترى اتجاهًا بصريًا فوريًا، ثم أرسله مع طلبك."),
+    "send_brief": ("Send with my enquiry", "أرسلها مع طلبي"), "reset": ("Clear", "مسح"),
+    "brief_h": ("Your brand direction", "اتجاه علامتك"), "brief_p": ("Paste this into the form so we start from the same point.", "الصقها في النموذج لنبدأ من نقطة واحدة."),
+    "ready": ("Have a project in mind?", "لديك مشروع في ذهنك؟"), "lets": ("Let’s talk", "لنتحدث"),
+    "clients": ("Selected clients & collaborators", "عملاء وشركاء"),
+    "work_intro": ("Selected campaign and identity work for brands across Egypt and the Gulf. Every project starts with strategy and ends with a visual system built to perform.",
+                   "مختارات من أعمال الحملات والهويات البصرية لعلامات في مصر والخليج. يبدأ كل مشروع بالاستراتيجية، وينتهي بمنظومة بصرية مصممة لتحقيق النتائج."),
+    "contact_h": ("Let’s work together.", "لنعمل معًا."),
+    "contact_intro": ("Tell me about your brand, your goals and your timeline, and I’ll get back to you shortly.", "أخبرني عن علامتك وأهدافك والجدول الزمني، وسأتواصل معك قريبًا."),
+    "lost_h": ("Page not found.", "الصفحة غير موجودة."), "lost_p": ("The page you’re looking for has moved or no longer exists.", "الصفحة التي تبحث عنها نُقلت أو لم تعد موجودة."),
+    "soon": ("The full case study is being prepared.", "دراسة الحالة الكاملة قيد الإعداد."),
+    "branding_cat": ("Branding", "الهويات البصرية"),
+    "on_behance": ("All branding work", "كل أعمال الهويات"), "behance_tag": ("Branding page", "صفحة الهويات"),
+    "branding_more": ("Identity case studies", "دراسات حالة الهويات البصرية"),
+    "brand_h": ("Branding", "الهويات البصرية"),
+    "brand_intro": ("Identity systems built from strategy to application: naming, logo, colour, typography and the guidelines that keep a brand consistent everywhere it appears.",
+                    "أنظمة هوية متكاملة من الاستراتيجية حتى التطبيق: الاسم، والشعار، والألوان، والخطوط، والدليل الذي يحافظ على اتساق العلامة في كل نقطة ظهور."),
+    "brand_empty": ("Identity case studies are being prepared. In the meantime, the full archive is on Behance.", "دراسات حالة الهويات قيد الإعداد. حتى ذلك الحين، الأرشيف الكامل متاح على Behance."),
+    "brand_archive": ("Full archive on Behance", "الأرشيف الكامل على Behance"),
+    "where_lbl": ("Markets", "الأسواق"), "where_h": ("Four markets, one design language.", "أربعة أسواق، لغة تصميم واحدة."),
+    "where_p": ("Based in Cairo and working remotely with brands across the region. My work on Behance has been seen in more than 50 countries.",
+                "مقيم في القاهرة وأعمل عن بُعد مع علامات في المنطقة، وشوهدت أعمالي على Behance في أكثر من ٥٠ دولة."),
+    "local_time": ("Local time", "التوقيت المحلي"), "base": ("Base", "المقر"),
+})
 
 # =========================== TEMPLATE ===========================
 class Ctx:
@@ -384,9 +427,9 @@ def desk(c):
                  f'<span class="tape" aria-hidden="true"></span>{ph(cover_(slug), c.t(name), "r45 mono")}'
                  f'<span class="cap"><span class="idx">({i+1:02d})</span> <b>{c.t(name)}</b> <span>{c.t(field)}</span></span></a>')
     # branding lives on Behance for now: a clearly-labelled card that only shows under the Branding filter
-    cuts += (f'<a class="cut cut-out" href="{BEHANCE}/projects" target="_blank" rel="noopener" data-tags="branding" data-x="0.5" data-y="0.4" data-r="-2" data-cursor="Behance ↗" draggable="false" hidden>'
-             f'<span class="tape" aria-hidden="true"></span><span class="ph r45 be-card"><b>Bē</b><span>{c.u("on_behance")}</span></span>'
-             f'<span class="cap"><span class="idx">↗</span> <b>Behance</b> <span>{c.u("behance_tag")}</span></span></a>')
+    cuts += (f'<a class="cut cut-out" href="branding.html" data-tags="branding" data-x="0.5" data-y="0.4" data-r="-2" data-cursor="{c.u("view")}" draggable="false" hidden>'
+             f'<span class="tape" aria-hidden="true"></span><span class="ph r45 be-card"><b>{c.u("brand_h")}</b><span>{c.u("on_behance")} →</span></span>'
+             f'<span class="cap"><span class="idx">→</span> <b>{c.u("brand_h")}</b> <span>{c.u("behance_tag")}</span></span></a>')
     filt = "".join(f'<button type="button" class="{"on" if k == "all" else ""}" data-f="{k}" aria-pressed="{"true" if k == "all" else "false"}">{c.t(t)}<span class="idx">({i:02d})</span></button>' for i, (k, t) in enumerate(FILTERS))
     return f'''<section class="desk-sec" id="works"><div class="wrap">
   <div class="ghost ghost-filter" role="group" aria-label="{c.u("work")}">{filt}</div>
@@ -397,9 +440,44 @@ def desk(c):
 </div></section>'''
 
 def clients_strip(c):
-    names = "".join(f"<span>{n}</span>" for n in CLIENTS)
+    if not CLIENTS: return ""
+    def one(x):
+        name = e(x.get("name", ""))
+        inner = f'<img src="{img_url(x["logo"], 400)}" alt="{name}" loading="lazy">' if x.get("logo") else f'<span class="wm">{name}</span>'
+        return f'<a href="{e(x["url"])}" target="_blank" rel="noopener" class="cl" title="{name}">{inner}</a>' if x.get("url") else f'<span class="cl" title="{name}">{inner}</span>'
+    items = "".join(one(x) for x in CLIENTS)
     return f'''<section class="clients" aria-label="{c.u("clients")}"><div class="wrap"><span class="lbl">{c.u("clients")}</span></div>
-<div class="marquee"><div class="track">{names}</div><div class="track" aria-hidden="true">{names}</div></div></section>'''
+<div class="marquee"><div class="track">{items}</div><div class="track" aria-hidden="true">{items}</div></div></section>'''
+
+def where(c):
+    if not COUNTRIES: return ""
+    W0, W1, N0, N1, K = 24.0, 60.0, 37.0, 13.0, 30.0   # lon/lat window and scale
+    X = lambda lon: (float(lon) - W0) * K
+    Y = lambda lat: (N0 - float(lat)) * K
+    w, h = X(W1), Y(N1)
+    dots = "".join(f'<circle cx="{X(lo):.0f}" cy="{Y(la):.0f}" r="1.6"/>' for la in range(14, 37, 2) for lo in range(25, 60, 2))
+    base = next((x for x in COUNTRIES if x.get("base")), COUNTRIES[0])
+    bx, by = X(base["lon"]), Y(base["lat"])
+    arcs, pins, rows = "", "", ""
+    for i, x in enumerate(COUNTRIES):
+        px, py = X(x["lon"]), Y(x["lat"])
+        if x is not base:
+            mx, my = (bx + px) / 2, min(by, py) - 70 - i * 45
+            arcs += f'<path class="arc" d="M{bx:.0f},{by:.0f} Q{mx:.0f},{my:.0f} {px:.0f},{py:.0f}" style="--d:{i * .25:.2f}s"/>'
+        city = e(c.t(_t(x.get("city"))))
+        anchor, dx, dy = ("middle", 0, 36) if x is not base else ("end", -16, 6)
+        pins += (f'<g class="pin{" base" if x is base else ""}" data-i="{i}" transform="translate({px:.0f},{py:.0f})"><circle class="halo" r="16"/><circle r="6"/>'
+                 f'<text x="{dx}" y="{dy}" text-anchor="{anchor}">{city}</text></g>')
+        rows += (f'<li data-i="{i}"><span class="idx">{i+1:02d}</span><b>{e(c.t(_t(x.get("name"))))}</b><span class="cty">{city}{" · " + c.u("base") if x is base else ""}</span>'
+                 f'<span class="tz" data-tz="{e(x.get("tz", ""))}">--:--</span><span class="note">{e(c.t(_t(x.get("note"))))}</span></li>')
+    svg = (f'<svg class="map" viewBox="0 0 {w:.0f} {h:.0f}" role="img" aria-label="{c.u("where_h")}"><g class="grid">{dots}</g>{arcs}{pins}</svg>')
+    return f'''<section class="sec where" id="markets"><div class="wrap">
+  <div class="sec-head"><span class="lbl">{c.u("where_lbl")}</span><h2>{c.u("where_h")}</h2></div>
+  <div class="grid where-grid">
+    <div class="where-list"><p class="where-p">{c.u("where_p")}</p><ul>{rows}</ul></div>
+    <div class="where-map">{svg}</div>
+  </div>
+</div></section>'''
 
 def listen(c):
     words = "".join(f'<button type="button" class="word" data-trait="{k}" aria-pressed="false">{c.t(w)}</button>' for k, w in LISTEN_WORDS)
@@ -452,6 +530,7 @@ def home(c):
 {desk(c)}
 <section class="sec-tight proof"><div class="wrap nums rv"><span class="lbl">{c.u("numbers")}</span><div class="row">{stats}</div></div></section>
 {clients_strip(c)}
+{where(c)}
 <section class="sec"><div class="wrap">
   <div class="sec-head"><span class="lbl">{c.u("process")}</span><h2>{c.u("how")}</h2></div>
   <div class="steps">{steps}</div>
@@ -470,9 +549,9 @@ def work(c):
                  f'<span class="f">{c.t(field)}</span><span class="y">{year}</span><span class="go arrow">↗</span></a>')
         cards += (f'<a class="gcard" data-cat="{cat}" href="{PAGE[slug]}" data-cursor="{c.u("view")}">{ph(cover_(slug), c.t(name), "r45 mono")}'
                   f'<span class="gmeta"><span class="idx">({i+1:02d})</span><b>{c.t(name)}</b><span>{c.t(field)} · {year}</span></span></a>')
-    rows += (f'<a class="wrow" data-cat="branding" href="{BEHANCE}/projects" target="_blank" rel="noopener"><span class="idx">(→)</span><h3>{c.u("branding_cat")}</h3>'
+    rows += (f'<a class="wrow" data-cat="branding" href="branding.html"><span class="idx">(→)</span><h3>{c.u("branding_cat")}</h3>'
              f'<span class="f">{c.u("branding_more")}</span><span class="y">{c.u("behance_tag")}</span><span class="go arrow">↗</span></a>')
-    cards += (f'<a class="gcard" data-cat="branding" href="{BEHANCE}/projects" target="_blank" rel="noopener"><span class="ph r45 be-card"><b>Bē</b><span>{c.u("on_behance")}</span></span>'
+    cards += (f'<a class="gcard" data-cat="branding" href="branding.html"><span class="ph r45 be-card"><b>{c.u("brand_h")}</b><span>{c.u("on_behance")}</span></span>'
               f'<span class="gmeta"><span class="idx">↗</span><b>{c.u("branding_cat")}</b><span>{c.u("behance_tag")}</span></span></a>')
     return f'''<section class="phead"><div class="wrap grid">
   <h1>{c.u("work")}</h1>
@@ -489,6 +568,25 @@ def work(c):
   </div>
   <div class="windex">{rows}</div>
   <div class="wgrid" hidden>{cards}</div>
+</section>'''
+
+def branding(c):
+    items = [p for p in PROJECTS if p[7]["_kind"] == "brand"]
+    cards = ""
+    for i, p in enumerate(items):
+        key, name, field, year, x = p[0], p[1], p[2], p[3], p[7]
+        bc = x.get("brand_color") or "var(--peach)"
+        cards += (f'<a class="bcard" href="{PAGE[key]}" data-cursor="{c.u("view")}"><span class="bc-tile" style="background:{bc}"><img src="{cover_(key, 1200)}" alt="{e(c.t(name))}" loading="lazy"></span>'
+                  f'<span class="gmeta"><span class="idx">({i+1:02d})</span><b>{e(c.t(name))}</b><span>{e(c.t(field))} · {year}</span></span></a>')
+    body = (f'<div class="bgrid">{cards}</div>' if cards else
+            f'<div class="soon" style="margin-top:0"><p style="font-size:clamp(1.3rem,2.4vw,2rem);letter-spacing:-.02em;max-width:28em">{c.u("brand_empty")}</p></div>')
+    return f'''<section class="phead"><div class="wrap grid">
+  <span class="lbl">{c.u("work")} / {c.u("brand_h")}</span>
+  <h1>{c.u("brand_h")}</h1>
+  <p class="intro">{c.u("brand_intro")}</p>
+</div></section>
+<section class="wrap" style="padding-bottom:120px">{body}
+  <p style="margin-top:56px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="{BEHANCE}" target="_blank" rel="noopener">{c.u("brand_archive")} <span class="arrow">↗</span></a><a class="btn" href="work.html">{c.u("all_work")}</a></p>
 </section>'''
 
 def lost(c):
@@ -712,6 +810,7 @@ def build(out, preview):
                  "about.html": (f"{c.u('about')} — {N}", "about", about(c), ""),
                  "contact.html": (f"{c.u('contact')} — {N}", "contact", contact(c), "")}
         pages["404.html"] = (f"404 — {N}", "", lost(c), "")
+        pages["branding.html"] = (f"{c.u('brand_h')} — {N}", "work", branding(c), "")
         for i, p in enumerate(PROJECTS):
             body, lb = project(c, i)
             pages[PAGE[p[0]]] = (f"{c.t(p[1])} — {N}", "work", body, lb)
