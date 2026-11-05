@@ -1,0 +1,19 @@
+{
+  "order": 7,
+  "slug": "holidaytime",
+  "name": {
+    "en": "Holiday Time",
+    "ar": "هوليداي تايم"
+  },
+  "field": {
+    "en": "Travel",
+    "ar": "سياحة"
+  },
+  "year": "2024",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/Z5GxoPsLdD5LgMgCqdak56QYHA.png"
+}

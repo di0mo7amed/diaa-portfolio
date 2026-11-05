@@ -1,0 +1,19 @@
+{
+  "order": 3,
+  "slug": "watsio",
+  "name": {
+    "en": "Watsio",
+    "ar": "واتسيو"
+  },
+  "field": {
+    "en": "SaaS",
+    "ar": "SaaS"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/FPgJVWIGSlZmTsytmdNiUvXlWm0.png"
+}

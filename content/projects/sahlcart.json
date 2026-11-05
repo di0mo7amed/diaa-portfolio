@@ -1,0 +1,19 @@
+{
+  "order": 5,
+  "slug": "sahlcart",
+  "name": {
+    "en": "Sahl Cart",
+    "ar": "سهل كارت"
+  },
+  "field": {
+    "en": "E-commerce",
+    "ar": "متاجر إلكترونية"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/0jPCQTkadPMl3ewAYEFtZhoTo.png"
+}

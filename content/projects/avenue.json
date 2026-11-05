@@ -1,0 +1,19 @@
+{
+  "order": 2,
+  "slug": "avenue",
+  "name": {
+    "en": "Avenue",
+    "ar": "اڤينيو"
+  },
+  "field": {
+    "en": "Marketing",
+    "ar": "التسويق"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/EOjMDlGAq5kJv7k4tFHrlmlY.png"
+}

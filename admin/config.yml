@@ -1,0 +1,1236 @@
+# Dashboard settings (JSON is valid YAML)
+{
+ "backend": {
+  "name": "github",
+  "repo": "di0mo7amed/diaa-portfolio",
+  "branch": "main"
+ },
+ "site_url": "https://bydiaa.online",
+ "display_url": "https://bydiaa.online",
+ "logo_url": "/img/logo.svg",
+ "media_folder": "img/uploads",
+ "public_folder": "/img/uploads",
+ "collections": [
+  {
+   "name": "projects",
+   "label": "Projects",
+   "label_singular": "Project",
+   "folder": "content/projects",
+   "extension": "json",
+   "format": "json",
+   "create": true,
+   "delete": true,
+   "identifier_field": "slug",
+   "slug": "{{fields.slug}}",
+   "summary": "{{order}} · {{name.en}}",
+   "sortable_fields": [
+    "order"
+   ],
+   "fields": [
+    {
+     "label": "Order on the site",
+     "name": "order",
+     "widget": "number",
+     "value_type": "int",
+     "default": 99,
+     "hint": "1 shows first."
+    },
+    {
+     "label": "Hide from the site",
+     "name": "hidden",
+     "widget": "boolean",
+     "required": false,
+     "default": false
+    },
+    {
+     "label": "Page address (English letters, no spaces)",
+     "name": "slug",
+     "widget": "string",
+     "pattern": [
+      "^[a-z0-9-]+$",
+      "lowercase letters, numbers and - only"
+     ],
+     "hint": "e.g. hbbah → project-hbbah.html"
+    },
+    {
+     "label": "Name",
+     "name": "name",
+     "widget": "object",
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": true
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Field",
+     "name": "field",
+     "widget": "object",
+     "collapsed": false,
+     "fields": [
+      {
+       "label": "English",
+       "name": "en",
+       "widget": "string",
+       "required": true
+      },
+      {
+       "label": "عربي",
+       "name": "ar",
+       "widget": "string",
+       "required": false
+      }
+     ]
+    },
+    {
+     "label": "Year",
+     "name": "year",
+     "widget": "string"
+    },
+    {
+     "label": "Filters",
+     "name": "tags",
+     "widget": "select",
+     "multiple": true,
+     "options": [
+      {
+       "label": "Social Media",
+       "value": "social"
+      },
+      {
+       "label": "Campaigns",
+       "value": "campaigns"
+      },
+      {
+       "label": "Art Direction",
+       "value": "art"
+      }
+     ],
+     "default": [
+      "social"
+     ]
+    },
+    {
+     "label": "Cover image",
+     "name": "cover",
+     "widget": "image",
+     "required": true,
+     "hint": "Square or 4:5 works best."
+    },
+    {
+     "label": "Case study (optional — leave empty for a 'coming soon' page)",
+     "name": "case",
+     "widget": "object",
+     "required": false,
+     "collapsed": true,
+     "fields": [
+      {
+       "label": "Short description",
+       "name": "description",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "My role",
+       "name": "role",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Services",
+       "name": "services",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Client",
+       "name": "client",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Country",
+       "name": "country",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Duration",
+       "name": "duration",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "01 Overview — headline",
+       "name": "overview_lede",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ],
+       "hint": "The big sentence."
+      },
+      {
+       "label": "01 Overview — soft part",
+       "name": "overview_soft",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ],
+       "hint": "Shown in grey after the headline."
+      },
+      {
+       "label": "01 Overview — paragraphs",
+       "name": "overview",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "02 Challenge — headline",
+       "name": "challenge_lede",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "02 Challenge — soft part",
+       "name": "challenge_soft",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "02 Goals",
+       "name": "goals",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "02 Constraints",
+       "name": "limits",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "03 Creative thinking — headline",
+       "name": "idea_lede",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "03 Creative thinking — soft part",
+       "name": "idea_soft",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "03 Keywords",
+       "name": "keywords",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "03 Moodboard images (up to 5)",
+       "name": "moodboard",
+       "widget": "list",
+       "required": false,
+       "field": {
+        "label": "Image",
+        "name": "image",
+        "widget": "image"
+       }
+      },
+      {
+       "label": "03 Colour palette",
+       "name": "palette",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "Colour",
+         "name": "color",
+         "widget": "color"
+        }
+       ]
+      },
+      {
+       "label": "03 Routes explored",
+       "name": "routes",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "Title",
+         "name": "title",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Text",
+         "name": "text",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "This is the chosen one",
+         "name": "chosen",
+         "widget": "boolean",
+         "required": false,
+         "default": false
+        },
+        {
+         "label": "Image",
+         "name": "image",
+         "widget": "image",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "04 Solution — headline",
+       "name": "solution_lede",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "04 Solution — soft part",
+       "name": "solution_soft",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "04 Posts",
+       "name": "posts",
+       "widget": "list",
+       "required": false,
+       "field": {
+        "label": "Image",
+        "name": "image",
+        "widget": "image"
+       }
+      },
+      {
+       "label": "04 Carousels",
+       "name": "carousels",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "Slides",
+         "name": "slides",
+         "widget": "list",
+         "field": {
+          "label": "Slide",
+          "name": "slide",
+          "widget": "image"
+         }
+        }
+       ]
+      },
+      {
+       "label": "05 Results",
+       "name": "results",
+       "widget": "list",
+       "required": false,
+       "hint": "The first result also shows in the summary at the top.",
+       "fields": [
+        {
+         "label": "Label",
+         "name": "label",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Number",
+         "name": "value",
+         "widget": "string",
+         "hint": "e.g. +212% or 4.6×"
+        },
+        {
+         "label": "Explanation",
+         "name": "text",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": false
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "05 Client quote",
+       "name": "quote",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "05 Quote by",
+       "name": "quote_by",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string",
+         "required": false
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "06 Team / credits",
+       "name": "team",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "Role",
+         "name": "role",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Name",
+         "name": "name",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "This is me",
+         "name": "me",
+         "widget": "boolean",
+         "required": false,
+         "default": false
+        }
+       ]
+      },
+      {
+       "label": "06 Deliverables",
+       "name": "deliverables",
+       "widget": "list",
+       "required": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "string"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "site",
+   "label": "Site content",
+   "files": [
+    {
+     "name": "site",
+     "label": "Home, About & contact",
+     "file": "content/site.json",
+     "format": "json",
+     "fields": [
+      {
+       "label": "Intro sentence (hero)",
+       "name": "lead",
+       "widget": "object",
+       "collapsed": false,
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text",
+         "required": true
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "Email",
+       "name": "email",
+       "widget": "string"
+      },
+      {
+       "label": "Instagram link",
+       "name": "instagram",
+       "widget": "string"
+      },
+      {
+       "label": "Behance link",
+       "name": "behance",
+       "widget": "string"
+      },
+      {
+       "label": "LinkedIn link",
+       "name": "linkedin",
+       "widget": "string"
+      },
+      {
+       "label": "CV link",
+       "name": "cv",
+       "widget": "string"
+      },
+      {
+       "label": "Tally form ID",
+       "name": "tally",
+       "widget": "string",
+       "hint": "The part after tally.so/r/"
+      },
+      {
+       "label": "Available for work",
+       "name": "available",
+       "widget": "boolean",
+       "required": false
+      },
+      {
+       "label": "Home — numbers",
+       "name": "home_stats",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Number",
+         "name": "value",
+         "widget": "string",
+         "hint": "e.g. 15+"
+        },
+        {
+         "label": "Label",
+         "name": "label",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Worked with (clients strip)",
+       "name": "clients",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Name",
+         "name": "name",
+         "widget": "string"
+        }
+       ]
+      },
+      {
+       "label": "How I work — steps",
+       "name": "process",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Title",
+         "name": "title",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Text",
+         "name": "text",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "FAQ",
+       "name": "faq",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Question",
+         "name": "q",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Answer",
+         "name": "a",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "About — my story (paragraphs)",
+       "name": "story",
+       "widget": "list",
+       "hint": "A paragraph that starts with “ or « is shown as a quote.",
+       "fields": [
+        {
+         "label": "English",
+         "name": "en",
+         "widget": "text"
+        },
+        {
+         "label": "عربي",
+         "name": "ar",
+         "widget": "text",
+         "required": false
+        }
+       ]
+      },
+      {
+       "label": "About — numbers",
+       "name": "about_stats",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Number",
+         "name": "value",
+         "widget": "string"
+        },
+        {
+         "label": "Label",
+         "name": "label",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "About — experience",
+       "name": "jobs",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "When",
+         "name": "when",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Company / title",
+         "name": "title",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Role",
+         "name": "role",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Text",
+         "name": "text",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "About — volunteering",
+       "name": "volunteer",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "When",
+         "name": "when",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Organisation",
+         "name": "title",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Role",
+         "name": "role",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "string",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "string",
+           "required": false
+          }
+         ]
+        },
+        {
+         "label": "Text",
+         "name": "text",
+         "widget": "object",
+         "collapsed": false,
+         "fields": [
+          {
+           "label": "English",
+           "name": "en",
+           "widget": "text",
+           "required": true
+          },
+          {
+           "label": "عربي",
+           "name": "ar",
+           "widget": "text",
+           "required": false
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "About — tools",
+       "name": "tools",
+       "widget": "list",
+       "fields": [
+        {
+         "label": "Name",
+         "name": "name",
+         "widget": "string"
+        },
+        {
+         "label": "Kind",
+         "name": "kind",
+         "widget": "string",
+         "required": false
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

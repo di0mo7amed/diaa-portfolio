@@ -1,0 +1,383 @@
+{
+  "lead": {
+    "en": "I design visual identities and ad campaigns that give your brand a voice of its own, and a presence people remember.",
+    "ar": "أصمّم هويات بصرية وحملات إعلانية تمنح علامتك صوتًا يميّزها، وحضورًا يبقى في الذهن."
+  },
+  "available": true,
+  "email": "dioo.zone@gmail.com",
+  "instagram": "https://instagram.com/dio.zone",
+  "behance": "https://www.behance.net/diaamohammed4",
+  "linkedin": "https://www.linkedin.com/in/diaamu/",
+  "cv": "https://drive.google.com/file/d/1cXgFfKuSHwqX7aolbv007TA7rz6kGjKG/view?usp=sharing",
+  "tally": "BzeA0e",
+  "home_stats": [
+    {
+      "value": "15+",
+      "label": {
+        "en": "Projects delivered",
+        "ar": "مشروع منفَّذ"
+      }
+    },
+    {
+      "value": "3+",
+      "label": {
+        "en": "Years of experience",
+        "ar": "سنوات خبرة"
+      }
+    },
+    {
+      "value": "4+",
+      "label": {
+        "en": "Countries designed for",
+        "ar": "دول صممت لها"
+      }
+    },
+    {
+      "value": "20+",
+      "label": {
+        "en": "Brands",
+        "ar": "علامة تجارية"
+      }
+    }
+  ],
+  "clients": [
+    {
+      "name": "Hbbah Studio"
+    },
+    {
+      "name": "Hbbah"
+    },
+    {
+      "name": "Avenue"
+    },
+    {
+      "name": "Watsio"
+    },
+    {
+      "name": "2Care"
+    },
+    {
+      "name": "Sahl Cart"
+    },
+    {
+      "name": "Growvo"
+    },
+    {
+      "name": "Holiday Time"
+    },
+    {
+      "name": "Toy Castle"
+    },
+    {
+      "name": "Skills Area"
+    },
+    {
+      "name": "Sunrise Academy"
+    },
+    {
+      "name": "SBS"
+    },
+    {
+      "name": "STAI"
+    }
+  ],
+  "process": [
+    {
+      "title": {
+        "en": "Listen",
+        "ar": "الإنصات"
+      },
+      "text": {
+        "en": "Every project starts with understanding the brand, its audience and the goal behind the brief. Good design starts with good questions.",
+        "ar": "يبدأ كل مشروع بفهم العلامة وجمهورها والهدف من ورائها. التصميم الجيد يبدأ بأسئلة جيدة."
+      }
+    },
+    {
+      "title": {
+        "en": "Direction",
+        "ar": "الاتجاه"
+      },
+      "text": {
+        "en": "We explore several creative routes, test them against the goal, and commit to the one that says the most.",
+        "ar": "نستكشف أكثر من اتجاه إبداعي، نختبرها أمام الهدف، ثم نختار الاتجاه الأقوى."
+      }
+    },
+    {
+      "title": {
+        "en": "Craft",
+        "ar": "الصناعة"
+      },
+      "text": {
+        "en": "The idea becomes a system: logo, color, type, layouts and templates that hold together everywhere the brand appears.",
+        "ar": "تتحول الفكرة إلى منظومة: شعار، ألوان، خطوط، وقوالب متّسقة في كل مكان تظهر فيه العلامة."
+      }
+    },
+    {
+      "title": {
+        "en": "Deliver",
+        "ar": "التسليم"
+      },
+      "text": {
+        "en": "Clean files, a clear guide, and support while the work goes live.",
+        "ar": "ملفات مرتبة، ودليل واضح، ومتابعة حتى ينطلق العمل."
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "en": "What kind of projects do you take on?",
+        "ar": "ما نوع المشاريع التي تعمل عليها؟"
+      },
+      "a": {
+        "en": "Visual identities (logo, color and type systems, brand guidelines) and ad campaigns and social content, mostly for restaurants, retail and service brands.",
+        "ar": "الهويات البصرية المتكاملة (الشعار، نظام الألوان والخطوط، ودليل العلامة) والحملات الإعلانية ومحتوى السوشيال ميديا، خاصة لقطاعات المطاعم والتجزئة والخدمات."
+      }
+    },
+    {
+      "q": {
+        "en": "Do you work with agencies or directly with brands?",
+        "ar": "هل تعمل مع الوكالات أم مع العلامات مباشرة؟"
+      },
+      "a": {
+        "en": "Both. I work directly with brands, and with agencies and studios as part of their team.",
+        "ar": "الاثنين. أعمل مع العلامات التجارية مباشرة، ومع الوكالات والاستوديوهات كجزء من فريقها."
+      }
+    },
+    {
+      "q": {
+        "en": "How do you start a project?",
+        "ar": "كيف تبدأ أي مشروع؟"
+      },
+      "a": {
+        "en": "By listening. I learn the brand, its audience and its goal before designing anything, then set a visual direction and move to execution.",
+        "ar": "بالإنصات. أفهم العلامة وجمهورها وهدفها قبل أي تصميم، ثم أضع الاتجاه البصري وأنتقل للتنفيذ."
+      }
+    },
+    {
+      "q": {
+        "en": "Which markets and languages do you work in?",
+        "ar": "في أي أسواق ولغات تعمل؟"
+      },
+      "a": {
+        "en": "Egypt, Saudi Arabia, Kuwait and the UAE, in Arabic and English. My work has reached over 50 countries.",
+        "ar": "مصر والسعودية والكويت والإمارات، بالعربية والإنجليزية، وامتدّ أثر أعمالي إلى أكثر من خمسين دولة."
+      }
+    },
+    {
+      "q": {
+        "en": "How do we start working together?",
+        "ar": "كيف نبدأ العمل معًا؟"
+      },
+      "a": {
+        "en": "Fill in the contact form or email me with a short brief, and I'll reply to agree on scope and timeline.",
+        "ar": "املأ نموذج التواصل أو راسلني بنبذة عن مشروعك، وسأرد عليك لنتفق على التفاصيل والجدول الزمني."
+      }
+    },
+    {
+      "q": {
+        "en": "How long does a project usually take?",
+        "ar": "كم يستغرق المشروع عادةً؟"
+      },
+      "a": {
+        "en": "It depends on scope. A campaign takes less time than a full identity. We agree on the timeline before we start.",
+        "ar": "يختلف حسب الحجم؛ الحملة تأخذ وقتًا أقل من هوية كاملة. نتفق على المدة قبل البدء."
+      }
+    }
+  ],
+  "story": [
+    {
+      "en": "Before I knew what I did had a name, design was my first language.",
+      "ar": "قبل أن أعرف أن لِما أفعله اسمًا، كان التصميم لغتي الأولى."
+    },
+    {
+      "en": "As a child, talking wasn't my easiest way through. Among my mother's notebooks I found planners she had filled with magazine cut-outs: pictures and colors arranged with care. That was the first thing that pulled me in: taking scattered things and arranging them until they said something. That's where I learned that shape and color can say what words can't.",
+      "ar": "في طفولة لم يكن الكلام فيها طريقي الأسهل، وجدت بين دفاتر أمي أجندات ملأتها بقصاصات من المجلات؛ صور وألوان مرتَّبة بعناية. كان ذلك أول ما استهواني: أن آخذ أشياء متفرّقة وأعيد ترتيبها حتى تقول شيئًا. هناك تعلّمت أن ما يعجز عنه القول قد يقوله الشكل واللون."
+    },
+    {
+      "en": "I started on an old, modest computer, teaching myself step by step. Over time that quiet curiosity became a craft: turning an abstract idea into something people can see and feel, and giving a brand an identity and a voice that don't get lost.",
+      "ar": "بدأت على حاسوب قديم متواضع، أعلّم نفسي بنفسي، خطوة تتبعها خطوة. ومع الوقت تحوّل ذلك الفضول الصامت إلى حرفة: أن أحوّل فكرة مجرّدة إلى شيء يراه الناس ويشعرون به، وأن أمنح العلامة هوية وصوتًا لا يضيعان وسط ما حولهما."
+    },
+    {
+      "en": "“Design colors life” isn't a slogan I picked. It's what I lived. Color, to me, isn't decoration. It's meaning and spirit added to the ordinary so it leaves a mark.",
+      "ar": "«التصميم يلوّن الحياة» ليس شعارًا اخترته؛ هي ما عشته. اللون عندي ليس زينة، بل معنى و روح تُضاف إلى ما هو عادي فيصير له أثر يبقى."
+    },
+    {
+      "en": "Today, at nineteen, I'm an independent designer in visual identity and advertising, working with brands and agencies across Egypt and the Gulf, with work that has reached more than fifty countries. What matters to me in every project hasn't changed since those notebooks: listen well, then give the idea the shape that makes it seen, and felt.",
+      "ar": "اليوم، وأنا في التاسعة عشرة، أعمل مصمّمًا مستقلًّا في الهوية البصرية والحملات الإعلانية، مع علامات ووكالات في مصر والخليج، وامتدّ أثر أعمالي إلى أكثر من خمسين دولة. لكن ما يهمّني في كل مشروع لم يتغيّر منذ تلك الدفاتر: أن أنصِت جيدًا، ثم أمنح الفكرة شكلها الذي يجعلها تُرى، وتُحَسّ."
+    }
+  ],
+  "about_stats": [
+    {
+      "value": "1.6K+",
+      "label": {
+        "en": "Appreciations from designers",
+        "ar": "إعجاب من مصمّمين"
+      }
+    },
+    {
+      "value": "50+",
+      "label": {
+        "en": "Countries reached",
+        "ar": "دولة حول العالم"
+      }
+    },
+    {
+      "value": "920K+",
+      "label": {
+        "en": "Behance reach",
+        "ar": "وصول أعمالي على Behance"
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "when": {
+        "en": "Aug 2025 – Jun 2026",
+        "ar": "أغسطس ٢٠٢٥ – يونيو ٢٠٢٦"
+      },
+      "title": {
+        "en": "Hbbah Studio",
+        "ar": "Hbbah Studio"
+      },
+      "role": {
+        "en": "Brand & Social Designer · Saudi Arabia",
+        "ar": "مصمم هويات ومحتوى سوشيال · السعودية"
+      },
+      "text": {
+        "en": "Full identities and social content for Saudi clients across restaurants, retail and services: from logo, color and type to brand guidelines. I also direct product and food photography to keep every touchpoint consistent.",
+        "ar": "أصمّم هويات متكاملة ومحتوى سوشيال لعملاء في السعودية عبر قطاعات المطاعم والتجزئة والخدمات: من الشعار ونظام الألوان والخطوط إلى دليل العلامة، وأتولّى توجيه تصوير المنتجات والأطعمة."
+      }
+    },
+    {
+      "when": {
+        "en": "2024 – Now",
+        "ar": "٢٠٢٤ – الآن"
+      },
+      "title": {
+        "en": "Independent Brand Designer",
+        "ar": "مصمم هويات مستقل"
+      },
+      "role": {
+        "en": "Remote · Egypt, KSA, Kuwait, UAE",
+        "ar": "عن بُعد · مصر، السعودية، الكويت، الإمارات"
+      },
+      "text": {
+        "en": "End-to-end identity projects from strategy to application, specialised in restaurants and services.",
+        "ar": "مشاريع هوية كاملة من الاستراتيجية حتى التطبيق، بتخصّص في قطاع المطاعم والخدمات."
+      }
+    }
+  ],
+  "volunteer": [
+    {
+      "when": {
+        "en": "2025",
+        "ar": "٢٠٢٥"
+      },
+      "title": {
+        "en": "STAI",
+        "ar": "STAI"
+      },
+      "role": {
+        "en": "Volunteer Social Media Designer",
+        "ar": "مصمم سوشيال ميديا متطوّع"
+      },
+      "text": {
+        "en": "Led a visual redesign of the student initiative and built banners, posts and templates for online events.",
+        "ar": "قُدت إعادة تصميم بصرية للمبادرة الطلابية، وأنشأت بانرات ومنشورات وقوالب للفعاليات الإلكترونية."
+      }
+    },
+    {
+      "when": {
+        "en": "Dec 2024 – 2025",
+        "ar": "ديسمبر ٢٠٢٤ – ٢٠٢٥"
+      },
+      "title": {
+        "en": "Skills Area",
+        "ar": "Skills Area"
+      },
+      "role": {
+        "en": "Brand Designer",
+        "ar": "مصمم علامة بصرية"
+      },
+      "text": {
+        "en": "Designed consistent visuals for educational posts and helped define the academy's first identity.",
+        "ar": "صمّمت محتوى بصريًا متّسقًا للمنشورات التعليمية، وساهمت في تحديد ملامح الهوية البصرية الأولى للأكاديمية."
+      }
+    },
+    {
+      "when": {
+        "en": "Feb – Dec 2023",
+        "ar": "فبراير – ديسمبر ٢٠٢٣"
+      },
+      "title": {
+        "en": "Sunrise Academy",
+        "ar": "Sunrise Academy"
+      },
+      "role": {
+        "en": "Identity & Visual Content Designer",
+        "ar": "مصمم هويات ومحتوى بصري"
+      },
+      "text": {
+        "en": "Directed the visual style of educational events with a consistent identity across platforms.",
+        "ar": "وجّهت الأسلوب البصري للفعاليات التعليمية، وقدّمت هوية متّسقة عبر المنصّات."
+      }
+    },
+    {
+      "when": {
+        "en": "Feb – Jun 2023",
+        "ar": "فبراير – يونيو ٢٠٢٣"
+      },
+      "title": {
+        "en": "SBS – Youth Helping Youth",
+        "ar": "SBS – شباب بتساعد شباب"
+      },
+      "role": {
+        "en": "Identity & Visual Content Designer",
+        "ar": "مصمم هويات ومحتوى بصري"
+      },
+      "text": {
+        "en": "Campaigns and social content for young audiences, plus print matching the initiative's identity.",
+        "ar": "طوّرت حملات ومحتوى سوشيال موجّه للشباب، وصمّمت مطبوعات متّسقة مع هوية المبادرة."
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "Photoshop",
+      "kind": "Adobe"
+    },
+    {
+      "name": "Illustrator",
+      "kind": "Adobe"
+    },
+    {
+      "name": "After Effects",
+      "kind": "Adobe"
+    },
+    {
+      "name": "Audition",
+      "kind": "Adobe"
+    },
+    {
+      "name": "Media Encoder",
+      "kind": "Adobe"
+    },
+    {
+      "name": "Figma",
+      "kind": "Design"
+    },
+    {
+      "name": "Framer",
+      "kind": "Web"
+    },
+    {
+      "name": "Canva",
+      "kind": "Design"
+    },
+    {
+      "name": "CapCut",
+      "kind": "Video"
+    }
+  ]
+}

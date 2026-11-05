@@ -1,0 +1,359 @@
+{
+  "order": 1,
+  "slug": "hbbah",
+  "name": {
+    "en": "Hbbah",
+    "ar": "هبَّة"
+  },
+  "field": {
+    "en": "Business Growth",
+    "ar": "تطوير الأعمال"
+  },
+  "year": "2026",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns",
+    "art"
+  ],
+  "cover": "https://framerusercontent.com/images/7rVuSUwD8Q0lEVl7BzpSvbpgXU.png",
+  "case": {
+    "description": {
+      "en": "A content system for a Saudi growth firm that helps companies redesign their revenue model. We made finance feel clear, confident and human.",
+      "ar": "نظام محتوى لشركة سعودية في تطوير الأعمال تساعد الشركات على إعادة تصميم نموذجها الربحي. جعلنا عالم الأرقام يبدو واضحًا وواثقًا وقريبًا من الناس."
+    },
+    "services": {
+      "en": "Art Direction, Social Content",
+      "ar": "توجيه فني، محتوى سوشيال"
+    },
+    "client": {
+      "en": "Hbbah",
+      "ar": "هبَّة"
+    },
+    "country": {
+      "en": "Saudi Arabia",
+      "ar": "السعودية"
+    },
+    "duration": {
+      "en": "Jan – Feb 2026",
+      "ar": "يناير – فبراير ٢٠٢٦"
+    },
+    "role": {
+      "en": "Lead Designer",
+      "ar": "المصمم الرئيسي"
+    },
+    "overview_lede": {
+      "en": "Hbbah turns messy revenue into a growth system.",
+      "ar": "هبَّة تحوّل الإيرادات المبعثرة إلى منظومة نمو."
+    },
+    "overview_soft": {
+      "en": "Their feed needed to say that in three seconds.",
+      "ar": "وكان على حسابهم أن يقول ذلك في ثلاث ثوانٍ."
+    },
+    "overview": [
+      {
+        "en": "Hbbah works with founders and finance teams across the Gulf. Their expertise is deep, but their social presence looked like every other consultancy: stock photos, dense text and charts nobody stops for.",
+        "ar": "تعمل هبَّة مع المؤسسين وفرق المالية في الخليج. خبرتهم عميقة، لكن حضورهم على السوشيال كان يشبه أي شركة استشارات: صور جاهزة، نصوص كثيفة، ورسوم بيانية لا يتوقف عندها أحد."
+      },
+      {
+        "en": "We built a visual language and a set of reusable templates so the team could publish every week without losing the brand.",
+        "ar": "بنينا لغة بصرية ومجموعة قوالب قابلة لإعادة الاستخدام تتيح للفريق النشر أسبوعيًا دون أن تضيع هوية العلامة."
+      }
+    ],
+    "challenge_lede": {
+      "en": "How do you make revenue strategy exciting",
+      "ar": "كيف تجعل استراتيجية الإيرادات ممتعة"
+    },
+    "challenge_soft": {
+      "en": "without making it look cheap?",
+      "ar": "دون أن تفقد جديتها؟"
+    },
+    "goals": [
+      {
+        "en": "Explain complex financial ideas at a glance",
+        "ar": "شرح الأفكار المالية المعقّدة من نظرة واحدة"
+      },
+      {
+        "en": "Build trust with decision makers, not just likes",
+        "ar": "بناء الثقة مع صنّاع القرار، لا الإعجابات فقط"
+      },
+      {
+        "en": "Give the in-house team templates they can reuse",
+        "ar": "منح الفريق الداخلي قوالب يعيد استخدامها"
+      }
+    ],
+    "limits": [
+      {
+        "en": "No photography budget",
+        "ar": "لا توجد ميزانية للتصوير"
+      },
+      {
+        "en": "Bilingual posts, Arabic first",
+        "ar": "منشورات بلغتين، والعربية أولًا"
+      },
+      {
+        "en": "Weekly publishing from week two",
+        "ar": "نشر أسبوعي بدءًا من الأسبوع الثاني"
+      }
+    ],
+    "idea_lede": {
+      "en": "The idea: numbers as characters.",
+      "ar": "الفكرة: الأرقام كأبطال."
+    },
+    "idea_soft": {
+      "en": "Every post gives one figure its own stage.",
+      "ar": "كل منشور يمنح رقمًا واحدًا مسرحه الخاص."
+    },
+    "keywords": [
+      {
+        "en": "Confident",
+        "ar": "واثق"
+      },
+      {
+        "en": "Clear",
+        "ar": "واضح"
+      },
+      {
+        "en": "Momentum",
+        "ar": "زخم"
+      },
+      {
+        "en": "Gulf-modern",
+        "ar": "خليجي معاصر"
+      }
+    ],
+    "moodboard": [],
+    "palette": [
+      {
+        "color": "#0E2A47"
+      },
+      {
+        "color": "#1FB57A"
+      },
+      {
+        "color": "#F2C14E"
+      },
+      {
+        "color": "#F5F3EE"
+      }
+    ],
+    "routes": [
+      {
+        "title": {
+          "en": "Ledger",
+          "ar": "الدفتر"
+        },
+        "text": {
+          "en": "Grid paper and handwritten notes. Warm, but it read as an accounting firm.",
+          "ar": "ورق مربعات وملاحظات بخط اليد. دافئ، لكنه بدا كمكتب محاسبة."
+        },
+        "chosen": false,
+        "image": ""
+      },
+      {
+        "title": {
+          "en": "Big Number",
+          "ar": "الرقم الكبير"
+        },
+        "text": {
+          "en": "One oversized figure per post, framed by a short line of insight. Fast to read and easy to template.",
+          "ar": "رقم واحد ضخم في كل منشور مع جملة قصيرة. سريع القراءة وسهل التحويل إلى قالب."
+        },
+        "chosen": true,
+        "image": ""
+      },
+      {
+        "title": {
+          "en": "Motion",
+          "ar": "الحركة"
+        },
+        "text": {
+          "en": "Arrows and growth curves everywhere. Energetic, but too close to trading ads.",
+          "ar": "أسهم ومنحنيات نمو في كل مكان. حيوي، لكنه اقترب من إعلانات التداول."
+        },
+        "chosen": false,
+        "image": ""
+      }
+    ],
+    "solution_lede": {
+      "en": "Three post types and a carousel system,",
+      "ar": "ثلاثة أنواع من المنشورات ونظام كاروسل،"
+    },
+    "solution_soft": {
+      "en": "all built on one grid.",
+      "ar": "كلها على شبكة واحدة."
+    },
+    "posts": [
+      "https://framerusercontent.com/images/jI3pMKerNpIp8q6kO3SEBfvhSug.jpg",
+      "https://framerusercontent.com/images/fR1tu968lLq8Nz3x15oB3Pfg.jpg",
+      "https://framerusercontent.com/images/Y2D0KlalLyqLPe0AeE7b2loTA.jpg"
+    ],
+    "carousels": [
+      {
+        "slides": [
+          "https://framerusercontent.com/images/Nh2AcXQ2AGDG4QVpbP3JusQ6WU.jpg",
+          "https://framerusercontent.com/images/Z1FV065smOUHyfgl33fOByPMPCE.jpg",
+          "https://framerusercontent.com/images/ZtdfHDq8Dymv4GS8HMgcSg1SU.jpg",
+          "https://framerusercontent.com/images/OTluSAu9bBihwDUGUfmx2JC0Eg8.jpg",
+          "https://framerusercontent.com/images/2xBJnU9rr9A0EIxSXH3eJ5X4xg0.jpg",
+          "https://framerusercontent.com/images/8xaAG4uxeQz6dGNEMO6G6q42Cu8.jpg"
+        ]
+      },
+      {
+        "slides": [
+          "https://framerusercontent.com/images/HnhvIFuox4axlW1Jpb5qX42N0g.jpg",
+          "https://framerusercontent.com/images/ctePNEhG45v29GKSR15lSTYc.jpg",
+          "https://framerusercontent.com/images/901TYnFPH6cGT1baVTI9uaCFQ.jpg",
+          "https://framerusercontent.com/images/74xfAl675DxsNuniGcV9mpmzM.jpg",
+          "https://framerusercontent.com/images/ytjIsR3ePn96KjDs0ONjMlbePqA.jpg",
+          "https://framerusercontent.com/images/hZY1y3P4OrNHpLQrGYwgrNymE0.jpg"
+        ]
+      },
+      {
+        "slides": [
+          "https://framerusercontent.com/images/ttXugJj8ZtWYTFPowq0xC9GQt4.jpg",
+          "https://framerusercontent.com/images/vE81sBE7ES9y4FZ7mLALwMx9M.jpg",
+          "https://framerusercontent.com/images/10cT1w5tOyu3SEygYCSJlqEM4I.jpg",
+          "https://framerusercontent.com/images/CLPoucfzk4zwWAvHVIxWWWuk3so.jpg",
+          "https://framerusercontent.com/images/NQianXPAPIcY7sToTlaPOwhjN1c.jpg",
+          "https://framerusercontent.com/images/WVxhcc26gEYChcUyiN6w7X87ZSE.jpg"
+        ]
+      },
+      {
+        "slides": [
+          "https://framerusercontent.com/images/eXTViTVRPXkRin9EySu2XuM.jpg",
+          "https://framerusercontent.com/images/noNOTbH36Bru8jNSQGB1FgmqUc.jpg",
+          "https://framerusercontent.com/images/pcFpPmNfcvLxhZUTNb6hps5u6g.jpg",
+          "https://framerusercontent.com/images/lS38GTAhZQCOX0WgVp6uFCFOnKw.jpg",
+          "https://framerusercontent.com/images/kmuAneRHI82Ms77zlhlOO0gSgo.jpg",
+          "https://framerusercontent.com/images/j9anewUwbHHjz43uc81lm2eOyAE.jpg"
+        ]
+      },
+      {
+        "slides": [
+          "https://framerusercontent.com/images/8HVd9ovVjUvQcpfka9NA8px34L0.jpg",
+          "https://framerusercontent.com/images/LaWlkSvgSkBoc7EFGxTN7HGfPDI.jpg",
+          "https://framerusercontent.com/images/6DiiL47hDuejQ0JGH2eY40ookQ.jpg"
+        ]
+      }
+    ],
+    "results": [
+      {
+        "label": {
+          "en": "Engagement",
+          "ar": "التفاعل"
+        },
+        "value": "+212%",
+        "text": {
+          "en": "Engagement rate in the first three months",
+          "ar": "زيادة في معدل التفاعل خلال أول ثلاثة أشهر"
+        }
+      },
+      {
+        "label": {
+          "en": "Saves",
+          "ar": "الحفظ"
+        },
+        "value": "4.6×",
+        "text": {
+          "en": "More saves per post than the old feed",
+          "ar": "حفظ أكثر لكل منشور مقارنة بالسابق"
+        }
+      },
+      {
+        "label": {
+          "en": "Leads",
+          "ar": "العملاء"
+        },
+        "value": "38",
+        "text": {
+          "en": "Inbound leads that came from social",
+          "ar": "عميل محتمل جاء من السوشيال"
+        }
+      }
+    ],
+    "quote": {
+      "en": "“For the first time, our feed sounds like us. Clients quote our posts back to us in meetings.”",
+      "ar": "«لأول مرة يشبهنا حسابنا. عملاؤنا يقتبسون منشوراتنا في الاجتماعات.»"
+    },
+    "quote_by": {
+      "en": "Founder, Hbbah",
+      "ar": "المؤسس، هبَّة"
+    },
+    "team": [
+      {
+        "role": {
+          "en": "Lead Designer",
+          "ar": "المصمم الرئيسي"
+        },
+        "name": {
+          "en": "Diaa Mohammed",
+          "ar": "ضياء محمد"
+        },
+        "me": true
+      },
+      {
+        "role": {
+          "en": "Creative Director",
+          "ar": "المدير الإبداعي"
+        },
+        "name": {
+          "en": "Team member",
+          "ar": "اسم عضو الفريق"
+        },
+        "me": false
+      },
+      {
+        "role": {
+          "en": "Copywriter",
+          "ar": "كاتب المحتوى"
+        },
+        "name": {
+          "en": "Team member",
+          "ar": "اسم عضو الفريق"
+        },
+        "me": false
+      },
+      {
+        "role": {
+          "en": "Motion Designer",
+          "ar": "مصمم موشن"
+        },
+        "name": {
+          "en": "Team member",
+          "ar": "اسم عضو الفريق"
+        },
+        "me": false
+      },
+      {
+        "role": {
+          "en": "Account Manager",
+          "ar": "مدير الحساب"
+        },
+        "name": {
+          "en": "Team member",
+          "ar": "اسم عضو الفريق"
+        },
+        "me": false
+      }
+    ],
+    "deliverables": [
+      {
+        "en": "Visual language",
+        "ar": "لغة بصرية"
+      },
+      {
+        "en": "Post templates",
+        "ar": "قوالب المنشورات"
+      },
+      {
+        "en": "Carousel system",
+        "ar": "نظام الكاروسل"
+      },
+      {
+        "en": "Usage guide",
+        "ar": "دليل الاستخدام"
+      }
+    ]
+  }
+}

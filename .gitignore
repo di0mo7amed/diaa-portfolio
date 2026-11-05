@@ -1,0 +1,5 @@
+.netlify
+preview/
+site/
+*.zip
+__pycache__/

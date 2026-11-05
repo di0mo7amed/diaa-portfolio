@@ -1,0 +1,19 @@
+{
+  "order": 4,
+  "slug": "2care",
+  "name": {
+    "en": "2Care",
+    "ar": "تو كير"
+  },
+  "field": {
+    "en": "Beauty",
+    "ar": "تجميل"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "art"
+  ],
+  "cover": "https://framerusercontent.com/images/eyxrTUyCrrMIKVJdlmLfokbUziw.png"
+}

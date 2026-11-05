@@ -1,0 +1,19 @@
+{
+  "order": 8,
+  "slug": "toycastle",
+  "name": {
+    "en": "Toy Castle",
+    "ar": "قلعة الألعاب"
+  },
+  "field": {
+    "en": "Kids' Toys",
+    "ar": "ألعاب الأطفال"
+  },
+  "year": "2024",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/FOlgOmZRAOpESUq1O4JUtjeB5s.png"
+}
