@@ -1,5 +1,5 @@
 {
-  "order": 6,
+  "order": 7,
   "slug": "growvo",
   "name": {
     "en": "Growvo",
@@ -9,12 +9,61 @@
     "en": "Marketing",
     "ar": "التسويق"
   },
-  "year": "2024",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "art"
   ],
   "cover": "https://framerusercontent.com/images/4uBjl1WcxwWH6CFIuK0e7GkLamE.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/IF9IaL7Aqu4RTDhtKrjyj8Zc0.png",
+        "https://framerusercontent.com/images/HQYbr29h1cKlXOoSlj6mLWK2uQ.png",
+        "https://framerusercontent.com/images/k7lZyARKVzSKnYQs0RYYaqw2wUw.png",
+        "https://framerusercontent.com/images/oEmZ5xrgh7cFcKJKHlUrCPlfo.png",
+        "https://framerusercontent.com/images/HDAvl3AxOSaZ7HahYZrCbg4Is38.png",
+        "https://framerusercontent.com/images/oFOy8Jx0jxZMT9LWeCtYMy1ftE.png",
+        "https://framerusercontent.com/images/Dw0WkfFPizvAcStnSM1KLAso.png",
+        "https://framerusercontent.com/images/S9JUF32gd9RpfCe1xse41fnzXuA.png",
+        "https://framerusercontent.com/images/EkbcWhN5tKYPrasc9O97oHc2Nd8.png",
+        "https://framerusercontent.com/images/vflNMl8R2J6Ot4F6qjO4NtgKaek.png",
+        "https://framerusercontent.com/images/gQj6JaTBd0brIfTOkz5ddg6lKwY.png",
+        "https://framerusercontent.com/images/jBnFcu8yaFtulLcnfzr21qgbogc.png",
+        "https://framerusercontent.com/images/5pUjxtuT0V8VYdPosDmuVd0C9J0.png",
+        "https://framerusercontent.com/images/9wSMbhsj4cle2F5NZXzI4iU.png",
+        "https://framerusercontent.com/images/DE4nx6g8RTze4A1LIsjf2EHQTfE.png",
+        "https://framerusercontent.com/images/ZJgXfq1O4WY0cjnMpOWAFnbCXQ.png",
+        "https://framerusercontent.com/images/pIKoVNuud3YylDTM9yRjlLrRo.png",
+        "https://framerusercontent.com/images/t8aehyODnVPbhFtbMaW9bb1mJI.png"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A company specialised in high-intent lead generation and complete sales systems. It turns ads into real customers through smart funnels, a strong CRM and automation that makes every lead a real opportunity.",
+    "ar": "شركة متخصصة في High-Intent Lead Generation وبناء أنظمة مبيعات متكاملة. تحوّل الإعلانات إلى عملاء فعليين من خلال Funnels ذكية، وCRM قوي، وAutomation يحوّل كل Lead إلى فرصة حقيقية."
+  },
+  "client": {
+    "en": "Growvo",
+    "ar": "جروڤو"
+  },
+  "country": {
+    "en": "Egypt",
+    "ar": "مصر"
+  }
 }

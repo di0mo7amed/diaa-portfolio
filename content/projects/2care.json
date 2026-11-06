@@ -6,15 +6,103 @@
     "ar": "تو كير"
   },
   "field": {
-    "en": "Beauty",
+    "en": "Beauty & Clinics",
     "ar": "تجميل"
   },
-  "year": "2025",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "art"
   ],
   "cover": "https://framerusercontent.com/images/eyxrTUyCrrMIKVJdlmLfokbUziw.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/ZWZormJtB1W2N1IpMiYcWEtMYY.jpg",
+        "https://framerusercontent.com/images/xfRtljRzgFcIDdK0EiEvNu56jg.png",
+        "https://framerusercontent.com/images/DUUXcYhVG8BlK4KLnpJliJD6iak.png",
+        "https://framerusercontent.com/images/nLMMxTTvPbu9Jz7eFZXtWywoJU.png",
+        "https://framerusercontent.com/images/uDT9RHHr3dVv01LmPFfnNkLDlc.png",
+        "https://framerusercontent.com/images/H1KoEsDTHnTIoRLyyux6gjmgh3Q.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 01",
+        "ar": "كاروسل 01"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/9IcmAmncDmAPAEEx8De3nqPRuBU.jpg",
+        "https://framerusercontent.com/images/ZU2UoADwa74CfI0xIhEhz3nU90.jpg",
+        "https://framerusercontent.com/images/iHpLVnwuZnofqfkk7M7kgd59Llg.jpg",
+        "https://framerusercontent.com/images/N0kJNaT7BL4ohbkzkIXYU0dNyxE.jpg",
+        "https://framerusercontent.com/images/tLWUWQHsBxwL1feUmrGmGttBZ8.jpg",
+        "https://framerusercontent.com/images/Mi5XfJzi3C8L8JsclyhlQIhyU8g.jpg"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 02",
+        "ar": "كاروسل 02"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/EhT626JcumMFroT98At6DD7e1c0.jpg",
+        "https://framerusercontent.com/images/uc25LVNaKUvHe7OM4pI8RIOwNc.jpg",
+        "https://framerusercontent.com/images/e8efANMmN5y6CKLeo7bGMTuxy5k.jpg",
+        "https://framerusercontent.com/images/AxKyunRiN0M9bdj5YWPnjEUzYI.jpg",
+        "https://framerusercontent.com/images/brp7tH6iotVKEpfVuR3srhn3ENw.jpg",
+        "https://framerusercontent.com/images/yYXA8QR4eXIVCfOENxqP3DcwkY4.jpg",
+        "https://framerusercontent.com/images/KJygOFIBgAKZIQ38fkUduu8ya4.jpg"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 03",
+        "ar": "كاروسل 03"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/21ZBGLMCRfqlgtHpunVQYrvuynE.jpg",
+        "https://framerusercontent.com/images/NZzXwToR5ayRzu73ra5Kea0OQOU.jpg",
+        "https://framerusercontent.com/images/abQK546g5wK5ybNZkKSPqWBWdY.jpg",
+        "https://framerusercontent.com/images/pn8UyuMtgqP4M5IPVdoJIUhpkzI.jpg",
+        "https://framerusercontent.com/images/b5EaRvGBpe9hqFlGfvj3p0BwtI.jpg",
+        "https://framerusercontent.com/images/Hox7kQ1sRwi2NKn5fzTkFpjHtTo.jpg",
+        "https://framerusercontent.com/images/qpWrfLBfs9aAmruEp1Gr6k.jpg",
+        "https://framerusercontent.com/images/DxtxxYU3J5tzRGK499N8txeE.jpg"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A leading medical destination in Riyadh, with consultants and specialists in dentistry, dermatology, aesthetics and laser.",
+    "ar": "وجهة طبية رائدة في العاصمة السعودية الرياض، تضم نخبة من الاستشاريين والأخصائيين في طب الأسنان، الجلدية، التجميل والليزر."
+  },
+  "client": {
+    "en": "2Care",
+    "ar": "تو كير"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  }
 }

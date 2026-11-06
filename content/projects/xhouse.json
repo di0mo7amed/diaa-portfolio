@@ -1,0 +1,65 @@
+{
+  "order": 13,
+  "slug": "xhouse",
+  "name": {
+    "en": "X House",
+    "ar": "اكس هاوس"
+  },
+  "field": {
+    "en": "Home & Sleep",
+    "ar": "الأثاث المنزلي"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/9qtCZyBazAjLocXIn0vArAJQQ.png",
+  "description": {
+    "en": "A brand that makes and sells mattresses and sleep products, focused on comfort and quality materials.",
+    "ar": "علامة تجارية متخصصة في تصنيع وبيع المراتب ومنتجات النوم، مع التركيز على الراحة وجودة الخامات."
+  },
+  "client": {
+    "en": "X House",
+    "ar": "اكس هاوس"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/KtVREgLo9i0VRALj7vZqGktG9lA.png",
+        "https://framerusercontent.com/images/w5hP37F42rhTvUk8rnvn7vVLUIg.png",
+        "https://framerusercontent.com/images/1gx9TslgvYkbq85v5glxj2Lt7cw.png",
+        "https://framerusercontent.com/images/Snm8yXyn4P8njFS6BJbDHjXaTsk.png",
+        "https://framerusercontent.com/images/xZ0CccgfjHwqmvl5IMqqamgq4.png",
+        "https://framerusercontent.com/images/dAwHQOceOVSteIk5T5gFuUyS1FU.png",
+        "https://framerusercontent.com/images/JGV8TGHwBd4gEAIUl5EXbOYw.png",
+        "https://framerusercontent.com/images/RWA6zLTJI5CcjhQG1YT704SyFc.png",
+        "https://framerusercontent.com/images/zS31XSGeF0WFyC4Wf9oPsUNs3o.png",
+        "https://framerusercontent.com/images/lsqjyH95lklOV93j5NriwB8zzI.png",
+        "https://framerusercontent.com/images/nkmbzwOeicyQ3wwCz4RXavaiZQ.png",
+        "https://framerusercontent.com/images/fdNAAZPvS8WXtj2TeR0tiU6sjg.png",
+        "https://framerusercontent.com/images/x8BfFB0KjjRRf13YEmwSvbxDd7A.png",
+        "https://framerusercontent.com/images/R0Az975bqwOsrntu7xN9AsMkTIg.png"
+      ]
+    }
+  ]
+}

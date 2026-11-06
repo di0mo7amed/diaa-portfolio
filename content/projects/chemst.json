@@ -1,0 +1,90 @@
+{
+  "order": 8,
+  "slug": "chemst",
+  "name": {
+    "en": "The Chemst",
+    "ar": "كيميست"
+  },
+  "field": {
+    "en": "Specialty Coffee",
+    "ar": "قهوة"
+  },
+  "year": "2026",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/RVhWPbRMnaYsoVOt16UOJkq1qE.png",
+  "description": {
+    "en": "A specialty coffee brand offering carefully selected crops and professional brewing tools. Its identity links brewing to precision and scientific experiment in search of the best possible cup, alongside roasted beans, gifts and home brewing gear.",
+    "ar": "علامة تجارية متخصصة في القهوة المختصة، تقدم محاصيل قهوة مختارة بعناية وأدوات تحضير احترافية لعشاق القهوة. تعتمد هويتها على ربط تحضير القهوة بالدقة والتجربة العلمية للوصول إلى أفضل مذاق ممكن، كما توفر البن المحمص والهدايا وأدوات التحضير المنزلية."
+  },
+  "client": {
+    "en": "The Chemst",
+    "ar": "كيميست"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/ZwnrStr2BxlbsxllVajj04A9K1I.jpg",
+        "https://framerusercontent.com/images/aJ669v4glR8loplqnZkb6wXRs.jpg",
+        "https://framerusercontent.com/images/nb5ywvp1DJAo4PinwMB2bjiisk.jpg",
+        "https://framerusercontent.com/images/FrCVHgrXk5IKivtPvwMfkzTAbg.jpg",
+        "https://framerusercontent.com/images/9eoiyy8Nj2NMAKS94Jeswo78oE.jpg",
+        "https://framerusercontent.com/images/ZUHJstC496v3i2fmB39X9ODekk.png",
+        "https://framerusercontent.com/images/TtkiRMbqBkZxB6N70qRJ6gAxaA.png",
+        "https://framerusercontent.com/images/TncV3DMFXb31XfVvx7fCsIsYo0.png",
+        "https://framerusercontent.com/images/1b53XNAAP116F82gBiHbbketFME.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 01",
+        "ar": "كاروسل 01"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/jE1TxcdkpiXBiPL2DKl7dhpT9RI.png",
+        "https://framerusercontent.com/images/emcUMo2dxm1Wtjw8vRuLJXfT7Lo.png",
+        "https://framerusercontent.com/images/sVuvIikMwhNTdq7Vq4MnRPuhLwQ.png",
+        "https://framerusercontent.com/images/X986PnNGReQbRcNWaH36cfb5yWs.png",
+        "https://framerusercontent.com/images/twcGOg44I6jRhWQg7U8cOTKt2F0.png",
+        "https://framerusercontent.com/images/5t52FJqCpcnU4TV4SsKyB0Q99hw.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 02",
+        "ar": "كاروسل 02"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/Vg1DGtO545yDjR1fwYp31H8IXRo.png",
+        "https://framerusercontent.com/images/hYNqQMPgHrUjhrrSviKwRjoRU.png",
+        "https://framerusercontent.com/images/NWJnk0ZANnOnKGhD0MDRrUYxhY.png",
+        "https://framerusercontent.com/images/FVfOUWMVRwODKe5ZvFfZV8PEmsE.png"
+      ]
+    }
+  ]
+}

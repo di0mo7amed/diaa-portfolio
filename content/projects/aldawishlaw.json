@@ -1,0 +1,69 @@
+{
+  "order": 11,
+  "slug": "aldawishlaw",
+  "name": {
+    "en": "Saud Aldawish Law",
+    "ar": "سعود الدويش"
+  },
+  "field": {
+    "en": "Law",
+    "ar": "محاماة"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/WWvbcArIz3I2WQQCIdAdsbJxWfE.png",
+  "description": {
+    "en": "A leading Saudi law firm offering complete legal solutions that protect companies across every sector.",
+    "ar": "شركة محاماة سعودية رائدة، تقدم حلولًا قانونية شاملة تهدف إلى حماية الشركات في جميع المجالات."
+  },
+  "client": {
+    "en": "Saud Aldawish Law",
+    "ar": "سعود الدويش"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/M03SGwmc8QOCW4E8LORbZlxSeM.png",
+        "https://framerusercontent.com/images/CTd2Gq0pUgaydwZoRE1ISREET24.png",
+        "https://framerusercontent.com/images/cxBDkr60fcurDXhc8eDqVLEY3Q8.png",
+        "https://framerusercontent.com/images/qwqQ9Vsf6j2uv2NX214qKXFr8.png",
+        "https://framerusercontent.com/images/YVePciIOlDpWzL67A5Y24KE.png",
+        "https://framerusercontent.com/images/0uT1vg78Co6ngqdobF1IfQ8nnA.png",
+        "https://framerusercontent.com/images/VRK5J2sXR7VRvWshy4PuXMj08BU.png",
+        "https://framerusercontent.com/images/PVrnEYb5U4MjHjdrp06YS3aJGZM.png",
+        "https://framerusercontent.com/images/RTZIj5Nl7t8n0pPmHhthEGk3oQA.png",
+        "https://framerusercontent.com/images/lWppYSTIMZOKZA7xJ6exiQKPKJU.png",
+        "https://framerusercontent.com/images/bhVAr32O2q8TQamC5JMtZLGf2Yk.png",
+        "https://framerusercontent.com/images/QgDsK8WjdSMF8BtEqHf7kgJ5MQ.png",
+        "https://framerusercontent.com/images/lDTvncT8I9Kii0UZpAMcVVBA74.png",
+        "https://framerusercontent.com/images/XSMJhX4kAqEJRFWtmmdr6S5Xk.png",
+        "https://framerusercontent.com/images/vyntENd23G2jUJ4zA0ZsEtA0Z6I.png",
+        "https://framerusercontent.com/images/8ux2dICRwnyeGW0uyC7QLm3Otk.png",
+        "https://framerusercontent.com/images/6STIsaQwJO5Gi1i31slIr1Wlyg.png",
+        "https://framerusercontent.com/images/NHvmBBATKZrOBwWJx92g46aPAk.png"
+      ]
+    }
+  ]
+}

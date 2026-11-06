@@ -1,0 +1,57 @@
+{
+  "order": 6,
+  "slug": "dovvy",
+  "name": {
+    "en": "Dovvy",
+    "ar": "دوڤي"
+  },
+  "field": {
+    "en": "Cafés & Bakery",
+    "ar": "مطاعم"
+  },
+  "year": "2026",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/3nmjETkC7OPXZ4tmrecrIazbVF8.png",
+  "description": {
+    "en": "A well-known chain of cafés and bakeries in Saudi Arabia, loved for specialty coffee, fresh pastries like croissants, sandwiches and boxes.",
+    "ar": "سلسلة مقاهي ومخابز شهيرة في المملكة العربية السعودية، تشتهر بتقديم القهوة المختصة، والمخبوزات الطازجة مثل الكرواسون، والسندويشات، والبوكسات."
+  },
+  "client": {
+    "en": "Dovvy",
+    "ar": "دوڤي"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/0Xr2U4ns4QPrSy0JJb5UxdoE3eo.png",
+        "https://framerusercontent.com/images/Osok5Gd6RTUA8z1swX61FRGzEnI.png",
+        "https://framerusercontent.com/images/E6cqNUVItv1NkFPY9mlfk2ZJYa8.png",
+        "https://framerusercontent.com/images/QfNUSjKwjUJV1Ql4zbJSLhyiA.png",
+        "https://framerusercontent.com/images/hRFiktB6evGBTDpoNrSbMvFxW8.png",
+        "https://framerusercontent.com/images/J6abiNcErcagTLOEERI7nGeEX0k.png"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "order": 8,
+  "order": 12,
   "slug": "toycastle",
   "name": {
     "en": "Toy Castle",
@@ -9,12 +9,75 @@
     "en": "Kids' Toys",
     "ar": "ألعاب الأطفال"
   },
-  "year": "2024",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "campaigns"
   ],
   "cover": "https://framerusercontent.com/images/FOlgOmZRAOpESUq1O4JUtjeB5s.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/vilaeanO1X8VLI48dWB59WrJPds.png",
+        "https://framerusercontent.com/images/cZ2i0CSmqN9VgAZi3WRWUKo8.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 01",
+        "ar": "كاروسل 01"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/Wr7saCQZ71c46AH2PQy4YtLBzhc.png",
+        "https://framerusercontent.com/images/z6dmwljajXWgNXN82ZOkPWqz4.png",
+        "https://framerusercontent.com/images/OfZjWlGaVhKKJLCQClwHK8Sno.png",
+        "https://framerusercontent.com/images/fxdB4ARm3PjikeG84Ieog7bYSw8.png",
+        "https://framerusercontent.com/images/pU9KO7XbLhZehq8FaCYWvqqo0.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 02",
+        "ar": "كاروسل 02"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/v2c9t6p5Kwf8lUsRbPjLxtvmM.png",
+        "https://framerusercontent.com/images/t47XG79SXKBwPfwekid5BIFaZqQ.png",
+        "https://framerusercontent.com/images/INtDvKwDknSFFuo7GlfLIat1Xw.png",
+        "https://framerusercontent.com/images/5gI4rxY9OKYDDlOFhFG3GuYJMI.png",
+        "https://framerusercontent.com/images/HOVqGmapmWJclGQZv30LAU1WzA.png"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A store for educational and fun toys across all ages: puzzles, building sets, cars, dolls and interactive toys that grow children's skills and imagination through play.",
+    "ar": "متجر متخصص في ألعاب الأطفال التعليمية والترفيهية لمختلف الفئات العمرية، يقدم ألعاب الذكاء والتركيب والسيارات والدمى والألعاب التفاعلية التي تنمّي مهارات الأطفال وتعزز خيالهم أثناء اللعب."
+  },
+  "client": {
+    "en": "Toy Castle",
+    "ar": "قلعة الألعاب"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  }
 }

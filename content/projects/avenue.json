@@ -9,12 +9,96 @@
     "en": "Marketing",
     "ar": "التسويق"
   },
-  "year": "2025",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "campaigns"
   ],
   "cover": "https://framerusercontent.com/images/EOjMDlGAq5kJv7k4tFHrlmlY.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/xBnv7WLbKl2tUfU9rj7YmteRA.png",
+        "https://framerusercontent.com/images/kRvHmjTEsTrpuLU368iYtNXHaNc.png",
+        "https://framerusercontent.com/images/BC0j3vlsR3B6cumI9EdH9Uj4cs.png",
+        "https://framerusercontent.com/images/7tDvJXbn47UGt2Jwi7Xi3QSTinA.png",
+        "https://framerusercontent.com/images/RT4eb7s8F9F8XmD7EUDm4sWJl0.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 01",
+        "ar": "كاروسل 01"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/RHohUAWVRvguGK8QVhaNvEhM4.jpg",
+        "https://framerusercontent.com/images/VRVxSo3DXv1QBWSuIIphFndDoWo.jpg",
+        "https://framerusercontent.com/images/BLluvCjCBh5KJHheiJvok6ego0.jpg",
+        "https://framerusercontent.com/images/qFdKpmBBmN7mTYAiBiZCp9QzBp4.jpg",
+        "https://framerusercontent.com/images/mgb6QOKcUqKlEmDi4v6YhtcpYn0.jpg",
+        "https://framerusercontent.com/images/642Ab8GGLpUt764TFut2JGG77t8.jpg"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 02",
+        "ar": "كاروسل 02"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/Pfg7wCYtLL56a47qJy8fyVEIris.jpg",
+        "https://framerusercontent.com/images/fvEIdmyVsgv2ZFqF6WQiNkhxM.jpg",
+        "https://framerusercontent.com/images/ke1aKZSorJ7eLr4CT0jQW4Ld0q0.jpg",
+        "https://framerusercontent.com/images/kEh1c8BYCIhSta1NFxrzLlZAUv0.jpg",
+        "https://framerusercontent.com/images/MNbaNwHBY50154rPr7KDWZBVa0.jpg",
+        "https://framerusercontent.com/images/zjaAuIafrOKDMe7osmQ6ZSc6F4.jpg",
+        "https://framerusercontent.com/images/koZAC3ffktwoIxd16SuFpDydHI.jpg"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 03",
+        "ar": "كاروسل 03"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/xOqqF4Y3xbdgIMsJY0HnSnhW1I.jpg",
+        "https://framerusercontent.com/images/1rhQ1WoRcJ0SnwuyAlACi18IXM.jpg",
+        "https://framerusercontent.com/images/peLRlYYGPb8bBQv9keCPTZw240.jpg",
+        "https://framerusercontent.com/images/600w6OpijH8MjyVZK2bQKNMQNE.jpg",
+        "https://framerusercontent.com/images/d8ayTHKiwdKjzvsTcai4ayvnQ.jpg"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A full-service digital and creative marketing agency: social media management, paid ads, SEO, influencer marketing and data analysis that help brands grow with measurable results.",
+    "ar": "وكالة تسويق رقمي وإبداعي متكاملة تقدم خدمات إدارة السوشيال ميديا، الإعلانات الممولة، تحسين محركات البحث (SEO)، التسويق عبر المؤثرين، وتحليل البيانات لمساعدة العلامات التجارية على النمو وتحقيق نتائج قابلة للقياس."
+  },
+  "client": {
+    "en": "Avenue",
+    "ar": "اڤينيو"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  }
 }

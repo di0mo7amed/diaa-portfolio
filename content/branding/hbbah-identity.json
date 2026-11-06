@@ -1,0 +1,152 @@
+{
+  "order": 0,
+  "slug": "hbbah-identity",
+  "name": {
+    "en": "Hbbah",
+    "ar": "هبَّة للتطوير"
+  },
+  "field": {
+    "en": "Business Growth",
+    "ar": "تطوير الأعمال"
+  },
+  "year": "2026",
+  "tags": [
+    "branding"
+  ],
+  "cover": "https://framerusercontent.com/images/rmXn1UYcRYNejBxLAWVsQUYjl8.jpg",
+  "description": {
+    "en": "Hbbah is a business growth firm focused on financial growth and better revenue. While many companies work hard, few run on a clear system and a precise method. Hbbah re-engineers the growth equation to turn hidden potential into multiplied, tangible results. Our task was to design a visual identity that carries that idea.",
+    "ar": "هبَّة شركة متخصصة في تطوير الأعمال، تركز على النمو المالي وتحسين الإيرادات. وفي عصر تعمل فيه الكثير من الشركات بجهد كبير، بينما يعتمد عدد قليل منها على منظومة واضحة ومنهجية دقيقة، تقوم HBBAH بإعادة هندسة معادلة النمو لتحويل الإمكانات الكامنة إلى نتائج مضاعفة وملموسة. وقد تمثلت مهمتنا في تصميم هوية بصرية تعكس هذا المفهوم."
+  },
+  "client": {
+    "en": "Hbbah",
+    "ar": "هبَّة للتطوير"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "services": {
+    "en": "Brand identity",
+    "ar": "هوية بصرية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The logo",
+        "ar": "الشعار"
+      },
+      "heading": {
+        "en": "Designed growth.",
+        "ar": "النمو المصمَّم."
+      },
+      "body": {
+        "en": "The logo is built on the idea of “designed growth”. A curve set inside the letterforms is a visual metaphor for a smooth move from start to destination, from current performance to untapped potential. It traces a steady upward path that speaks of growth, while cutting through the usual structure of the letters to show flexibility and the ability to adapt to the market. It also stands for the joined-up solutions the company offers, linking every side of a business in one system aimed at sustainable growth and measurable results.",
+        "ar": "تم بناء الشعار على مفهوم «النمو المصمَّم»، حيث يمثّل المنحنى المدمج داخل تكوين الحروف استعارة بصرية للانتقال السلس من نقطة البداية إلى نقطة الوصول، ومن الأداء الحالي إلى الإمكانات غير المستغلة. ويجسد هذا المنحنى مسارًا تصاعديًا مستمرًا يعكس النمو والتطور، بينما يخترق البنية التقليدية للحروف ليعبّر عن المرونة والقدرة على التكيف مع متغيرات السوق. كما يرمز إلى الحلول المتكاملة التي تقدمها الشركة، والتي تربط بين مختلف جوانب الأعمال ضمن منظومة واحدة تهدف إلى تحقيق نمو مستدام ونتائج قابلة للقياس."
+      }
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/eth2AolsgUsgpIuq5WdScZE26I.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/g8xTmnfekoUi9VsteHioarRVAs.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/Eiev2Ke5s6IjlsQ9ojDwGSRvew.gif",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/y3kQgtH0ec6zK7M59D5gYIpjY.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/szD2rFpcUbqKYxFNb5Mjds6CiA.jpg",
+      "size": "full"
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "Typography",
+        "ar": "الخطوط"
+      },
+      "heading": {
+        "en": "Clash Display × IBM Plex Sans Arabic",
+        "ar": "Clash Display × IBM Plex Sans Arabic"
+      },
+      "body": {
+        "en": "To balance modern innovation with corporate seriousness, Clash Display was chosen for its strong geometric character and confident presence, which carry the spirit of growth and ambition. IBM Plex Sans Arabic pairs with it for its clarity and its professional, international personality that is both modern and easy to read. Together they form a balanced type system that stays consistent and flexible across every touchpoint, from financial reports and presentations to digital platforms and official documents.",
+        "ar": "لتحقيق توازن دقيق بين الابتكار العصري والجدية المؤسسية، تم اختيار خط «Clash Display» لما يتمتع به من طابع هندسي قوي وحضور بصري واثق يعكس روح النمو والطموح. وفي المقابل، تم اعتماد «IBM Plex Sans Arabic» لما يقدمه من وضوح عالٍ وشخصية احترافية عالمية تجمع بين الحداثة وسهولة القراءة. يخلق هذا المزيج نظامًا طباعيًا متوازنًا يضمن الاتساق والمرونة عبر مختلف نقاط التواصل، من التقارير المالية والعروض التقديمية إلى المنصات الرقمية والمستندات الرسمية، مع الحفاظ على أعلى مستويات الوضوح والاحترافية."
+      }
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/UKhptu3i2r35Qy63qd14myj5u4.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/yeR7wffiDfBwWOmCrl0pUsyz64g.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/OcR606hzVzB4kD3JVPHwv3JwaA.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/zCXxxJX7GoTkAi3euoykcmveHe8.jpg",
+      "size": "full"
+    },
+    {
+      "type": "section",
+      "label": {
+        "en": "In use",
+        "ar": "التطبيقات"
+      }
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/PqgdKtnN1nlQqta5nzXMSrZWWk.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/BW6h9lKuONgVfnwDdX0tj5WGsJE.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/37ulUsl554woifdEOVwYNmGJxw.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/FVmkW9q5qJIk7tdC8KZ16qFcgY.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/tCakh3qoSEwxlfdAgd0JhXbiDH4.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/rqkQNR89R2RA4CMyXkLxcfNrE.jpg",
+      "size": "full"
+    },
+    {
+      "type": "image",
+      "image": "https://framerusercontent.com/images/KRXGNgVtKVpmqHeyVxls9qxcLpE.jpg",
+      "size": "full"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "order": 10,
+  "slug": "thabay7najd",
+  "name": {
+    "en": "Thabayeh Najd",
+    "ar": "ذبائح نجد"
+  },
+  "field": {
+    "en": "Food",
+    "ar": "أغذية"
+  },
+  "year": "2025",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/GG9NoooOSmQKiiifiPLvk9Z9dag.png",
+  "description": {
+    "en": "A Saudi company for fresh meat, whole sheep and banquets. It prepares and delivers to order for families and events, for customers who want quality meat and easy ordering that meets Sharia and health standards.",
+    "ar": "شركة سعودية متخصصة في الذبائح واللحوم الطازجة والولائم والمناسبات، وتقدم خدمات تجهيز وتوصيل الذبائح حسب الطلب للأفراد والفعاليات، للعملاء الباحثين عن جودة اللحوم وسهولة الطلب مع الالتزام بالمعايير الشرعية والصحية."
+  },
+  "client": {
+    "en": "Thabayeh Najd",
+    "ar": "ذبائح نجد"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/8ODY5yzaWyGjaZnNBFErsFfA7qU.png",
+        "https://framerusercontent.com/images/ZYQK0ylVTonMo1uSVPjy8iU7dc.png",
+        "https://framerusercontent.com/images/GRUnNYKoV07YS6VDApBtVkfDXU.png",
+        "https://framerusercontent.com/images/KBV4VCLGeWWGqWAksfriTiTPJMA.png",
+        "https://framerusercontent.com/images/NjJFiIgyhOFcFcpQU28xuqehRyA.png",
+        "https://framerusercontent.com/images/7al3q88YJpVgCIN3XQi8zVmk.png",
+        "https://framerusercontent.com/images/0ndWNiy58AeKAZcTTukvqmV6Fhw.png",
+        "https://framerusercontent.com/images/XtiO0AekuSODyV4EKEzpPeTKw.png",
+        "https://framerusercontent.com/images/Tm1bewGD9C7t8liMCCODbbZXg.png",
+        "https://framerusercontent.com/images/9TBVtDiLxf76aO0SfPK7K2OpGg.png",
+        "https://framerusercontent.com/images/6BqM6oOBSz70AexLVXIY6Ufg.jpg",
+        "https://framerusercontent.com/images/RlNncKLTCKlIYfsjXObuRQdIWGI.jpg",
+        "https://framerusercontent.com/images/NHrx3SBUz9XGzKnb7EHgCcqXM.jpg",
+        "https://framerusercontent.com/images/DGBQOgMtywbcNWdGUBbli9t7dyg.jpg",
+        "https://framerusercontent.com/images/lXrVx8NYrGGWg39Al5sGSpAoxK8.jpg",
+        "https://framerusercontent.com/images/DDlSv2I92uP1spS8qHCeAS7tuY.jpg",
+        "https://framerusercontent.com/images/u8fYl7ThM17pCMhVa01mykLZMY.jpg",
+        "https://framerusercontent.com/images/GFHR8j9A68zYNZBTelhdq9s44.jpg",
+        "https://framerusercontent.com/images/Qi1LMHo8i5VYcELqd6sCcysvYc.jpg",
+        "https://framerusercontent.com/images/A6LOvQwwTn1FdUqkeHtKsB1k8Hg.jpg",
+        "https://framerusercontent.com/images/tFf8nk3o0588cfGDLabGHxB0.png"
+      ]
+    }
+  ]
+}

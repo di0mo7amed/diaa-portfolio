@@ -1,20 +1,63 @@
 {
-  "order": 7,
+  "order": 9,
   "slug": "holidaytime",
   "name": {
     "en": "Holiday Time",
     "ar": "هوليداي تايم"
   },
   "field": {
-    "en": "Travel",
+    "en": "Travel & Tourism",
     "ar": "سياحة"
   },
-  "year": "2024",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "campaigns"
   ],
   "cover": "https://framerusercontent.com/images/Z5GxoPsLdD5LgMgCqdak56QYHA.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/GgA7oz8u5R5yk4gIp6sombIuzd0.png",
+        "https://framerusercontent.com/images/DEtqUSsjBDjdusutcdzIdzho.jpg",
+        "https://framerusercontent.com/images/o6pis9luRGKqywazb9BVqU1mA.jpg",
+        "https://framerusercontent.com/images/7vk2lF0m1OlcdaYAncKYdEgfkE.png",
+        "https://framerusercontent.com/images/ltmW4FHgkkmzhViftnQmXxMKmo8.jpg",
+        "https://framerusercontent.com/images/IYJDKhKXlYNXEIyNf1hLRt53WVk.jpg",
+        "https://framerusercontent.com/images/IJRvwVKgZKdFAm69VX7x4nKpg.jpg",
+        "https://framerusercontent.com/images/JGVUHefFxDQmbL2L6McLkFk3g.jpg",
+        "https://framerusercontent.com/images/Al5crEmccMBcgHHQBQaKgzVk614.jpg",
+        "https://framerusercontent.com/images/cTbQbDtSjdUhkAhDQ6VUYaHfM.jpg",
+        "https://framerusercontent.com/images/EYghUGS0mEKb4E9pnXDhFrl4Lgk.jpg",
+        "https://framerusercontent.com/images/iCoKEtMQ4fNTwoPzm8VueKvWzY.jpg"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A Saudi travel and tourism company founded in 2011, offering visas, flight and hotel bookings, and holiday packages inside and outside Saudi Arabia.",
+    "ar": "وقت الأجازة للسفر والسياحة شركة سعودية متخصصة في خدمات السفر والسياحة تأسست عام 2011، وتقدم خدمات استخراج التأشيرات، وحجوزات الطيران والفنادق، والباقات السياحية داخل وخارج السعودية."
+  },
+  "client": {
+    "en": "Holiday Time",
+    "ar": "هوليداي تايم"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  }
 }

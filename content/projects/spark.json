@@ -1,0 +1,66 @@
+{
+  "order": 14,
+  "slug": "spark",
+  "name": {
+    "en": "Spark",
+    "ar": "سبارك"
+  },
+  "field": {
+    "en": "Mobility",
+    "ar": "وسائل النقل"
+  },
+  "year": "2026",
+  "category": "social",
+  "tags": [
+    "social",
+    "campaigns"
+  ],
+  "cover": "https://framerusercontent.com/images/s8CHeEAPRAdLACR8FTACiYJzNlA.png",
+  "description": {
+    "en": "An electric scooter and smart mobility company in Egypt, offering everyday models with far lower running costs than traditional transport.",
+    "ar": "شركة متخصصة في السكوترات الكهربائية وحلول التنقل الذكي داخل مصر، تقدم موديلات للتنقل اليومي بتكلفة تشغيل منخفضة مقارنة بوسائل النقل التقليدية."
+  },
+  "client": {
+    "en": "Spark",
+    "ar": "سبارك"
+  },
+  "country": {
+    "en": "Egypt",
+    "ar": "مصر"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/3CtCpSUp6RsT1j8vcN081GhKK0.png",
+        "https://framerusercontent.com/images/FAfgNepFMKpnTui5wo8k5szsO1Q.png",
+        "https://framerusercontent.com/images/E2JFxQPAPZQOAq7vVy67J6MM7eg.png",
+        "https://framerusercontent.com/images/dKWqkde1aLckLYHJlHbrpPa0.png",
+        "https://framerusercontent.com/images/95FO81gSRZNmqA7Qd25viJuKU.png",
+        "https://framerusercontent.com/images/4vkZn73XbvzezxUGxNeh9cmpUz4.png",
+        "https://framerusercontent.com/images/UsrF2ohz1CMWHTLna8ekZB9Dll0.png",
+        "https://framerusercontent.com/images/Ot4c8HOB4v03bHwY9BVfXw9cgfU.png",
+        "https://framerusercontent.com/images/GXvJC1j8vsH5gZcsj6ajdTlfzw.png",
+        "https://framerusercontent.com/images/w6O9dGg6Ryw4AYx4zpWd3scQnc.png",
+        "https://framerusercontent.com/images/ajK70tBNdx0nwt0HHvfUSlyUlB8.png",
+        "https://framerusercontent.com/images/5CiIhyJQtM8e7wWHCVofHtYfuFA.png",
+        "https://framerusercontent.com/images/jUdIgETlqqr1aZMDTRdegAeyLrs.png",
+        "https://framerusercontent.com/images/7TUjUwwusFAsc4ONUqmb2vUdXwU.png",
+        "https://framerusercontent.com/images/QGMYQdKexJOsymW74RFVfZu058.png"
+      ]
+    }
+  ]
+}

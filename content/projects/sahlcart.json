@@ -2,19 +2,141 @@
   "order": 5,
   "slug": "sahlcart",
   "name": {
-    "en": "Sahl Cart",
+    "en": "SahlCart",
     "ar": "سهل كارت"
   },
   "field": {
     "en": "E-commerce",
     "ar": "متاجر إلكترونية"
   },
-  "year": "2025",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "campaigns"
   ],
   "cover": "https://framerusercontent.com/images/0jPCQTkadPMl3ewAYEFtZhoTo.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/icWgOpeBDWYCi05z5djljn9M8.png",
+        "https://framerusercontent.com/images/R8weNGJI0F86ugCXjQofDGUlM.png",
+        "https://framerusercontent.com/images/iQTARvPeHJmM8Y2cFdQjtie6PMo.png",
+        "https://framerusercontent.com/images/mkDjZQYp93q3G3yve30XQc2iiRw.png",
+        "https://framerusercontent.com/images/u3bRS8B5xeYv7oM0ii5zfTsnqAE.png",
+        "https://framerusercontent.com/images/KJhs0TZvFr4im5bIIlQvFe9x01Q.png",
+        "https://framerusercontent.com/images/48r4B3WudiYFXnWDfszQZ11QY.png",
+        "https://framerusercontent.com/images/Ytujd1I0sibLv4ggTNicVZRCYdQ.png",
+        "https://framerusercontent.com/images/qMivIXAi1mqXxnqUjBSZjhYIwos.png",
+        "https://framerusercontent.com/images/FxUXACShsKQccreNErOpx8G4kqk.png",
+        "https://framerusercontent.com/images/vFU6973MD8wgKsFYlD6FixWVWws.png",
+        "https://framerusercontent.com/images/2jTlNiWLS6pWWf0o2qazVqBKUb0.png",
+        "https://framerusercontent.com/images/r9R2YAq2etFKNVt0ivTDyBxcJzg.png",
+        "https://framerusercontent.com/images/0vtdLvbfRrAlP2YONDpuiAXhk0A.png",
+        "https://framerusercontent.com/images/41j5GX3M7pfHSk17fsKzlpKgz6E.png",
+        "https://framerusercontent.com/images/hhoa3QZX4PPy5BQXoRjaDFga58.png",
+        "https://framerusercontent.com/images/jQ6c16YILAiBgUJ3d5uuiQrXIMk.png",
+        "https://framerusercontent.com/images/GR5TNTJ1swtZxAYkv9ZihCRADLU.png",
+        "https://framerusercontent.com/images/hE47G8JLY9G0MCUmSiAU0KZDIw.png",
+        "https://framerusercontent.com/images/IeCD7R3eYkgS6iCpWXZN8K7Zaw.png",
+        "https://framerusercontent.com/images/Ac4tJ4746JOskRLLbrK65dp8JUs.png",
+        "https://framerusercontent.com/images/OPdO6t3P30MzXgTByLNshhNdq1Y.png",
+        "https://framerusercontent.com/images/nnOHoZzaHgidNf6vYge4goM9Tk.png",
+        "https://framerusercontent.com/images/RwLgv9OiPDmCTXORSPXIwGTQ.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 01",
+        "ar": "كاروسل 01"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/eswCavHl3c7ypkMzKEuV47iOzyk.png",
+        "https://framerusercontent.com/images/kOuchyqEdJJjrjZK4zWnWl3gEsQ.png",
+        "https://framerusercontent.com/images/MPz1KokCD7fh0ai8JMRWD0ekThs.png",
+        "https://framerusercontent.com/images/ZoYNuU9YlZfY6GnbzG6CrsAeZvI.png",
+        "https://framerusercontent.com/images/EeEOqAv5f5jMDZhGg5n04jJt4.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 02",
+        "ar": "كاروسل 02"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/vuM9aB0KZsCYXOLA65uM0Uk6M.png",
+        "https://framerusercontent.com/images/7zBslf4xkmzMwYv6JPLi0pesIFg.png",
+        "https://framerusercontent.com/images/1e0eFHDxG4X7dRPTcS4t7Td3A.png",
+        "https://framerusercontent.com/images/AN058kvt29CiDBa6XLPcNUNXXY.png",
+        "https://framerusercontent.com/images/qkjUzuonR2xWvszmECscQ0i2jE.png",
+        "https://framerusercontent.com/images/d49FCpbb83h42PAlQkkahTKxIEs.png"
+      ]
+    },
+    {
+      "type": "carousel",
+      "title": {
+        "en": "Carousel 03",
+        "ar": "كاروسل 03"
+      },
+      "ratio": "4:5",
+      "slides": [
+        "https://framerusercontent.com/images/O31MyT4jR23LY7Jzfcsuw2Dvg.png",
+        "https://framerusercontent.com/images/tsPezabtUd5vJVhYGtaDCR2KKGA.png",
+        "https://framerusercontent.com/images/W2OfalzbGAWBdp8tnkvGHGYLQ.png",
+        "https://framerusercontent.com/images/awn2q63f8RKCZgQf9fEvmbTrUKc.png",
+        "https://framerusercontent.com/images/1IWwL8ckIWRgD93MLUmU277JTO8.png",
+        "https://framerusercontent.com/images/7EK7miUoWwoIUWTJCaieRgwjEdQ.png"
+      ]
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Feed",
+        "ar": "شكل الحساب"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/6PAva8dgV5x2WBFjNFbwbogk.png",
+        "https://framerusercontent.com/images/7Xi9I3RY2wuGFn4K4ux85e131g.png",
+        "https://framerusercontent.com/images/n46MckhWztY0MY5LY7mYjzcglg.png",
+        "https://framerusercontent.com/images/EXbAztqvUgav4qvJ6vc5OM4XR4M.png",
+        "https://framerusercontent.com/images/3AjtVrQgwcqxOln3RO3SpVfruk.png",
+        "https://framerusercontent.com/images/JA6OOFT2ndzNMyaxFxWgOGT5c.png",
+        "https://framerusercontent.com/images/eZQqBjYGuEbCVsgCTf4mdJizXw.png",
+        "https://framerusercontent.com/images/KEfwgmDwl9ypOXHGiKeqTllPY54.png",
+        "https://framerusercontent.com/images/NAZ44T35jH8PstqcmSrTsRuTGDw.png"
+      ]
+    }
+  ],
+  "description": {
+    "en": "An Egyptian e-commerce SaaS platform that lets people and companies build online stores and landing pages and manage orders in one place, with no code.",
+    "ar": "منصة SaaS مصرية للتجارة الإلكترونية تساعد الأفراد والشركات على إنشاء المتاجر الإلكترونية وصفحات الهبوط وإدارة الطلبات من مكان واحد دون الحاجة لبرمجة."
+  },
+  "client": {
+    "en": "SahlCart",
+    "ar": "سهل كارت"
+  },
+  "country": {
+    "en": "Egypt",
+    "ar": "مصر"
+  }
 }

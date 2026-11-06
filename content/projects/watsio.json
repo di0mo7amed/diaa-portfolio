@@ -9,12 +9,58 @@
     "en": "SaaS",
     "ar": "SaaS"
   },
-  "year": "2025",
+  "year": "2026",
   "category": "social",
   "tags": [
     "social",
     "campaigns"
   ],
   "cover": "https://framerusercontent.com/images/FPgJVWIGSlZmTsytmdNiUvXlWm0.png",
-  "blocks": []
+  "blocks": [
+    {
+      "type": "section",
+      "label": {
+        "en": "The work",
+        "ar": "الأعمال"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": {
+        "en": "Posts",
+        "ar": "المنشورات"
+      },
+      "columns": 3,
+      "ratio": "4:5",
+      "images": [
+        "https://framerusercontent.com/images/urgi5y3fuCn0G23fD0zpTabCbE.png",
+        "https://framerusercontent.com/images/j6G4OeRlaer9EsMxWD3GV3ECPo.png",
+        "https://framerusercontent.com/images/qXIq9FExxbowjIDlTLKdmr2ZrY.png",
+        "https://framerusercontent.com/images/hrG4gxxadetdbPEgm5hwZFLXk.png",
+        "https://framerusercontent.com/images/hiEfCPwCdktrmdOcprY9EWqAmk.png",
+        "https://framerusercontent.com/images/siO1EU3MvgzBB9Ee5bXYQYQ4.png",
+        "https://framerusercontent.com/images/uVjaLkzPoaDDErCVocLHm8O7GAs.png",
+        "https://framerusercontent.com/images/laDQLdaA7lUTPhXimDvmW8xwqok.png",
+        "https://framerusercontent.com/images/nJRLhRBvCdsnr0JFl8Ow32at0.png",
+        "https://framerusercontent.com/images/GF13fwFsrEjlOadjDk7xdigWHk.png",
+        "https://framerusercontent.com/images/D7rkqwj5pBLgu8ggJ4fdSnqMK4M.png",
+        "https://framerusercontent.com/images/X70YrRz5mRbxEkkbUNhGewUtYQg.png",
+        "https://framerusercontent.com/images/5o8VlLgUbM2fZQ6LJxx9N3CnN6I.png",
+        "https://framerusercontent.com/images/Lg5mKyCrxvKW1VXxkm0z23g1G9k.jpg",
+        "https://framerusercontent.com/images/EsUenO9GDAZ8eYMlSpcpzoZOzM.jpg"
+      ]
+    }
+  ],
+  "description": {
+    "en": "A Saudi platform for managing and marketing WhatsApp conversations for businesses. It helps sales and support teams handle every message from one shared inbox.",
+    "ar": "منصة سعودية متخصصة في إدارة وتسويق محادثات واتساب للشركات، وتساعد فرق المبيعات وخدمة العملاء على إدارة كل الرسائل من صندوق وارد موحد."
+  },
+  "client": {
+    "en": "Watsio",
+    "ar": "واتسيو"
+  },
+  "country": {
+    "en": "Saudi Arabia",
+    "ar": "السعودية"
+  }
 }
