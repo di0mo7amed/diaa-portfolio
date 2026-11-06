@@ -2756,12 +2756,6 @@
          ]
         },
         {
-         "label": "Link",
-         "name": "url_note",
-         "widget": "hidden",
-         "required": false
-        },
-        {
          "label": "Link (e.g. branding.html or work.html)",
          "name": "link",
          "widget": "string",
