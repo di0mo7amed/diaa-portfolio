@@ -315,13 +315,6 @@
     var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { sec.classList.add("in"); io.disconnect(); } }); }, { threshold: .3 });
     io.observe(sec);
   } else sec.classList.add("in");
-  var pins = sec.querySelectorAll(".pin"), rows = sec.querySelectorAll(".where-list li");
-  var hi = function (i, on) {
-    pins.forEach(function (p) { if (p.dataset.i === i) p.classList.toggle("on", on); });
-    rows.forEach(function (r) { if (r.dataset.i === i) r.classList.toggle("on", on); });
-  };
-  [].forEach.call(pins, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
-  [].forEach.call(rows, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
 })();
 
 /* ---------- Count-up numbers ---------- */
@@ -392,4 +385,151 @@
       })
       .catch(function () { st.className = "f-status err"; st.textContent = st.dataset.err; send.disabled = false; });
   });
+})();
+
+/* ---------- Markets globe: dotted Earth, auto-spin, drag, arcs from base ---------- */
+(function () {
+  var box = document.querySelector(".globe"); if (!box) return;
+  var self = document.currentScript, dir = self ? self.src.replace(/[^\/]*$/, "") : "assets/";
+  var go = function () {
+    var cv = box.querySelector("canvas"), ctx = cv.getContext("2d");
+    var pts = JSON.parse(box.dataset.pts || "[]"), base = pts.filter(function (p) { return p.base; })[0] || pts[0];
+    var rows = document.querySelectorAll(".where-list li");
+    var RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var D = Math.PI / 180, L = window.LAND_DOTS || [];
+    var vec = function (lon, lat) { var a = lon * D, b = lat * D, cb = Math.cos(b); return [cb * Math.cos(a), cb * Math.sin(a), Math.sin(b)]; };
+    var land = []; for (var i = 0; i < L.length; i += 2) land.push(vec(L[i], L[i + 1]));
+    pts.forEach(function (p) { p.v = vec(p.lon, p.lat); });
+    // great-circle arcs from base, lifted off the surface
+    var arcs = pts.filter(function (p) { return p !== base; }).map(function (p, k) {
+      var a = base.v, b = p.v, w = Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]))), n = 60, out = [];
+      for (var t = 0; t <= n; t++) {
+        var f = t / n, s1 = Math.sin((1 - f) * w) / Math.sin(w), s2 = Math.sin(f * w) / Math.sin(w), h = 1 + Math.sin(Math.PI * f) * (0.08 + w * 0.55);
+        out.push([(a[0] * s1 + b[0] * s2) * h, (a[1] * s1 + b[1] * s2) * h, (a[2] * s1 + b[2] * s2) * h]);
+      }
+      return { pts: out, p: p, d: k * 0.35 };
+    });
+    var zoom = 1, lon0 = base.lon + 14, lat0 = 22, tLon = null, tLat = null, vel = 0, hot = -1, drag = null, idle = 0;
+    var W, H, R, R0, cx, cy, dpr, col = {}, font = "";
+    var size = function () {
+      dpr = Math.min(devicePixelRatio || 1, 2); W = box.clientWidth; H = W;
+      cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + "px"; cv.style.height = H + "px";
+      R0 = W * 0.42; R = R0; cx = W / 2; cy = H / 2;
+    };
+    var colors = function () {
+      var cs = getComputedStyle(document.documentElement);
+      col.ink = cs.getPropertyValue("--ink").trim() || "#111"; col.sig = cs.getPropertyValue("--signal").trim() || "#F83E35";
+      col.paper = cs.getPropertyValue("--paper").trim() || "#fff"; font = getComputedStyle(document.body).fontFamily;
+    };
+    var P = function (v, r) {   // rotate world vector into view; returns [x, y, z]
+      var a = lon0 * D, b = lat0 * D, ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(b), sb = Math.sin(b);
+      var zc = v[0] * ca + v[1] * sa, xs = -v[0] * sa + v[1] * ca, ys = v[2] * cb - zc * sb, zs = v[2] * sb + zc * cb;
+      return [cx + R * xs, cy - R * ys, zs, R * Math.sqrt(xs * xs + ys * ys)];
+    };
+    var seen = function (q) { return q[2] > 0 || q[3] > R; };
+    var t0 = null, shown = false, run = false, last = 0;
+    var frame = function (now) {
+      if (!run) return;
+      var dt = Math.min((now - (last || now)) / 1000, .05); last = now;
+      if (shown && t0 === null) t0 = now;
+      var T = t0 === null ? 0 : (now - t0) / 1000;
+      // motion: target (hover) > drag inertia > slow auto-spin
+      if (tLon !== null) {
+        var dl = ((tLon - lon0 + 540) % 360) - 180; lon0 += dl * Math.min(1, dt * 4); lat0 += (tLat - lat0) * Math.min(1, dt * 4);
+      } else if (!drag) {
+        if (Math.abs(vel) > .5) { lon0 -= vel * dt; vel *= Math.pow(.05, dt); }
+        else if (!RM && (idle -= dt) <= 0) lon0 += 7 * dt;
+        lat0 += (22 - lat0) * Math.min(1, dt * 1.5);
+      }
+      zoom += ((tLon !== null ? 1.45 : 1) - zoom) * Math.min(1, dt * 3); R = R0 * zoom;
+      var c = ctx; c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+      // sphere body + rim
+      var g = c.createRadialGradient(cx - R * .35, cy - R * .4, R * .1, cx, cy, R);
+      g.addColorStop(0, "rgba(128,128,128,.10)"); g.addColorStop(1, "rgba(128,128,128,.02)");
+      c.fillStyle = g; c.beginPath(); c.arc(cx, cy, R, 0, 7); c.fill();
+      c.strokeStyle = col.ink; c.globalAlpha = .14; c.lineWidth = 1; c.stroke();
+      // halo
+      var gl = c.createRadialGradient(cx, cy, 0, cx, cy, R * 1.18); gl.addColorStop(0, "rgba(0,0,0,0)"); gl.addColorStop(.8, "rgba(0,0,0,0)"); gl.addColorStop(.85, col.sig); gl.addColorStop(1, "rgba(0,0,0,0)");
+      c.globalAlpha = .10; c.fillStyle = gl; c.beginPath(); c.arc(cx, cy, R * 1.18, 0, 7); c.fill();
+      // land dots: back side faint, front side brighter toward the centre
+      c.fillStyle = col.ink;
+      for (var i = 0; i < land.length; i++) {
+        var q = P(land[i], 1);
+        if (q[2] < 0) { c.globalAlpha = .07; c.fillRect(q[0] - .6, q[1] - .6, 1.2, 1.2); }
+        else { c.globalAlpha = .25 + .6 * q[2]; var s = .9 + q[2] * 1.1; c.beginPath(); c.arc(q[0], q[1], s, 0, 7); c.fill(); }
+      }
+      // arcs: draw in, then a comet runs along each one
+      c.lineCap = "round";
+      arcs.forEach(function (A, k) {
+        var pr = RM ? 1 : Math.max(0, Math.min(1, (T - .3 - A.d) / 1.6)); pr = 1 - Math.pow(1 - pr, 3);
+        var n = Math.floor((A.pts.length - 1) * pr), on = hot === pts.indexOf(A.p);
+        c.strokeStyle = col.sig; c.lineWidth = on ? 2.4 : 1.4;
+        for (var j = 0; j < n; j++) {
+          var a = P(A.pts[j]), b = P(A.pts[j + 1]); if (!seen(a) || !seen(b)) continue;
+          c.globalAlpha = on ? 1 : .75; c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(b[0], b[1]); c.stroke();
+        }
+        if (pr >= 1 && !RM) {
+          var u = ((T * .45 + k * .3) % 1), m = Math.floor(u * (A.pts.length - 1)), h = P(A.pts[m]);
+          if (seen(h)) { c.globalAlpha = 1; c.fillStyle = col.sig; c.beginPath(); c.arc(h[0], h[1], 2.6, 0, 7); c.fill();
+            c.globalAlpha = .25; c.beginPath(); c.arc(h[0], h[1], 6, 0, 7); c.fill(); }
+        }
+      });
+      // pins + labels
+      c.font = "500 13px " + font; c.textBaseline = "middle"; c.textAlign = "left"; try { c.direction = "ltr"; } catch (e) {}
+      var boxes = pts.map(function (p) { var q = P(p.v, 1); return [q[0] - 6, q[1] - 6, q[0] + 6, q[1] + 6]; });
+      pts.forEach(function (p, k) {
+        var q = P(p.v, 1); p.q = q; if (q[2] <= 0.02) return;
+        var on = hot === k, a = Math.min(1, q[2] * 3);
+        if (p.base) {
+          var ph = (T * .6) % 1; c.globalAlpha = (1 - ph) * .4 * a; c.fillStyle = col.sig;
+          c.beginPath(); c.arc(q[0], q[1], 5 + ph * 18, 0, 7); c.fill();
+        }
+        c.globalAlpha = a; c.fillStyle = p.base || on ? col.sig : col.ink;
+        c.beginPath(); c.arc(q[0], q[1], on ? 5 : 3.6, 0, 7); c.fill();
+        var tw = c.measureText(p.city).width, lx, ly, opts = [[10, 0], [-tw - 10, 0], [-tw / 2, -15], [-tw / 2, 15], [10, -14], [10, 14], [-tw - 10, -14], [-tw - 10, 14]];
+        for (var o = 0; o < opts.length; o++) {
+          lx = q[0] + opts[o][0]; ly = q[1] + opts[o][1];
+          var hit = boxes.some(function (b) { return lx < b[2] && lx + tw > b[0] && ly - 9 < b[3] && ly + 9 > b[1]; });
+          if (!hit) break;
+        }
+        boxes.push([lx - 4, ly - 10, lx + tw + 4, ly + 10]);
+        if (on) { c.fillStyle = col.sig; c.fillRect(lx - 4, ly - 10, tw + 8, 20); c.fillStyle = "#fff"; }
+        else { c.globalAlpha = a * .85; c.fillStyle = col.paper; c.fillRect(lx - 4, ly - 9, tw + 8, 18); c.globalAlpha = a; c.fillStyle = col.ink; }
+        c.fillText(p.city, lx, ly);
+      });
+      c.globalAlpha = 1;
+      requestAnimationFrame(frame);
+    };
+    var light = function (k) {
+      hot = k; rows.forEach(function (r) { r.classList.toggle("on", +r.dataset.i === k); });
+    };
+    rows.forEach(function (r) {
+      r.addEventListener("pointerenter", function () { var p = pts[+r.dataset.i]; light(+r.dataset.i); tLon = p.lon; tLat = Math.max(-30, Math.min(45, p.lat)); });
+      r.addEventListener("pointerleave", function () { light(-1); tLon = tLat = null; idle = 1.5; });
+    });
+    cv.addEventListener("pointerdown", function (ev) { drag = { x: ev.clientX, y: ev.clientY, l: lon0, b: lat0, t: performance.now() }; vel = 0; tLon = null; cv.setPointerCapture(ev.pointerId); box.classList.add("grab"); });
+    cv.addEventListener("pointermove", function (ev) {
+      var r = cv.getBoundingClientRect(), mx = ev.clientX - r.left, my = ev.clientY - r.top;
+      if (drag) {
+        var nl = drag.l - (ev.clientX - drag.x) * 0.35, now = performance.now();
+        vel = (lon0 - nl) / Math.max(.016, (now - drag.t) / 1000); drag.t = now;
+        lon0 = nl; lat0 = Math.max(-40, Math.min(60, drag.b + (ev.clientY - drag.y) * 0.25)); return;
+      }
+      var best = -1, bd = 22; pts.forEach(function (p, k) { if (p.q && p.q[2] > .05) { var d = Math.hypot(p.q[0] - mx, p.q[1] - my); if (d < bd) { bd = d; best = k; } } });
+      if (best !== hot) light(best); cv.style.cursor = best > -1 ? "pointer" : "grab";
+    });
+    var up = function () { if (drag) { drag = null; idle = 1.2; box.classList.remove("grab"); } };
+    cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+    cv.addEventListener("pointerleave", function () { if (!drag && hot > -1) light(-1); });
+    size(); colors(); addEventListener("resize", size);
+    new MutationObserver(colors).observe(document.documentElement, { attributes: true, attributeFilter: ["data-light"] });
+    var io = new IntersectionObserver(function (es) {
+      var v = es[0].isIntersecting;
+      if (v) shown = true;
+      if (v && !run) { run = true; last = 0; requestAnimationFrame(frame); } else if (!v) run = false;
+    }, { threshold: .15 });
+    io.observe(box);
+  };
+  if (window.LAND_DOTS) go();
+  else { var s = document.createElement("script"); s.src = dir + "land-dots.js"; s.onload = go; s.onerror = go; document.head.appendChild(s); }
 })();

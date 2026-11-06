@@ -480,31 +480,20 @@ def clients_strip(c):
 
 def where(c):
     if not COUNTRIES: return ""
-    W0, W1, N0, N1, K = 24.0, 60.0, 37.0, 13.0, 30.0   # lon/lat window and scale
-    X = lambda lon: (float(lon) - W0) * K
-    Y = lambda lat: (N0 - float(lat)) * K
-    w, h = X(W1), Y(N1)
-    dots = "".join(f'<circle cx="{X(lo):.0f}" cy="{Y(la):.0f}" r="1.6"/>' for la in range(14, 37, 2) for lo in range(25, 60, 2))
     base = next((x for x in COUNTRIES if x.get("base")), COUNTRIES[0])
-    bx, by = X(base["lon"]), Y(base["lat"])
-    arcs, pins, rows = "", "", ""
+    rows, pts = "", []
     for i, x in enumerate(COUNTRIES):
-        px, py = X(x["lon"]), Y(x["lat"])
-        if x is not base:
-            mx, my = (bx + px) / 2, min(by, py) - 70 - i * 45
-            arcs += f'<path class="arc" d="M{bx:.0f},{by:.0f} Q{mx:.0f},{my:.0f} {px:.0f},{py:.0f}" style="--d:{i * .25:.2f}s"/>'
-        city = e(c.t(_t(x.get("city"))))
-        anchor, dx, dy = ("middle", 0, 36) if x is not base else ("end", -16, 6)
-        pins += (f'<g class="pin{" base" if x is base else ""}" data-i="{i}" transform="translate({px:.0f},{py:.0f})"><circle class="halo" r="16"/><circle r="6"/>'
-                 f'<text x="{dx}" y="{dy}" text-anchor="{anchor}">{city}</text></g>')
-        rows += (f'<li data-i="{i}"><span class="idx">{i+1:02d}</span><b>{e(c.t(_t(x.get("name"))))}</b><span class="cty">{city}{" · " + c.u("base") if x is base else ""}</span>'
+        city = c.t(_t(x.get("city")))
+        pts.append({"lon": float(x["lon"]), "lat": float(x["lat"]), "city": city, "base": x is base})
+        rows += (f'<li data-i="{i}"><span class="idx">{i+1:02d}</span><b>{e(c.t(_t(x.get("name"))))}</b><span class="cty">{e(city)}{" · " + c.u("base") if x is base else ""}</span>'
                  f'<span class="tz" data-tz="{e(x.get("tz", ""))}">--:--</span><span class="note">{e(c.t(_t(x.get("note"))))}</span></li>')
-    svg = (f'<svg class="map" viewBox="0 0 {w:.0f} {h:.0f}" role="img" aria-label="{c.u("where_h")}"><g class="grid">{dots}</g>{arcs}{pins}</svg>')
+    data = e(json.dumps(pts, ensure_ascii=False))
+    globe = f'<div class="globe" data-pts="{data}" role="img" aria-label="{c.u("where_h")}"><canvas></canvas></div>'
     return f'''<section class="sec where" id="markets"><div class="wrap">
   <div class="sec-head"><span class="lbl">{c.u("where_lbl")}</span><h2>{c.u("where_h")}</h2></div>
   <div class="grid where-grid">
     <div class="where-list"><p class="where-p">{c.u("where_p")}</p><ul>{rows}</ul></div>
-    <div class="where-map">{svg}</div>
+    <div class="where-map">{globe}</div>
   </div>
 </div></section>'''
 
