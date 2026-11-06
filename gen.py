@@ -35,6 +35,13 @@ def cover_(slug, w=1024):
     if _MODE["preview"] and os.path.exists(os.path.join(ROOT, "img", f"{slug}.webp")): return _MODE["pre"] + f"img/{slug}.webp"
     return img_url(COVER_URL.get(slug, ""), w)
 def hero_img(): return pic("portrait.webp", HERO)
+_SIG = None
+def sig_svg(cls):
+    """The Arabic calligraphy as real vector paths (img/signature.svg), ordered right to left so it can be drawn like handwriting."""
+    global _SIG
+    if _SIG is None: _SIG = open(os.path.join(ROOT, "img", "signature.svg"), encoding="utf-8").read()
+    return _SIG.replace('<svg xmlns="http://www.w3.org/2000/svg"', f'<svg class="{cls}" aria-hidden="true" focusable="false"', 1)
+
 def plus(n):
     """'15+' / '1.6K+' -> counter markup; the final value is in the HTML so it reads correctly without JS."""
     m = re.match(r"^([\d.]+)([^\d+]*)(\+?)$", n or "")
@@ -527,7 +534,7 @@ def home(c):
     steps = "".join(f'<div class="step rv"><span class="big idx">{i+1}</span><h3>{c.t(h)}</h3><p>{c.t(d)}</p></div>' for i, (h, d) in enumerate(PROCESS))
     faq = "".join(f'<details><summary><span class="idx">{i+1:02d}</span><span>{c.t(q)}</span><span class="pm" aria-hidden="true">+</span></summary><p>{c.t(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
     nl = NAME_LINES[c.i]
-    hero_name = (f'<h1 class="h-name h-sig" aria-label="{c.t(NAME)}"><span class="sig sig-red sig-write"></span></h1>' if c.lang == "ar"
+    hero_name = (f'<h1 class="h-name h-sig" aria-label="{c.t(NAME)}">{sig_svg("sig-draw")}</h1>' if c.lang == "ar"
                  else f'<h1 class="h-name" aria-label="{c.t(NAME)}">' + " ".join(
                      '<span class="ln" aria-hidden="true">' + "".join(f'<i style="--i:{k + j * 5}">{ch}</i>' for k, ch in enumerate(word)) + '</span>' for j, word in enumerate(nl)) + '</h1>')
     svc = "<br>".join(c.t(s) for s in SERVICES)

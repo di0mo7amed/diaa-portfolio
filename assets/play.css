@@ -505,3 +505,13 @@ html[data-light="night"] .orb{background:transparent;box-shadow:inset -4px -2px 
 .as-nums .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);padding-top:24px}
 @media (max-width:860px){.as-lbl,.as-text,.as-nums{grid-column:1/-1}.as-nums .row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}}
 .clients{padding-block:8px 40px}
+
+/* ===== Arabic calligraphy drawn like handwriting: the pen traces each stroke, then the ink fills ===== */
+.sig-draw{display:block;width:clamp(180px,24vw,340px);height:auto;overflow:visible}
+.sig-draw path{fill:var(--signal);fill-opacity:0;stroke:var(--signal);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+  animation:pen 1.1s cubic-bezier(.6,.05,.3,1) forwards,ink .7s ease forwards;
+  animation-delay:calc(.25s + var(--k) * .28s),calc(.95s + var(--k) * .28s)}
+@keyframes pen{to{stroke-dashoffset:0}}
+@keyframes ink{to{fill-opacity:1;stroke-opacity:0}}
+@media (prefers-reduced-motion:reduce){.sig-draw path{animation:none;fill-opacity:1;stroke-dashoffset:0}}
