@@ -465,12 +465,16 @@ def services_block(c):
 </div></section>'''
 
 def clients_strip(c):
-    if not CLIENTS: return ""
+    items_src = CLIENTS
+    # Preview only: if no client logos have been uploaded yet, show generic sample logos so the strip can be judged
+    if _MODE["preview"] and not any(x.get("logo") for x in CLIENTS):
+        items_src = [{"name": f"Sample logo {i}", "logo": f"/img/sample/logos/logo-{i}.svg"} for i in range(1, 9)]
+    if not items_src: return ""
     def one(x):
         name = e(x.get("name", ""))
         inner = f'<img src="{img_url(x["logo"], 400)}" alt="{name}" loading="lazy">' if x.get("logo") else f'<span class="wm">{name}</span>'
         return f'<a href="{e(x["url"])}" target="_blank" rel="noopener" class="cl" title="{name}">{inner}</a>' if x.get("url") else f'<span class="cl" title="{name}">{inner}</span>'
-    items = "".join(one(x) for x in CLIENTS)
+    items = "".join(one(x) for x in items_src)
     return f'''<section class="clients" aria-label="{c.u("clients")}"><div class="wrap"><span class="lbl">{c.u("clients")}</span></div>
 <div class="marquee"><div class="track">{items}</div><div class="track" aria-hidden="true">{items}</div></div></section>'''
 

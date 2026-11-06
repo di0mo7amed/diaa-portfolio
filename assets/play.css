@@ -412,6 +412,8 @@ html[data-light="night"] .orb{background:transparent;box-shadow:inset -4px -2px 
 .cl{display:flex;align-items:center;height:48px;flex:none}
 .cl img{height:100%;width:auto;max-width:160px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .3s,opacity .3s}
 .cl:hover img{filter:none;opacity:1}
+html[data-light="night"] .cl img{filter:grayscale(1) invert(1);opacity:.6}
+html[data-light="night"] .cl:hover img{filter:grayscale(1) invert(1);opacity:1}
 .cl .wm{font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:700;letter-spacing:-.03em;color:var(--grey);transition:color .3s}
 .cl:hover .wm{color:var(--ink)}
 .cl+.cl::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);margin-inline-end:64px;flex:none;display:none}
