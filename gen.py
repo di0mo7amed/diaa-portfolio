@@ -636,18 +636,59 @@ def about(c):
 <section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-head"><span class="lbl">(02)</span><h2>{c.u("vol")}</h2></div><div class="table">{rows(VOLUNTEER)}</div></div></section>
 <section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-head"><span class="lbl">(03)</span><h2>{c.u("tools")}</h2></div><div class="grid"><div class="tools">{tools}</div></div></div></section>'''
 
+CONTACT_SERVICES = [("identity", ("Brand identity", "هوية بصرية")), ("campaign", ("Campaign / social content", "حملة أو محتوى سوشيال")),
+                    ("both", ("Identity + campaign", "هوية وحملة معًا")), ("other", ("Something else", "شيء آخر"))]
+CONTACT_TIMES = [("", ("Select a timeline", "اختر المدة")), ("asap", ("As soon as possible", "في أقرب وقت")), ("1m", ("Within a month", "خلال شهر")),
+                 ("1-3m", ("In 1–3 months", "خلال ١–٣ أشهر")), ("flex", ("Flexible", "مرن"))]
+
 def contact(c):
+    L = lambda en, ar: c.t((en, ar))
+    svc = "".join(f'<label class="opt"><input type="radio" name="service" value="{k}"{" required" if i == 0 else ""}><span>{c.t(t)}</span></label>' for i, (k, t) in enumerate(CONTACT_SERVICES))
+    times = "".join(f'<option value="{k}"{" disabled selected" if not k else ""}>{c.t(t)}</option>' for k, t in CONTACT_TIMES)
     return f'''<section class="phead"><div class="wrap grid"><span class="lbl">{c.u("contact")}</span><h1>{c.u("contact_h")}</h1><p class="intro">{c.u("contact_intro")}</p></div></section>
-<section class="wrap grid contact" style="padding-bottom:120px;row-gap:40px">
-  <div class="left">
-    <div class="brief" hidden><span class="lbl">{c.u("brief_h")}</span><p class="brief-txt" id="brief-txt"></p><p class="lbl">{c.u("brief_p")}</p><button class="btn solid" type="button" data-copy-brief data-done="{c.u("copied")}">{c.u("copy_brief")}</button></div>
-    <div><span class="lbl">{c.u("email")}</span><p class="email" id="mail">{EMAIL}</p><button class="btn" type="button" style="margin-top:12px" data-copy="{EMAIL}" data-target="mail" data-done="{c.u("copied")}">{c.u("copy")}</button></div>
+<section class="wrap grid contact2" style="padding-bottom:120px">
+  <aside class="c-side">
+    <div class="avail"><i></i>{c.u("available")}</div>
+    <div><span class="lbl">{c.u("email")}</span><p class="c-mail" id="mail">{EMAIL}</p><button class="btn" type="button" data-copy="{EMAIL}" data-target="mail" data-done="{c.u("copied")}">{c.u("copy")}</button></div>
+    <div><span class="lbl">{L("Response time", "مدة الرد")}</span><p>{L("Usually within 1–2 working days.", "عادةً خلال يوم إلى يومين عمل.")}</p></div>
     <div><span class="lbl">{c.u("based")}</span><p>{c.u("cairo")} · <span data-clock>--:--</span></p></div>
-    <div><span class="lbl">{c.u("social")}</span><p style="display:flex;gap:16px;flex-wrap:wrap"><a class="ul" href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a><a class="ul" href="{BEHANCE}" target="_blank" rel="noopener">Behance</a><a class="ul" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></p></div>
+    <div><span class="lbl">{c.u("social")}</span><p class="c-soc"><a class="ul" href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a><a class="ul" href="{BEHANCE}" target="_blank" rel="noopener">Behance</a><a class="ul" href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></p></div>
+  </aside>
+  <div class="c-form">
+    <form name="contact" method="POST" action="{"/thanks" if c.lang == "en" else "/ar/thanks"}" data-netlify="true" netlify-honeypot="bot-field" id="contact-form" novalidate>
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="subject" value="New project enquiry — bydiaa.online">
+      <input type="hidden" name="language" value="{c.lang}">
+      <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="f-row two">
+        <label class="f"><span>{L("Your name", "الاسم")} *</span><input id="f-name" name="name" type="text" autocomplete="name" required></label>
+        <label class="f"><span>{L("Email", "البريد الإلكتروني")} *</span><input id="f-email" name="email" type="email" autocomplete="email" dir="ltr" required></label>
+      </div>
+      <div class="f-row two">
+        <label class="f"><span>{L("Brand / company", "العلامة / الشركة")}</span><input id="f-company" name="company" type="text" autocomplete="organization"></label>
+        <label class="f"><span>{L("WhatsApp (optional)", "واتساب (اختياري)")}</span><input id="f-wa" name="whatsapp" type="tel" autocomplete="tel" dir="ltr" inputmode="tel"></label>
+      </div>
+      <fieldset class="f"><legend>{L("What do you need?", "ما الذي تحتاجه؟")} *</legend><div class="opts">{svc}</div></fieldset>
+      <label class="f"><span>{L("Timeline", "المدة المتوقعة")}</span><select id="f-time" name="timeline">{times}</select></label>
+      <label class="f"><span>{L("Tell me about the project", "أخبرني عن المشروع")} *</span><textarea id="f-msg" name="message" rows="6" required placeholder="{L("Goals, audience, deliverables, anything that helps.", "الأهداف، الجمهور، المخرجات، وأي تفاصيل تساعد.")}"></textarea></label>
+      <div class="f brief-f" hidden><span>{c.u("brief_h")}</span><p class="brief-chips"></p><input type="hidden" name="brand_direction" id="f-brief"></div>
+      <div class="f-actions">
+        <button class="btn solid f-send" type="submit">{L("Send enquiry", "إرسال")} <span class="arrow">↗</span></button>
+        <p class="f-note lbl">{L("Fields marked * are required.", "الحقول المعلّمة بـ * مطلوبة.")}</p>
+      </div>
+      <p class="f-status" role="status" aria-live="polite"
+         data-sending="{L("Sending…", "جارٍ الإرسال…")}"
+         data-ok="{L("Thank you — your message was sent. I’ll get back to you soon.", "شكرًا لك، وصلت رسالتك وسأتواصل معك قريبًا.")}"
+         data-err="{L("Something went wrong. Please email me directly at", "حدث خطأ. من فضلك راسلني مباشرة على")} {EMAIL}"
+         data-req="{L("Please fill in the required fields.", "من فضلك أكمل الحقول المطلوبة.")}"></p>
+    </form>
   </div>
-  <div class="form"><iframe src="{TALLY}" title="Contact form" loading="lazy"></iframe>
-    <p class="lbl" style="text-align:center;padding-top:8px">{c.u("form_alt")} <a class="ul" href="{TALLY_PAGE}" target="_blank" rel="noopener">{c.u("form_open")}</a></p></div>
 </section>'''
+
+def thanks(c):
+    L = lambda en, ar: c.t((en, ar))
+    return f'''<section class="lost wrap"><h1>{L("Thank you.", "شكرًا لك.")}</h1><p>{L("Your message was sent. I’ll get back to you within 1–2 working days.", "وصلت رسالتك، وسأتواصل معك خلال يوم إلى يومين عمل.")}</p>
+<p><a class="btn solid" href="index.html">{c.u("back_home")} <span class="arrow">↗</span></a> <a class="btn" href="work.html">{c.u("all_work")}</a></p></section>'''
 
 def _paras(txt):
     return "".join(f"<p>{e(x.strip())}</p>" for x in re.split(r"\n\s*\n", txt or "") if x.strip())
@@ -837,6 +878,7 @@ def build(out, preview):
                  "contact.html": (f"{c.u('contact')} — {N}", "contact", contact(c), "")}
         pages["404.html"] = (f"404 — {N}", "", lost(c), "")
         pages["branding.html"] = (f"{c.u('brand_h')} — {N}", "work", branding(c), "")
+        pages["thanks.html"] = (f"{c.t(('Thank you', 'شكرًا'))} — {N}", "contact", thanks(c), "")
         for i, p in enumerate(PROJECTS):
             body, lb = project(c, i)
             pages[PAGE[p[0]]] = (f"{c.t(p[1])} — {N}", "work", body, lb)

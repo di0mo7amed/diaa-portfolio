@@ -515,3 +515,41 @@ html[data-light="night"] .orb{background:transparent;box-shadow:inset -4px -2px 
 @keyframes pen{to{stroke-dashoffset:0}}
 @keyframes ink{to{fill-opacity:1;stroke-opacity:0}}
 @media (prefers-reduced-motion:reduce){.sig-draw path{animation:none;fill-opacity:1;stroke-dashoffset:0}}
+
+/* ===== Contact page ===== */
+.contact2{row-gap:48px;align-items:start}
+.c-side{grid-column:1/5;display:grid;gap:28px;align-content:start;position:sticky;top:90px}
+.c-side .avail{display:flex;gap:8px;align-items:center;font-size:.95rem}
+.c-side .avail i{width:8px;height:8px;border-radius:50%;background:#19B562}
+.c-mail{font-size:clamp(1.2rem,2vw,1.6rem);direction:ltr;unicode-bidi:isolate;user-select:all;word-break:break-all;margin:4px 0 12px}
+.c-soc{display:flex;gap:16px;flex-wrap:wrap}
+.c-form{grid-column:6/13;min-width:0}
+#contact-form{display:grid;gap:26px}
+.hp{display:none}
+.f-row.two{display:grid;grid-template-columns:1fr 1fr;gap:26px 20px}
+.f{display:grid;gap:8px;min-width:0;border:0;margin:0;padding:0}
+.f>span,.f legend{font-size:.85rem;color:var(--grey);padding:0}
+.f input,.f select,.f textarea{font:inherit;font-size:1.1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:10px 0;width:100%;outline:none;transition:border-color .2s}
+.f textarea{resize:vertical;min-height:140px;line-height:1.5}
+.f select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--grey) 50%),linear-gradient(135deg,var(--grey) 50%,transparent 50%);background-position:calc(100% - 14px) 52%,calc(100% - 9px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-inline-end:28px}
+[dir="rtl"] .f select{background-position:14px 52%,9px 52%}
+.f input:focus,.f select:focus,.f textarea:focus{border-bottom-color:var(--signal)}
+.f input::placeholder,.f textarea::placeholder{color:var(--grey);opacity:.7}
+.f.bad input,.f.bad textarea,.f.bad .opts{border-bottom-color:var(--signal)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
+.opt{position:relative;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.95rem;transition:background .2s,color .2s,border-color .2s}
+.opt:hover span{border-color:var(--ink)}
+.opt input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.opt input:focus-visible+span{outline:2px solid var(--signal);outline-offset:2px}
+.brief-chips{font-size:1.15rem}
+.f-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.f-send{font-size:1rem;padding:12px 24px}
+.f-send[disabled]{opacity:.6;pointer-events:none}
+.f-status{min-height:1.5em;font-size:1rem}
+.f-status.ok{color:#19A85A}
+.f-status.err{color:var(--signal)}
+#contact-form.sent .f-row,#contact-form.sent .f,#contact-form.sent .f-actions{display:none}
+#contact-form.sent .f-status{font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:-.02em;line-height:1.3}
+@media (max-width:860px){.c-side,.c-form{grid-column:1/-1}.c-side{position:static}.c-form{order:-1}.f-row.two{grid-template-columns:1fr}}

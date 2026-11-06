@@ -356,3 +356,42 @@
   };
   addEventListener("scroll", check, { passive: true }); check();
 })();
+
+/* ---------- Contact form: Netlify Forms over AJAX, inline validation, carries the brand direction ---------- */
+(function () {
+  var f = document.getElementById("contact-form"); if (!f) return;
+  var st = f.querySelector(".f-status"), send = f.querySelector(".f-send");
+  try {
+    var b = JSON.parse(localStorage.getItem("dm-brief") || "null");
+    if (b && b.words && b.words.length) {
+      var txt = (b.name ? b.name + " — " : "") + b.words.join(" · ");
+      f.querySelector("#f-brief").value = txt;
+      f.querySelector(".brief-chips").textContent = txt;
+      f.querySelector(".brief-f").hidden = false;
+      if (b.name && !f.company.value) f.company.value = b.name;
+    }
+  } catch (e) {}
+  var bad = function () {
+    var miss = false;
+    f.querySelectorAll(".f").forEach(function (x) { x.classList.remove("bad"); });
+    ["name", "email", "message"].forEach(function (n) {
+      var el = f.elements[n], ok = el.value.trim() && (n !== "email" || /.+@.+\..+/.test(el.value));
+      if (!ok) { miss = true; el.closest(".f").classList.add("bad"); }
+    });
+    if (!f.querySelector('input[name="service"]:checked')) { miss = true; f.querySelector("fieldset").classList.add("bad"); }
+    return miss;
+  };
+  f.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (bad()) { st.className = "f-status err"; st.textContent = st.dataset.req; return; }
+    st.className = "f-status"; st.textContent = st.dataset.sending; send.disabled = true;
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(f)).toString() })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        f.classList.add("sent"); st.className = "f-status ok"; st.textContent = st.dataset.ok;
+        try { localStorage.removeItem("dm-brief"); } catch (e) {}
+        scrollTo({ top: f.getBoundingClientRect().top + scrollY - 140, behavior: "smooth" });
+      })
+      .catch(function () { st.className = "f-status err"; st.textContent = st.dataset.err; send.disabled = false; });
+  });
+})();
