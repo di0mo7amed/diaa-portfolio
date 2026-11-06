@@ -536,20 +536,19 @@ def home(c):
   <div class="h-text">
     <div class="avail"><i></i>{c.u("available")}</div>
     {hero_name}
-    <p class="h-tag">{c.t(TAGLINE_MARK)}</p>
     <p class="lead">{c.t(LEAD)}</p>
     <p class="hero-ctas"><a class="btn solid" href="#works">{c.u("see_work")} <span class="down">↓</span></a><a class="btn" href="contact.html" data-cta>{c.u("start")} <span class="arrow">↗</span></a></p>
   </div>
   <div class="hero-photo lens" data-lens data-cursor="{c.u("color_hint")}"><img class="base" src="{me}" alt="{c.t(NAME)}"><img class="top" src="{me}" alt="" aria-hidden="true"><span class="lens-hint lbl">{c.u("color_hint")} ●</span></div>
 </section>
+<section class="wrap grid tagline-row">
+  <span class="lbl">(©2026)</span>
+  <p class="t">{c.t(TAGLINE_MARK)}</p>
+  <p class="loc"><span class="lbl">{c.u("based")}</span><br>{c.u("cairo")}</p>
+</section>
 {desk(c)}
+<section class="sec-tight proof"><div class="wrap nums rv"><span class="lbl">{c.u("numbers")}</span><div class="row">{stats}</div></div></section>
 {clients_strip(c)}
-{services_block(c)}
-<section class="sec about-snip"><div class="wrap grid">
-  <span class="lbl as-lbl">{c.u("about")}</span>
-  <div class="as-text"><p class="as-lead">{c.t(ABOUT_SHORT)}</p><p><a class="btn" href="about.html">{c.u("more_about")} <span class="arrow">↗</span></a> <a class="ul" href="{CV}" target="_blank" rel="noopener">{c.u("cv")}</a></p></div>
-  <div class="nums as-nums rv"><div class="row">{stats}</div></div>
-</div></section>
 {where(c)}
 <section class="sec"><div class="wrap">
   <div class="sec-head"><span class="lbl">{c.u("process")}</span><h2>{c.u("how")}</h2></div>
