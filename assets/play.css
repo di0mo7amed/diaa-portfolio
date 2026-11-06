@@ -459,3 +459,49 @@ html[data-light="night"] .orb{background:transparent;box-shadow:inset -4px -2px 
 .where-list li .tz{grid-area:tz;align-self:center}
 .where-list li .cty{grid-area:cty}
 .where-list li .note{grid-area:note}
+
+/* ===== Hero: name rises letter by letter ===== */
+.h-name .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.h-name .ln i{font-style:normal;display:inline-block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.15s + var(--i) * .045s)}
+@keyframes rise{to{transform:none}}
+.h-tag{font-weight:700;font-size:1.05rem;margin-top:-6px}
+
+/* ===== Arabic calligraphy writes itself (right to left) ===== */
+.sig-write{clip-path:inset(0 0 0 100%);animation:write 2.2s cubic-bezier(.55,.1,.3,1) .3s forwards}
+@keyframes write{to{clip-path:inset(0 0 0 0)}}
+
+/* ===== Face: big smile at the end of the page ===== */
+.face .mouth{transform-box:fill-box;transform-origin:50% 0;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.face.joy .mouth{transform:scale(1.18,1.45)}
+.face.joy .eye{transform:scaleY(.55)}
+.face.joy .brows{transform:translateY(-40px)}
+.face.joy.face-lg{animation:hop .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes hop{40%{transform:translateY(-10px) rotate(-6deg)}}
+
+@media (prefers-reduced-motion:reduce){.h-name .ln i{animation:none;transform:none}.sig-write{animation:none;clip-path:none}}
+
+/* ===== Services ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.svc-item{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;padding:20px 20px 24px 0;border-inline-end:1px solid var(--line);min-width:0;transition:color .25s}
+[dir="rtl"] .svc-item{padding:20px 0 24px 20px}
+.svc-item:last-child{border-inline-end:0}
+.svc-item+.svc-item{padding-inline-start:20px}
+.svc-item .idx{color:var(--signal);font-size:.8rem}
+.svc-item h3{font-size:clamp(1.3rem,2vw,1.7rem);letter-spacing:-.02em;line-height:1.1}
+.svc-item p{color:var(--grey);font-size:.95rem}
+.svc-item .arrow{justify-self:start;transition:transform .25s}
+.svc-item:hover h3{color:var(--signal)}
+@media (max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.svc-item:nth-child(2){border-inline-end:0}.svc-item:nth-child(n+3){border-top:1px solid var(--line)}.svc-item:nth-child(3){padding-inline-start:0}}
+@media (max-width:520px){.svc-grid{grid-template-columns:1fr}.svc-item{border-inline-end:0;padding-inline-start:0!important;border-top:1px solid var(--line)}}
+
+/* ===== About snippet ===== */
+.about-snip .grid{row-gap:36px;align-items:start}
+.as-lbl{grid-column:1/4}
+.as-text{grid-column:4/13;display:grid;gap:22px}
+.as-lead{font-size:clamp(1.5rem,2.8vw,2.5rem);line-height:1.2;letter-spacing:-.025em;max-width:24em}
+[dir="rtl"] .as-lead{line-height:1.6;letter-spacing:0}
+.as-text p:last-child{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.as-nums{grid-column:4/13}
+.as-nums .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);padding-top:24px}
+@media (max-width:860px){.as-lbl,.as-text,.as-nums{grid-column:1/-1}.as-nums .row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}}
+.clients{padding-block:8px 40px}

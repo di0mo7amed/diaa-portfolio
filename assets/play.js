@@ -323,3 +323,36 @@
   [].forEach.call(pins, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
   [].forEach.call(rows, function (el) { el.addEventListener("pointerenter", function () { hi(el.dataset.i, true); }); el.addEventListener("pointerleave", function () { hi(el.dataset.i, false); }); });
 })();
+
+/* ---------- Count-up numbers ---------- */
+(function () {
+  var els = [].slice.call(document.querySelectorAll(".cnt"));
+  if (!els.length || matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  var ar = document.documentElement.dir === "rtl";
+  var fmt = function (v, dec) { var s = v.toFixed(dec); return ar ? s.replace(/\d/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[d]; }) : s; };
+  els.forEach(function (el) {
+    var r = el.getBoundingClientRect(); if (r.top < innerHeight) return;   // already visible: leave the final value
+    var to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0;
+    el.textContent = fmt(0, dec);
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return; io.disconnect();
+      var t0 = null, run = function (t) {
+        if (!t0) t0 = t; var p = Math.min((t - t0) / 1600, 1), v = to * (1 - Math.pow(1 - p, 4));
+        el.textContent = p < 1 ? fmt(v, dec) : el.dataset.to; if (p < 1) requestAnimationFrame(run);
+      };
+      requestAnimationFrame(run);
+    }, { threshold: .6 });
+    io.observe(el);
+  });
+})();
+
+/* ---------- Face smiles when the visitor reaches the end ---------- */
+(function () {
+  var faces = document.querySelectorAll(".face"); if (!faces.length) return;
+  var happy = false;
+  var check = function () {
+    var end = scrollY + innerHeight >= document.documentElement.scrollHeight - 160;
+    if (end !== happy) { happy = end; faces.forEach(function (f) { f.classList.toggle("joy", end); }); }
+  };
+  addEventListener("scroll", check, { passive: true }); check();
+})();

@@ -35,7 +35,13 @@ def cover_(slug, w=1024):
     if _MODE["preview"] and os.path.exists(os.path.join(ROOT, "img", f"{slug}.webp")): return _MODE["pre"] + f"img/{slug}.webp"
     return img_url(COVER_URL.get(slug, ""), w)
 def hero_img(): return pic("portrait.webp", HERO)
-def plus(n): return n[:-1] + '<span class="plus">+</span>' if n.endswith('+') else n
+def plus(n):
+    """'15+' / '1.6K+' -> counter markup; the final value is in the HTML so it reads correctly without JS."""
+    m = re.match(r"^([\d.]+)([^\d+]*)(\+?)$", n or "")
+    if not m: return n
+    num, suf, pl = m.groups()
+    dec = len(num.split(".")[1]) if "." in num else 0
+    return f'<span class="cnt" data-to="{num}" data-dec="{dec}">{num}</span>{suf}' + ('<span class="plus">+</span>' if pl else "")
 
 # Every text is (English, Arabic)
 NAME = ("Diaa Mohammed", "ضيَــاء مُحمد")
@@ -252,6 +258,8 @@ HOME_STATS = [(str(x["value"]), _t(x["label"])) for x in _S["home_stats"]]
 ABOUT_STATS = [(str(x["value"]), _t(x["label"])) for x in _S["about_stats"]]
 CLIENTS = [x for x in _S.get("clients", []) if x.get("name") or x.get("logo")]
 COUNTRIES = _S.get("countries", [])
+SERVICES_LIST = _S.get("services", [])
+ABOUT_SHORT = _t(_S.get("about_short", {"en": "", "ar": ""}))
 PROCESS = [(_t(x["title"]), _t(x["text"])) for x in _S["process"]]
 FAQ = [(_t(x["q"]), _t(x["a"])) for x in _S["faq"]]
 STORY = [_t(x) for x in _S["story"]]
@@ -333,6 +341,7 @@ UI.update({
     "where_p": ("Based in Cairo and working remotely with brands across the region. My work on Behance has been seen in more than 50 countries.",
                 "مقيم في القاهرة وأعمل عن بُعد مع علامات في المنطقة، وشوهدت أعمالي على Behance في أكثر من ٥٠ دولة."),
     "local_time": ("Local time", "التوقيت المحلي"), "base": ("Base", "المقر"),
+    "what_i_do": ("What I do", "ماذا أقدّم"), "more_about": ("More about me", "المزيد عني"), "services": ("Services", "الخدمات"),
 })
 
 # =========================== TEMPLATE ===========================
@@ -360,7 +369,7 @@ def face(cls=""):
     global _LP
     if _LP is None: _LP = _logo_parts()
     main, mouth, eyeL, eyeR, browR, browL = _LP
-    return (f'<svg class="face {cls}" viewBox="0 0 1121.98 1367.44" aria-hidden="true"><path d="{main}"/><path d="{mouth}"/>'
+    return (f'<svg class="face {cls}" viewBox="0 0 1121.98 1367.44" aria-hidden="true"><path d="{main}"/><path class="mouth" d="{mouth}"/>'
             f'<g class="brows"><path d="{browL}"/><path d="{browR}"/></g><g class="eyes"><path class="eye l" d="{eyeL}"/><path class="eye r" d="{eyeR}"/></g></svg>')
 
 SIG = f'<span class="sig" role="img" aria-label="{NAME[1]}"></span>'
@@ -439,6 +448,15 @@ def desk(c):
   <p style="margin-top:40px"><a class="btn" href="work.html">{c.u("all_work")} <span class="arrow">↗</span></a></p>
 </div></section>'''
 
+def services_block(c):
+    if not SERVICES_LIST: return ""
+    items = "".join(f'<a class="svc-item" href="{e(x.get("link") or "work.html")}"><span class="idx">({i+1:02d})</span><h3>{e(c.t(_t(x.get("title"))))}</h3><p>{e(c.t(_t(x.get("text"))))}</p><span class="arrow">↗</span></a>'
+                    for i, x in enumerate(SERVICES_LIST))
+    return f'''<section class="sec services"><div class="wrap">
+  <div class="sec-head"><span class="lbl">{c.u("services")}</span><h2>{c.u("what_i_do")}</h2></div>
+  <div class="svc-grid">{items}</div>
+</div></section>'''
+
 def clients_strip(c):
     if not CLIENTS: return ""
     def one(x):
@@ -509,27 +527,29 @@ def home(c):
     steps = "".join(f'<div class="step rv"><span class="big idx">{i+1}</span><h3>{c.t(h)}</h3><p>{c.t(d)}</p></div>' for i, (h, d) in enumerate(PROCESS))
     faq = "".join(f'<details><summary><span class="idx">{i+1:02d}</span><span>{c.t(q)}</span><span class="pm" aria-hidden="true">+</span></summary><p>{c.t(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
     nl = NAME_LINES[c.i]
-    hero_name = (f'<h1 class="h-name h-sig" aria-label="{c.t(NAME)}"><span class="sig sig-red"></span></h1>' if c.lang == "ar"
-                 else f'<h1 class="h-name" aria-label="{c.t(NAME)}"><span>{nl[0]}</span> <span>{nl[1]}</span></h1>')
+    hero_name = (f'<h1 class="h-name h-sig" aria-label="{c.t(NAME)}"><span class="sig sig-red sig-write"></span></h1>' if c.lang == "ar"
+                 else f'<h1 class="h-name" aria-label="{c.t(NAME)}">' + " ".join(
+                     '<span class="ln" aria-hidden="true">' + "".join(f'<i style="--i:{k + j * 5}">{ch}</i>' for k, ch in enumerate(word)) + '</span>' for j, word in enumerate(nl)) + '</h1>')
     svc = "<br>".join(c.t(s) for s in SERVICES)
     me = c.pre + ME
     return f'''<section class="hero2 wrap">
   <div class="h-text">
     <div class="avail"><i></i>{c.u("available")}</div>
     {hero_name}
+    <p class="h-tag">{c.t(TAGLINE_MARK)}</p>
     <p class="lead">{c.t(LEAD)}</p>
     <p class="hero-ctas"><a class="btn solid" href="#works">{c.u("see_work")} <span class="down">↓</span></a><a class="btn" href="contact.html" data-cta>{c.u("start")} <span class="arrow">↗</span></a></p>
   </div>
   <div class="hero-photo lens" data-lens data-cursor="{c.u("color_hint")}"><img class="base" src="{me}" alt="{c.t(NAME)}"><img class="top" src="{me}" alt="" aria-hidden="true"><span class="lens-hint lbl">{c.u("color_hint")} ●</span></div>
 </section>
-<section class="wrap grid tagline-row">
-  <span class="lbl">(©2026)</span>
-  <p class="t">{c.t(TAGLINE_MARK)}</p>
-  <p class="loc"><span class="lbl">{c.u("based")}</span><br>{c.u("cairo")}</p>
-</section>
 {desk(c)}
-<section class="sec-tight proof"><div class="wrap nums rv"><span class="lbl">{c.u("numbers")}</span><div class="row">{stats}</div></div></section>
 {clients_strip(c)}
+{services_block(c)}
+<section class="sec about-snip"><div class="wrap grid">
+  <span class="lbl as-lbl">{c.u("about")}</span>
+  <div class="as-text"><p class="as-lead">{c.t(ABOUT_SHORT)}</p><p><a class="btn" href="about.html">{c.u("more_about")} <span class="arrow">↗</span></a> <a class="ul" href="{CV}" target="_blank" rel="noopener">{c.u("cv")}</a></p></div>
+  <div class="nums as-nums rv"><div class="row">{stats}</div></div>
+</div></section>
 {where(c)}
 <section class="sec"><div class="wrap">
   <div class="sec-head"><span class="lbl">{c.u("process")}</span><h2>{c.u("how")}</h2></div>

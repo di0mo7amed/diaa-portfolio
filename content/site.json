@@ -479,5 +479,55 @@
         "ar": "مشاريع مستقلة"
       }
     }
+  ],
+  "about_short": {
+    "en": "I’m Diaa, a self-taught brand and campaign designer based in Cairo. I work with brands and agencies across Egypt and the Gulf, turning strategy into visual systems people recognise and remember.",
+    "ar": "أنا ضياء، مصمم هويات وحملات علّمت نفسي بنفسي، مقيم في القاهرة. أعمل مع علامات ووكالات في مصر والخليج، وأحوّل الاستراتيجية إلى منظومات بصرية يتعرّف عليها الناس ويتذكّرونها."
+  },
+  "services": [
+    {
+      "title": {
+        "en": "Brand identity",
+        "ar": "الهوية البصرية"
+      },
+      "text": {
+        "en": "Logo, colour and type systems, and brand guidelines.",
+        "ar": "الشعار، ونظام الألوان والخطوط، ودليل العلامة."
+      },
+      "link": "branding.html"
+    },
+    {
+      "title": {
+        "en": "Advertising campaigns",
+        "ar": "الحملات الإعلانية"
+      },
+      "text": {
+        "en": "Campaign concepts and key visuals across every channel.",
+        "ar": "أفكار الحملات والتصاميم الرئيسية لكل القنوات."
+      },
+      "link": "work.html"
+    },
+    {
+      "title": {
+        "en": "Social media content",
+        "ar": "محتوى السوشيال ميديا"
+      },
+      "text": {
+        "en": "Content systems and templates that keep a feed consistent.",
+        "ar": "أنظمة محتوى وقوالب تحافظ على اتساق الحساب."
+      },
+      "link": "work.html"
+    },
+    {
+      "title": {
+        "en": "Art direction",
+        "ar": "التوجيه الفني"
+      },
+      "text": {
+        "en": "Direction for product and food photography and visual style.",
+        "ar": "توجيه تصوير المنتجات والأطعمة والأسلوب البصري."
+      },
+      "link": "work.html"
+    }
   ]
 }
