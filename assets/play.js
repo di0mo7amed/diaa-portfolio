@@ -366,8 +366,6 @@
     if (b && b.words && b.words.length) {
       var txt = (b.name ? b.name + " — " : "") + b.words.join(" · ");
       f.querySelector("#f-brief").value = txt;
-      f.querySelector(".brief-chips").textContent = txt;
-      f.querySelector(".brief-f").hidden = false;
       if (b.name && !f.company.value) f.company.value = b.name;
     }
   } catch (e) {}

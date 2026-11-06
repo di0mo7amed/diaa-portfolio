@@ -671,7 +671,7 @@ def contact(c):
       <fieldset class="f"><legend>{L("What do you need?", "ما الذي تحتاجه؟")} *</legend><div class="opts">{svc}</div></fieldset>
       <label class="f"><span>{L("Timeline", "المدة المتوقعة")}</span><select id="f-time" name="timeline">{times}</select></label>
       <label class="f"><span>{L("Tell me about the project", "أخبرني عن المشروع")} *</span><textarea id="f-msg" name="message" rows="6" required placeholder="{L("Goals, audience, deliverables, anything that helps.", "الأهداف، الجمهور، المخرجات، وأي تفاصيل تساعد.")}"></textarea></label>
-      <div class="f brief-f" hidden><span>{c.u("brief_h")}</span><p class="brief-chips"></p><input type="hidden" name="brand_direction" id="f-brief"></div>
+      <input type="hidden" name="brand_direction" id="f-brief">
       <div class="f-actions">
         <button class="btn solid f-send" type="submit">{L("Send enquiry", "إرسال")} <span class="arrow">↗</span></button>
         <p class="f-note lbl">{L("Fields marked * are required.", "الحقول المعلّمة بـ * مطلوبة.")}</p>
