@@ -22,7 +22,7 @@ TALLY = "https://tally.so/embed/BzeA0e?alignLeft=1&hideTitle=1&transparentBackgr
 TALLY_PAGE = "https://tally.so/r/BzeA0e"
 
 # Images: the hosted site loads full-quality files from Framer's CDN; the Claude preview uses small local copies in img/.
-_MODE = {"preview": False, "pre": ""}
+_MODE = {"preview": False, "pre": "", "cine": False}
 def pic(local, remote):
     if _MODE["preview"] and os.path.exists(os.path.join(ROOT, "img", local)):
         return _MODE["pre"] + "img/" + local
@@ -310,6 +310,8 @@ def img_url(u, w=1024):
 
 # Professional copy (overrides the first drafts above)
 UI.update({
+    "loading": ("Loading", "جارٍ التحميل"), "scroll": ("Scroll", "انزل"), "view": ("View", "شوف"),
+    "sel_work": ("Selected work", "أعمال مختارة"), "all_work": ("All work", "كل الأعمال"), "about_me": ("More about me", "المزيد عني"),
     "available": ("Available for new projects", "متاح لمشاريع جديدة"),
     "start": ("Start a project", "ابدأ مشروعك"),
     "see_work": ("View selected work", "استعرض الأعمال"),
@@ -383,7 +385,8 @@ SIG = f'<span class="sig" role="img" aria-label="{NAME[1]}"></span>'
 SIG_RED = f'<span class="sig sig-red" role="img" aria-label="{NAME[1]}"></span>'
 
 LIGHT_JS = ("<script>(function(){var h=12,m=null;try{h=+new Intl.DateTimeFormat('en-GB',{hour:'numeric',hourCycle:'h23',timeZone:'Africa/Cairo'}).format(new Date())}catch(e){}"
-            "try{m=localStorage.getItem('dm-light')}catch(e){}var d=document.documentElement;d.setAttribute('data-light',m||(h>=6&&h<18?'day':'night'));"
+            "try{m=localStorage.getItem('dm-light')}catch(e){}var d=document.documentElement;d.setAttribute('data-light',m||(window.__CINE?'night':(h>=6&&h<18?'day':'night')));"
+            "try{if(window.__CINE&&!sessionStorage.getItem('dm-ld')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('ld-on')}}catch(e){}"
             "try{if(sessionStorage.getItem('dm-wipe')){d.classList.add('wipe-in')}}catch(e){}})()</script>")
 
 def header(c, active, fname):
@@ -398,10 +401,14 @@ def header(c, active, fname):
 
 def footer(c):
     strips = f'<button type="button" class="strip-t" data-copy="{EMAIL}" data-torn="{c.u("torn")}"><span>{EMAIL}</span></button>'
-    return f'''<footer class="ftr"><div class="wrap">
+    strip = ""
+    if _MODE["cine"]:
+        strip = '<div class="ftr-strip" aria-hidden="true">' + "".join(
+            f'<a href="{PAGE[p[0]]}" tabindex="-1"><img src="{cover_(p[0], 512)}" alt="" loading="lazy" decoding="async"></a>' for p in PROJECTS[:10]) + '</div>'
+    return f'''<footer class="ftr">{strip}<div class="wrap">
 <div class="ftr-top">{face("face-lg")}{SIG if c.lang == "ar" else ""}</div>
 <span class="lbl" style="display:block">{c.u("ready")}</span>
-<a class="ftr-big" href="contact.html" data-cta>{c.u("lets")} <span class="arrow">↗</span></a>
+<a class="ftr-big" href="contact.html" data-cta{" data-fit" if _MODE["cine"] else ""}>{c.u("lets")} <span class="arrow">↗</span></a>
 <div class="grid">
   <div class="c1"><span class="lbl">{c.u("based")}</span><p>{c.u("cairo")}</p></div>
   <div class="c2"><span class="lbl">{c.u("email")}</span><div class="strips">{strips}</div></div>
@@ -413,12 +420,16 @@ def footer(c):
 <div class="cursor" aria-hidden="true"><span></span></div>'''
 
 def page(c, fname, title, active, body, extra_end=""):
-    inner = (f'{header(c, active, fname)}\n<main>\n{body}\n</main>\n{footer(c)}\n{extra_end}'
-             f'<script src="{c.pre}assets/main.js" charset="utf-8"></script>\n<script src="{c.pre}assets/play.js" charset="utf-8"></script>')
+    cine = _MODE["cine"]
+    inner = (f'{loader(c) if cine else ""}{header(c, active, fname)}\n<main>\n{body}\n</main>\n{footer(c)}\n{extra_end}'
+             f'<script src="{c.pre}assets/main.js" charset="utf-8"></script>\n<script src="{c.pre}assets/play.js" charset="utf-8"></script>'
+             + (f'\n<script src="{c.pre}assets/v3.js" charset="utf-8"></script>' if cine else ""))
     head = (f'<title>{e(title)}</title>\n<meta name="description" content="{e(c.t(LEAD))}">\n'
             f'<meta property="og:image" content="{IMG}9MXsp1yQQX8ctlfxudylN9onQ.png"><link rel="icon" href="{c.pre}img/logo.svg">\n'
             f'<link rel="alternate" hreflang="en" href="{c.pre}{fname}"><link rel="alternate" hreflang="ar" href="{c.pre}ar/{fname}">\n'
-            f'{FONTS}\n<link rel="stylesheet" href="{c.pre}assets/style.css">\n<link rel="stylesheet" href="{c.pre}assets/play.css">\n{LIGHT_JS}')
+            f'{FONTS}\n<link rel="stylesheet" href="{c.pre}assets/style.css">\n<link rel="stylesheet" href="{c.pre}assets/play.css">\n'
+            + (f'<link rel="stylesheet" href="{c.pre}assets/v3.css">\n<script>window.__CINE=1</script>\n' if cine else "")
+            + ('<meta name="robots" content="noindex">\n' if cine and not c.preview else "") + LIGHT_JS)
     if c.preview and c.lang == "en" and fname == "index.html":
         return (f'<meta name="claude:viewport-fit-sides" content="cover">\n{head}\n'
                 '<script>document.documentElement.lang="en";document.documentElement.dir="ltr";</script>\n' + inner + "\n")
@@ -521,7 +532,73 @@ def listen(c):
   </div>
 </div></section>'''
 
+def loader(c):
+    words = (("IDENTITY", "CAMPAIGNS", "STORIES", "DIAA"), ("هويات", "حملات", "حكايات", "ضياء"))[c.i]
+    w = "".join(f'<span style="--k:{k}">{x}</span>' for k, x in enumerate(words))
+    return (f'<div class="ld" aria-hidden="true"><div class="ld-words">{w}</div>'
+            f'<span class="ld-l lbl">{c.u("loading")}</span><span class="ld-n lbl"><b>0</b>%</span></div>')
+
+def home_cine(c):
+    nl = NAME_LINES[c.i]
+    if c.lang == "ar":
+        name = f'<h1 class="cine-name cine-sig" aria-label="{c.t(NAME)}">{sig_svg("sig-draw")}</h1>'
+    else:
+        name = (f'<h1 class="cine-name" aria-label="{c.t(NAME)}" data-fit><span class="ln" aria-hidden="true">'
+                + "".join(f'<i style="--i:{k}">{"&nbsp;" if ch == " " else ch}</i>' for k, ch in enumerate(" ".join(nl).upper())) + '</span></h1>')
+    me = c.pre + ME
+    svc = "".join(f'<li>{c.t(s)}</li>' for s in SERVICES)
+    # Selected work: an editorial, uneven grid (column start, span, push down)
+    LAY = [(1, 4, 0), (8, 4, 18), (3, 3, 0), (9, 4, 6), (1, 5, 0), (8, 3, 22), (2, 3, 4), (7, 4, 0)]
+    RAT = ["r45", "r11", "r34", "r45", "r32", "r45", "r11", "r34"]
+    items = ""
+    for i, p in enumerate(PROJECTS[:8]):
+        slug, nm, fld, yr = p[0], p[1], p[2], p[3]
+        cs, sp, dn = LAY[i]
+        items += (f'<a class="cw rv" href="{PAGE[slug]}" style="--cs:{cs};--sp:{sp};--dn:{dn}vh" data-cursor="{c.u("view")}">'
+                  f'<span class="cw-img {RAT[i]}"><img src="{cover_(slug, 1024)}" alt="{e(c.t(nm))}" loading="lazy" decoding="async"></span>'
+                  f'<span class="cw-cap"><b>{e(c.t(nm))}</b><span>{e(c.t(fld))}</span><span class="yr">{e(yr)}</span></span></a>')
+    nums = ""
+    for k, (n, l) in enumerate(HOME_STATS * 2):
+        th = PROJECTS[k % len(PROJECTS)][0]
+        nums += f'<span class="n"><b>{n}</b><small>{c.t(l)}</small></span><span class="th"><img src="{cover_(th, 256)}" alt="" loading="lazy"></span>'
+    words = "".join(f'<span>{w}</span> ' for w in c.t(LEAD).split())
+    steps = "".join(f'<div class="step rv"><span class="big idx">{i+1:02d}</span><h3>{c.t(h)}</h3><p>{c.t(d)}</p></div>' for i, (h, d) in enumerate(PROCESS))
+    faq = "".join(f'<details><summary><span class="idx">{i+1:02d}</span><span>{c.t(q)}</span><span class="pm" aria-hidden="true">+</span></summary><p>{c.t(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
+    return f'''<section class="cine-hero">
+  <div class="ch-bg" aria-hidden="true"><img src="{me}" alt=""></div>
+  <div class="ch-top wrap">
+    <p class="ch-lead">{c.t(TAGLINE_HTML)}</p>
+    <div class="ch-meta"><div class="avail"><i></i>{c.u("available")}</div><span class="lbl">{c.u("based")} — {c.u("cairo")}</span></div>
+  </div>
+  <div class="ch-bottom wrap">
+    {name}
+    <div class="ch-row"><ul class="ch-svc">{svc}</ul><a class="ch-scroll lbl" href="#works">{c.u("scroll")} <span>↓</span></a></div>
+  </div>
+</section>
+<section class="cine-state wrap"><span class="lbl">({c.u("about")})</span>
+  <p class="cs-text" data-words>{words}</p>
+  <a class="pill" href="about.html">{c.u("about_me")} <span class="arrow">↗</span></a>
+</section>
+<section class="cine-work" id="works"><div class="wrap">
+  <div class="cwh"><h2 data-fit>{c.u("sel_work")}</h2><span class="cwc">({len(PROJECTS):02d})</span></div>
+  <div class="cw-grid">{items}</div>
+  <p class="cw-all"><a class="pill solid" href="work.html">{c.u("all_work")} ({len(PROJECTS):02d}) <span class="arrow">↗</span></a></p>
+</div></section>
+<section class="cine-nums" aria-label="{c.u("numbers")}"><div class="cn-track">{nums}</div></section>
+{clients_strip(c)}
+{where(c)}
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><span class="lbl">{c.u("process")}</span><h2>{c.u("how")}</h2></div>
+  <div class="steps">{steps}</div>
+</div></section>
+{listen(c)}
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><span class="lbl">{c.u("faq")}</span><h2>{c.u("faq_h")}</h2></div>
+  <div class="grid"><div class="faq">{faq}</div></div>
+</div></section>'''
+
 def home(c):
+    if _MODE["cine"]: return home_cine(c)
     stats = "".join(f'<div class="num"><span class="k">{c.t(l)}</span><b>{plus(n)}</b></div>' for n, l in HOME_STATS)
     ghost = "".join(f'<a href="work.html" class="{"on" if i == 0 else ""}">{c.t(s)}<span class="idx">({i+1:02d})</span></a>' for i, s in enumerate(SERVICES))
     steps = "".join(f'<div class="step rv"><span class="big idx">{i+1}</span><h3>{c.t(h)}</h3><p>{c.t(d)}</p></div>' for i, (h, d) in enumerate(PROCESS))
@@ -856,7 +933,10 @@ def project(c, idx):
     return head + f'<section class="wrap">{cover_html}</section>' + body_html + f'<div class="wrap">{nxt_html}</div>', lb
 
 # =========================== BUILD ===========================
-def build(out, preview):
+CINE = False
+def build(out, preview, cine=False):
+    global CINE
+    CINE = cine
     shutil.rmtree(out, ignore_errors=True)
     load_projects(preview)
     for lang in ("en", "ar"):
@@ -865,6 +945,7 @@ def build(out, preview):
         d = out if lang == "en" else os.path.join(out, "ar")
         os.makedirs(d, exist_ok=True)
         N = c.t(NAME)
+        _MODE["cine"] = CINE
         pages = {"index.html": (N if not (preview and lang == "en") else "Diaa Mohammed Portfolio", "home", home(c), ""),
                  "work.html": (f"{c.u('work')} — {N}", "work", work(c), ""),
                  "about.html": (f"{c.u('about')} — {N}", "about", about(c), ""),
@@ -894,5 +975,7 @@ def build(out, preview):
 
 if __name__ == "__main__":
     build(os.path.join(ROOT, "site"), False)
-    build(os.path.join(ROOT, "preview"), True)
+    # The new cinematic design: a private preview at bydiaa.online/new/ (noindex) and in the Claude preview
+    build(os.path.join(ROOT, "site", "new"), False, cine=True)
+    build(os.path.join(ROOT, "preview"), True, cine=True)
     print("built site/ and preview/")

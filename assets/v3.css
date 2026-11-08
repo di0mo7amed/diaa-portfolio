@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/* ===== v3 · Cinematic layer (references: LongeBlack, Leo, Acadio) =====
+   Black stage, white type, one coral signal. Big uppercase type, full-bleed image,
+   a short loader, an uneven work grid, words that light up as you scroll. */
+
+html[data-light="night"]{
+  --paper:#0A0A0A;--white:#141414;--ink:#F2F0EB;--grey:#8A8784;--ghost:#1C1C1C;--line:#2A2A2A;
+  --peach:#1A1412;--blush:#161210;
+}
+html[data-light="night"] body::after{display:none}
+html[data-light="night"] .ftr{background:var(--paper)}
+html:lang(en) .sec-head h2,html:lang(en) .cwh h2,html:lang(en) .ftr-big{text-transform:uppercase;letter-spacing:-.035em}
+
+/* ---------- Header: floats over the hero, pill links ---------- */
+.hdr{background:transparent!important;border:0!important;backdrop-filter:none!important}
+.hdr nav a{color:var(--ink);text-transform:uppercase;font-size:.74rem;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:background .25s,color .25s,border-color .25s}
+.hdr nav a:hover,.hdr nav a[aria-current=page]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+html:lang(ar) .hdr nav a{text-transform:none;letter-spacing:0;font-size:.86rem}
+.hdr.scrolled{background:color-mix(in srgb,var(--paper) 82%,transparent)!important;backdrop-filter:blur(10px)!important}
+
+/* ---------- Loader ---------- */
+.ld{display:none}
+html.ld-on .ld{display:block;position:fixed;inset:0;z-index:200;background:#000;color:#fff;
+  animation:ld-out .9s cubic-bezier(.76,0,.24,1) 3.6s forwards}          /* fail-safe if JS never runs */
+html.ld-on.ld-done .ld{animation:ld-out .9s cubic-bezier(.76,0,.24,1) forwards}
+.ld-words{position:absolute;inset:0;display:grid;place-items:center}
+.ld-words span{grid-area:1/1;font-weight:700;font-size:clamp(3rem,10vw,9rem);letter-spacing:-.04em;line-height:1;opacity:0;
+  animation:ld-word .42s steps(1) calc(var(--k) * .38s) forwards}
+.ld-words span:last-child{animation:ld-last .5s cubic-bezier(.2,.7,.2,1) calc(var(--k) * .38s) forwards;color:var(--signal)}
+.ld-l,.ld-n{position:absolute;bottom:clamp(20px,4vw,48px);color:#9a9a9a}
+.ld-l{inset-inline-start:clamp(20px,4vw,60px)}
+.ld-n{inset-inline-end:clamp(20px,4vw,60px)}
+.ld-n b{font-weight:500;color:#fff;font-variant-numeric:tabular-nums}
+@keyframes ld-word{0%{opacity:1}99%{opacity:1}100%{opacity:0}}
+@keyframes ld-last{from{opacity:0;transform:translateY(30%)}to{opacity:1;transform:none}}
+@keyframes ld-out{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
+html.ld-on .ld{clip-path:inset(0 0 0 0)}
+
+/* ---------- Hero: full-bleed portrait, giant name ---------- */
+.cine-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;
+  margin-top:calc(-1 * var(--hdr-h,72px));padding-top:calc(var(--hdr-h,72px) + 24px);overflow:hidden;isolation:isolate;color:#F2F0EB}
+.ch-bg{position:absolute;inset:0;z-index:-1;background:#000}
+.ch-bg img{width:100%;height:100%;object-fit:cover;object-position:72% 20%;filter:grayscale(1) contrast(1.15) brightness(.62);
+  transform:scale(calc(1.08 + var(--hp,0) * .12));transform-origin:70% 30%;transition:transform .1s linear}
+html[dir=rtl] .ch-bg img{object-position:28% 20%;transform-origin:30% 30%}
+.ch-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 30%,rgba(0,0,0,0) 62%),
+  linear-gradient(to right,rgba(0,0,0,.55),rgba(0,0,0,0) 55%)}
+html[dir=rtl] .ch-bg::after{background:linear-gradient(to top,#000 0%,rgba(0,0,0,.55) 30%,rgba(0,0,0,0) 62%),linear-gradient(to left,rgba(0,0,0,.55),rgba(0,0,0,0) 55%)}
+.cine-hero>.wrap{width:100%;box-sizing:border-box}
+.ch-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-top:clamp(12px,3vh,40px)}
+.ch-lead{font-size:clamp(1.05rem,1.5vw,1.35rem);max-width:22ch;line-height:1.3;margin:0}
+.ch-lead .red{color:var(--signal)}
+.ch-meta{display:grid;justify-items:end;gap:10px;text-align:end}
+.ch-meta .lbl{color:#bdbab5}
+.ch-bottom{padding-bottom:clamp(20px,4vh,44px)}
+.cine-name{margin:0;font-weight:700;line-height:.82;letter-spacing:-.045em;white-space:nowrap;font-size:12vw}
+.cine-name .ln{display:inline-block;overflow:hidden;padding-top:.06em;vertical-align:top}
+.cine-name i{display:inline-block;font-style:normal;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.25s + var(--i) * .035s)}
+html.ld-on:not(.ld-gone) .cine-name i{animation-play-state:paused}
+@keyframes rise{to{transform:none}}
+.cine-sig{line-height:0}
+.cine-sig .sig-draw{width:auto;height:min(30vh,300px);max-width:62vw}
+.cine-sig .sig-draw path{fill:#F2F0EB;stroke:#F2F0EB}
+.ch-row{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:clamp(14px,2.4vh,28px);border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
+.ch-svc{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:#cfccc6}
+html:lang(ar) .ch-svc{text-transform:none;letter-spacing:0;font-size:.92rem}
+.ch-svc li::before{content:"●";color:var(--signal);font-size:.6em;margin-inline-end:8px;vertical-align:.2em}
+.ch-scroll{color:#F2F0EB;text-decoration:none;white-space:nowrap}
+.ch-scroll span{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+
+/* ---------- Statement: words light up with scroll ---------- */
+.cine-state{padding-block:clamp(90px,16vh,200px);display:grid;gap:clamp(24px,4vh,44px)}
+.cs-text{margin:0;font-size:clamp(1.9rem,4.6vw,4.6rem);line-height:1.04;letter-spacing:-.03em;font-weight:500;max-width:22ch}
+html:lang(ar) .cs-text{line-height:1.3;letter-spacing:0}
+.cs-text span{opacity:.16;transition:opacity .3s}
+.cs-text span.on{opacity:1}
+.pill{display:inline-flex;align-items:center;gap:10px;justify-self:start;padding:12px 20px;border:1px solid var(--line);border-radius:999px;
+  text-decoration:none;color:var(--ink);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;transition:background .25s,color .25s,border-color .25s}
+html:lang(ar) .pill{text-transform:none;letter-spacing:0;font-size:.95rem}
+.pill:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pill.solid{background:var(--signal);border-color:var(--signal);color:#fff}
+.pill.solid:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ---------- Selected work: uneven editorial grid ---------- */
+.cine-work{padding-bottom:clamp(60px,10vh,120px)}
+.cwh{display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:clamp(40px,8vh,90px)}
+.cwh h2{margin:0;font-size:9vw;line-height:.85;font-weight:700;white-space:nowrap;flex:1;min-width:0}
+.cwh .cwc{color:var(--signal);font-size:clamp(1rem,1.6vw,1.4rem)}
+.cw-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,2vw,28px);row-gap:clamp(50px,9vh,110px);align-items:start}
+.cw{grid-column:var(--cs)/span var(--sp);margin-top:var(--dn);text-decoration:none;color:var(--ink);display:block}
+.cw-img{display:block;overflow:hidden;background:var(--ghost);position:relative}
+.cw-img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transform:scale(1.04);
+  transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s}
+.cw:hover .cw-img img,.cw:focus-visible .cw-img img{filter:none;transform:scale(1)}
+.cw-cap{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;margin-top:12px;font-size:.82rem}
+.cw-cap b{font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:.95rem}
+html:lang(ar) .cw-cap b{text-transform:none}
+.cw-cap span{color:var(--grey)}
+.cw-cap .yr{font-variant-numeric:tabular-nums}
+.cw:hover .cw-cap b{color:var(--signal)}
+.cw-all{display:flex;justify-content:center;margin:clamp(60px,10vh,110px) 0 0}
+@media (max-width:760px){
+  .cw-grid{grid-template-columns:repeat(6,1fr)}
+  .cw{grid-column:auto/span 6;margin-top:0}
+  .cw:nth-child(even){grid-column:2/span 5}
+  .cwh h2{font-size:13vw}
+}
+
+/* ---------- Numbers: giant line that slides with scroll ---------- */
+.cine-nums{overflow:hidden;padding-block:clamp(40px,8vh,90px);border-block:1px solid var(--line)}
+.cn-track{display:flex;align-items:center;gap:clamp(20px,3vw,48px);white-space:nowrap;width:max-content;
+  transform:translateX(var(--nx,0));will-change:transform}
+.cn-track .n{display:inline-flex;align-items:flex-start;gap:12px}
+.cn-track .n b{font-size:clamp(5rem,15vw,15rem);font-weight:700;line-height:.82;letter-spacing:-.05em}
+.cn-track .n small{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);max-width:9ch;white-space:normal;padding-top:.6em}
+html:lang(ar) .cn-track .n small{text-transform:none;letter-spacing:0;font-size:.95rem}
+.cn-track .th{width:clamp(70px,9vw,140px);aspect-ratio:4/5;overflow:hidden;background:var(--ghost);flex:none;transform:rotate(-4deg)}
+.cn-track .th:nth-of-type(4n){transform:rotate(5deg)}
+.cn-track .th img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+
+/* ---------- Footer: image strip + giant line ---------- */
+.ftr-strip{display:flex;gap:6px;overflow:hidden;height:clamp(90px,14vw,190px);margin-bottom:clamp(40px,8vh,90px)}
+.ftr-strip a{flex:1;min-width:0;overflow:hidden;background:var(--ghost)}
+.ftr-strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .4s,transform .8s}
+.ftr-strip a:hover img{filter:none;transform:scale(1.06)}
+.ftr-big[data-fit]{display:block;white-space:nowrap;line-height:.85;font-size:12vw;font-weight:700}
+
+/* Pages other than home: a bit more cinematic too */
+html:lang(en) .p-title,html:lang(en) .page-h1{text-transform:uppercase;letter-spacing:-.04em}
+
+@media (prefers-reduced-motion:reduce){
+  .cine-name i{animation:none;transform:none}
+  .cs-text span{opacity:1}
+  .cn-track{transform:none}
+}
